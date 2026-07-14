@@ -40,12 +40,6 @@ Both parts run inside prebuilt Docker images — no local builds needed:
 | merging | `oytunkuday/merge-tools:reference` |
 | serving | `nandanmeda1999/sandhi-inference:latest` |
 
-`serving/sandhi_scripts/` comes from the SANDHI vLLM fork
-([nandanmeda1999/vllm_merged_model](https://github.com/nandanmeda1999/vllm_merged_model),
-branch `users/nmeda6/shared-components`, commit `a90cc51e9e19`), which
-implements the serving stack itself; `merging/` mirrors
-[oytunkuday/merge_tools_artifacts](https://github.com/oytunkuday/merge_tools_artifacts).
-
 ## Requirements
 
 - NVIDIA GPUs and Docker with the NVIDIA container runtime.
@@ -132,4 +126,4 @@ specs for the llama5, DeepSeek, and Qwen2.5 pools are in `serving/specs/`.
 ## License
 
 MIT (see [LICENSE](LICENSE)). `serving/sandhi_scripts/` originates from a vLLM
-(Apache-2.0) fork; it is included here with attribution above.
+(Apache-2.0) fork; see `serving/README.md` for details.
