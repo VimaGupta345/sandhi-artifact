@@ -13,7 +13,7 @@ shows **2.11×** and **564×** respectively.
 
 | path | what it is |
 |---|---|
-| `sandhi_scripts/` | the benchmark harness (copied verbatim from the SANDHI vLLM fork, see *Provenance*) |
+| `sandhi_scripts/` | the benchmark harness (from the SANDHI vLLM fork, see *Provenance*) |
 | `sandhi_scripts/run_all.sh` | one-command driver: starts the model servers (baseline, then sandhi), runs all load sweeps, parses logs, renders plots |
 | `sandhi_scripts/*_config.sh` | one config per deployment scenario (see table below) |
 | `sandhi_scripts/parse_and_plot_results.py` | log parser + plot renderer (throughput and P95 TTFT vs request rate, baseline vs sandhi) |
@@ -30,7 +30,7 @@ shows **2.11×** and **564×** respectively.
 Apache-2.0) contains the SANDHI serving stack itself — the
 `--shared-layers-ptrs-path` / `--shared-layers-spec-path` server flags used
 below are implemented there. The prebuilt runtime ships as a Docker image (next
-section), so evaluators do not need to build the fork.
+section), so there is no need to build the fork.
 
 ## Requirements
 
