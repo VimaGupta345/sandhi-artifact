@@ -1,0 +1,52 @@
+{
+  "_family_profiles": {
+    "qwen3-32b": {
+      "components": {
+        "q_proj": 80.0,
+        "k_proj": 10.0,
+        "v_proj": 10.0,
+        "o_proj": 80.0,
+        "gate_proj": 250.0,
+        "up_proj": 250.0,
+        "down_proj": 250.0
+      },
+      "full_model_mib": 62488.8,
+      "num_layers": 64
+    }
+  },
+  "fig5a__qwen32b3__qwen3-32b": {
+    "models": {
+      "Light-IF-32B": "Light-IF-32B",
+      "T-pro-it-2.0": "T-pro-it-2.0",
+      "MedGo": "MedGo"
+    },
+    "run_dir": "/workspace/merge_tools/runs/qwen32b3/micr/qwen32b3",
+    "ops_dir": "/workspace/merge_tools/runs/qwen32b3/clustering/qwen32b3",
+    "memory_profile": "qwen3-32b",
+    "points": [],
+    "out_dir": "/workspace/merge_tools/runs/qwen32b3/analysis/fig5a/fig5a__qwen32b3__qwen3-32b"
+  },
+  "fig5a": {
+    "models": {
+      "Light-IF-32B": "Light-IF-32B",
+      "T-pro-it-2.0": "T-pro-it-2.0",
+      "MedGo": "MedGo"
+    },
+    "run_dir": "/workspace/merge_tools/runs/qwen32b3/micr/qwen32b3",
+    "ops_dir": "/workspace/merge_tools/runs/qwen32b3/clustering/qwen32b3",
+    "memory_profile": "qwen3-32b",
+    "points": [
+      {
+        "name": "B",
+        "kind": "acc",
+        "budget": 1.0
+      },
+      {
+        "name": "C",
+        "kind": "acc",
+        "budget": 2.0
+      }
+    ],
+    "out_dir": "/workspace/merge_tools/runs/qwen32b3/analysis/fig5a"
+  }
+}

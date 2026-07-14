@@ -1,0 +1,449 @@
+{
+  "runsets": {
+    "llama5": [
+      {
+        "model": "Llama-3.1-8B-UltraMedical",
+        "task": "medqa_4options",
+        "family": "Llama-8B"
+      },
+      {
+        "model": "Llama-3.1-8B-Instruct-multi-truth-judge",
+        "task": "truthfulqa_mc2",
+        "family": "Llama-8B"
+      },
+      {
+        "model": "Llama-SafetyGuard-Content-Binary",
+        "task": "sst2",
+        "family": "Llama-8B"
+      },
+      {
+        "model": "calme-2.3-legalkit-8b",
+        "task": "mmlu_professional_law",
+        "family": "Llama-8B"
+      },
+      {
+        "model": "Llama-3.1-Hawkish-8B",
+        "task": "mmlu_econometrics",
+        "family": "Llama-8B"
+      }
+    ],
+    "qwen25_2": [
+      {
+        "model": "Qwen2.5-Coder-7B-Instruct",
+        "task": "humaneval",
+        "family": "Qwen2.5-7B"
+      },
+      {
+        "model": "Qwen2.5-Math-7B-Instruct",
+        "task": "gsm8k-cot",
+        "family": "Qwen2.5-7B"
+      }
+    ],
+    "qwen32b3": [
+      {
+        "model": "Light-IF-32B",
+        "task": "tinyMMLU",
+        "family": "Qwen-32B"
+      },
+      {
+        "model": "T-pro-it-2.0",
+        "task": "m_mmlu_ru",
+        "family": "Qwen-32B"
+      },
+      {
+        "model": "MedGo",
+        "task": "medqa_4options",
+        "family": "Qwen-32B"
+      }
+    ],
+    "deepseek2": [
+      {
+        "model": "deepseek-math-7b-instruct",
+        "task": "gsm8k-cot",
+        "family": "DeepSeek-7B"
+      },
+      {
+        "model": "deepseek-coder-7b-instruct-v1.5",
+        "task": "humaneval",
+        "family": "DeepSeek-7B"
+      }
+    ]
+  },
+  "figures": {
+    "fig5a": {
+      "type": "merge_figure",
+      "paper_mem_pct": 49.8,
+      "runsets": [
+        "qwen32b3"
+      ],
+      "reuse": [],
+      "n_models": 3,
+      "models": [
+        {
+          "model": "Light-IF-32B",
+          "task": "tinyMMLU",
+          "family": "Qwen-32B"
+        },
+        {
+          "model": "T-pro-it-2.0",
+          "task": "m_mmlu_ru",
+          "family": "Qwen-32B"
+        },
+        {
+          "model": "MedGo",
+          "task": "medqa_4options",
+          "family": "Qwen-32B"
+        }
+      ]
+    },
+    "fig5b": {
+      "type": "merge_figure",
+      "paper_mem_pct": 35.2,
+      "runsets": [
+        "llama5"
+      ],
+      "reuse": [],
+      "n_models": 5,
+      "models": [
+        {
+          "model": "Llama-3.1-8B-UltraMedical",
+          "task": "medqa_4options",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-8B-Instruct-multi-truth-judge",
+          "task": "truthfulqa_mc2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-SafetyGuard-Content-Binary",
+          "task": "sst2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "calme-2.3-legalkit-8b",
+          "task": "mmlu_professional_law",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-Hawkish-8B",
+          "task": "mmlu_econometrics",
+          "family": "Llama-8B"
+        }
+      ]
+    },
+    "fig5c": {
+      "type": "merge_figure",
+      "paper_mem_pct": 26.7,
+      "runsets": [
+        "llama5"
+      ],
+      "reuse": [
+        "deepseek-coder-7b-instruct-v1.5",
+        "deepseek-math-7b-instruct"
+      ],
+      "n_models": 7,
+      "models": [
+        {
+          "model": "Llama-3.1-8B-UltraMedical",
+          "task": "medqa_4options",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-8B-Instruct-multi-truth-judge",
+          "task": "truthfulqa_mc2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-SafetyGuard-Content-Binary",
+          "task": "sst2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "calme-2.3-legalkit-8b",
+          "task": "mmlu_professional_law",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-Hawkish-8B",
+          "task": "mmlu_econometrics",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
+          "family": "DeepSeek-7B"
+        },
+        {
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
+          "family": "DeepSeek-7B"
+        }
+      ]
+    },
+    "fig5d": {
+      "type": "merge_figure",
+      "paper_mem_pct": 38.0,
+      "runsets": [
+        "llama5",
+        "qwen25_2",
+        "qwen32b3"
+      ],
+      "reuse": [
+        "deepseek-coder-7b-instruct-v1.5",
+        "deepseek-math-7b-instruct"
+      ],
+      "n_models": 12,
+      "models": [
+        {
+          "model": "Llama-3.1-8B-UltraMedical",
+          "task": "medqa_4options",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-8B-Instruct-multi-truth-judge",
+          "task": "truthfulqa_mc2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-SafetyGuard-Content-Binary",
+          "task": "sst2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "calme-2.3-legalkit-8b",
+          "task": "mmlu_professional_law",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-Hawkish-8B",
+          "task": "mmlu_econometrics",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Qwen2.5-Coder-7B-Instruct",
+          "task": "humaneval",
+          "family": "Qwen2.5-7B"
+        },
+        {
+          "model": "Qwen2.5-Math-7B-Instruct",
+          "task": "gsm8k-cot",
+          "family": "Qwen2.5-7B"
+        },
+        {
+          "model": "Light-IF-32B",
+          "task": "tinyMMLU",
+          "family": "Qwen-32B"
+        },
+        {
+          "model": "T-pro-it-2.0",
+          "task": "m_mmlu_ru",
+          "family": "Qwen-32B"
+        },
+        {
+          "model": "MedGo",
+          "task": "medqa_4options",
+          "family": "Qwen-32B"
+        },
+        {
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
+          "family": "DeepSeek-7B"
+        },
+        {
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
+          "family": "DeepSeek-7B"
+        }
+      ]
+    },
+    "fig6a": {
+      "type": "serving_pool",
+      "paper_mem_pct": null,
+      "runsets": [],
+      "reuse": [
+        "deepseek-coder-7b-instruct-v1.5",
+        "deepseek-math-7b-instruct"
+      ],
+      "n_models": 2,
+      "models": [
+        {
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
+          "family": "DeepSeek-7B"
+        },
+        {
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
+          "family": "DeepSeek-7B"
+        }
+      ]
+    },
+    "fig6b": {
+      "type": "serving_pool",
+      "paper_mem_pct": null,
+      "runsets": [
+        "qwen25_2"
+      ],
+      "reuse": [],
+      "n_models": 2,
+      "models": [
+        {
+          "model": "Qwen2.5-Coder-7B-Instruct",
+          "task": "humaneval",
+          "family": "Qwen2.5-7B"
+        },
+        {
+          "model": "Qwen2.5-Math-7B-Instruct",
+          "task": "gsm8k-cot",
+          "family": "Qwen2.5-7B"
+        }
+      ]
+    },
+    "fig6c": {
+      "type": "serving_pool",
+      "paper_mem_pct": null,
+      "runsets": [
+        "llama5"
+      ],
+      "reuse": [
+        "deepseek-coder-7b-instruct-v1.5",
+        "deepseek-math-7b-instruct"
+      ],
+      "n_models": 7,
+      "models": [
+        {
+          "model": "Llama-3.1-8B-UltraMedical",
+          "task": "medqa_4options",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-8B-Instruct-multi-truth-judge",
+          "task": "truthfulqa_mc2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-SafetyGuard-Content-Binary",
+          "task": "sst2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "calme-2.3-legalkit-8b",
+          "task": "mmlu_professional_law",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-Hawkish-8B",
+          "task": "mmlu_econometrics",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
+          "family": "DeepSeek-7B"
+        },
+        {
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
+          "family": "DeepSeek-7B"
+        }
+      ]
+    },
+    "fig6d": {
+      "type": "serving_pool",
+      "paper_mem_pct": null,
+      "runsets": [
+        "llama5"
+      ],
+      "reuse": [],
+      "n_models": 5,
+      "models": [
+        {
+          "model": "Llama-3.1-8B-UltraMedical",
+          "task": "medqa_4options",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-8B-Instruct-multi-truth-judge",
+          "task": "truthfulqa_mc2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-SafetyGuard-Content-Binary",
+          "task": "sst2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "calme-2.3-legalkit-8b",
+          "task": "mmlu_professional_law",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-Hawkish-8B",
+          "task": "mmlu_econometrics",
+          "family": "Llama-8B"
+        }
+      ]
+    },
+    "fig6e": {
+      "type": "serving_pool",
+      "paper_mem_pct": null,
+      "runsets": [
+        "llama5",
+        "qwen25_2"
+      ],
+      "reuse": [
+        "deepseek-coder-7b-instruct-v1.5",
+        "deepseek-math-7b-instruct"
+      ],
+      "n_models": 9,
+      "models": [
+        {
+          "model": "Llama-3.1-8B-UltraMedical",
+          "task": "medqa_4options",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-8B-Instruct-multi-truth-judge",
+          "task": "truthfulqa_mc2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-SafetyGuard-Content-Binary",
+          "task": "sst2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "calme-2.3-legalkit-8b",
+          "task": "mmlu_professional_law",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-Hawkish-8B",
+          "task": "mmlu_econometrics",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Qwen2.5-Coder-7B-Instruct",
+          "task": "humaneval",
+          "family": "Qwen2.5-7B"
+        },
+        {
+          "model": "Qwen2.5-Math-7B-Instruct",
+          "task": "gsm8k-cot",
+          "family": "Qwen2.5-7B"
+        },
+        {
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
+          "family": "DeepSeek-7B"
+        },
+        {
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
+          "family": "DeepSeek-7B"
+        }
+      ]
+    }
+  }
+}

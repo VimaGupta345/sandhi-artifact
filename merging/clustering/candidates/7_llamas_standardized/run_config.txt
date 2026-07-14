@@ -1,0 +1,4 @@
+case: 7_llamas_standardized
+models: Llama-3.1-8B-UltraMedical,Llama-3.1-Hawkish-8B,calme-2.3-legalkit-8b,Llama-SafetyGuard-Content-Binary,Llama-3.1-8B-Instruct-multi-truth-judge
+transform: standardize_by_model
+baseline_drop_threshold: 10.0

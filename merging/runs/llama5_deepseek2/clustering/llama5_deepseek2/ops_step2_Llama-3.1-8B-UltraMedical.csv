@@ -1,0 +1,6 @@
+op,component,layer,models
+merge,attn_o,18,"Llama-3.1-8B-Instruct-multi-truth-judge:18,Llama-3.1-8B-UltraMedical:18,Llama-3.1-Hawkish-8B:18,Llama-SafetyGuard-Content-Binary:18,calme-2.3-legalkit-8b:18,deepseek-coder-7b-instruct-v1.5:4"
+merge,attn_o,30,"Llama-3.1-8B-Instruct-multi-truth-judge:30,Llama-3.1-8B-UltraMedical:30,Llama-3.1-Hawkish-8B:30,Llama-SafetyGuard-Content-Binary:30,calme-2.3-legalkit-8b:30,deepseek-coder-7b-instruct-v1.5:17"
+merge,attn_q,30,"Llama-3.1-8B-Instruct-multi-truth-judge:30,Llama-3.1-8B-UltraMedical:30,Llama-3.1-Hawkish-8B:30,Llama-SafetyGuard-Content-Binary:30,calme-2.3-legalkit-8b:30,deepseek-coder-7b-instruct-v1.5:24,deepseek-math-7b-instruct:29"
+merge,attn_o,31,"Llama-3.1-8B-Instruct-multi-truth-judge:31,Llama-3.1-8B-UltraMedical:31,Llama-SafetyGuard-Content-Binary:31,calme-2.3-legalkit-8b:31,deepseek-coder-7b-instruct-v1.5:16"
+merge,attn_q,31,"Llama-3.1-8B-Instruct-multi-truth-judge:31,Llama-3.1-8B-UltraMedical:31,Llama-3.1-Hawkish-8B:28,Llama-SafetyGuard-Content-Binary:31,calme-2.3-legalkit-8b:31,deepseek-coder-7b-instruct-v1.5:19,deepseek-math-7b-instruct:22"

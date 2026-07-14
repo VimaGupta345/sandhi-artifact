@@ -1,0 +1,374 @@
+[
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 14,
+   "component": "mlp.down_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 14,
+   "component": "mlp.down_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 14,
+   "component": "mlp.up_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 14,
+   "component": "mlp.up_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 22,
+   "component": "mlp.gate_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 22,
+   "component": "mlp.gate_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 25,
+   "component": "mlp.up_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 25,
+   "component": "mlp.up_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 4,
+   "component": "mlp.gate_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 4,
+   "component": "mlp.gate_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 2,
+   "component": "mlp.down_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 2,
+   "component": "mlp.down_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 3,
+   "component": "mlp.down_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 3,
+   "component": "mlp.down_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 3,
+   "component": "mlp.gate_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 3,
+   "component": "mlp.gate_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 25,
+   "component": "self_attn.q_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 25,
+   "component": "self_attn.o_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 25,
+   "component": "self_attn.o_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 23,
+   "component": "self_attn.k_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 23,
+   "component": "self_attn.k_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 28,
+   "component": "self_attn.o_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 28,
+   "component": "self_attn.o_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 28,
+   "component": "self_attn.q_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 28,
+   "component": "self_attn.q_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 24,
+   "component": "self_attn.k_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 24,
+   "component": "self_attn.k_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 24,
+   "component": "self_attn.o_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 24,
+   "component": "self_attn.o_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 22,
+   "component": "self_attn.q_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 22,
+   "component": "self_attn.v_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 22,
+   "component": "self_attn.v_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 27,
+   "component": "self_attn.k_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 27,
+   "component": "self_attn.k_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 21,
+   "component": "self_attn.v_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 23,
+   "component": "self_attn.q_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 2,
+   "component": "mlp.up_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 22,
+   "component": "mlp.down_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 22,
+   "component": "mlp.down_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 25,
+   "component": "mlp.down_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 28,
+   "component": "mlp.down_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 2,
+   "component": "mlp.gate_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 2,
+   "component": "mlp.gate_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 24,
+   "component": "mlp.up_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 28,
+   "component": "mlp.up_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 25,
+   "component": "self_attn.k_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 25,
+   "component": "self_attn.k_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 28,
+   "component": "self_attn.k_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 24,
+   "component": "self_attn.v_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 20,
+   "component": "self_attn.v_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 21,
+   "component": "self_attn.k_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 23,
+   "component": "self_attn.o_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 27,
+   "component": "self_attn.q_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 24,
+   "component": "self_attn.q_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-coder-7b-instruct-v1.5",
+   "layer": 27,
+   "component": "self_attn.v_proj"
+  },
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 24,
+   "component": "self_attn.v_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 22,
+   "component": "self_attn.k_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 22,
+   "component": "self_attn.q_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 26,
+   "component": "mlp.gate_proj"
+  }
+ ],
+ [
+  {
+   "model": "deepseek-math-7b-instruct",
+   "layer": 21,
+   "component": "self_attn.q_proj"
+  }
+ ]
+]

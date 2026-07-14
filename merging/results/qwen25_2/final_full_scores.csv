@@ -1,0 +1,5 @@
+point,label,cutoff,final_full_score
+B,Qwen2.5-Coder-7B-Instruct,11,81.1
+B,Qwen2.5-Math-7B-Instruct,11,90.3
+C,Qwen2.5-Coder-7B-Instruct,13,80.49
+C,Qwen2.5-Math-7B-Instruct,13,90.8

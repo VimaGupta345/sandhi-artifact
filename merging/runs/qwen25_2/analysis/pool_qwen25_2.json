@@ -1,0 +1,35 @@
+{
+  "qwen25_2__qwen25_2__qwen2.5-7b": {
+    "models": {
+      "Qwen2.5-Coder-7B-Instruct": "Qwen2.5-Coder-7B-Instruct",
+      "Qwen2.5-Math-7B-Instruct": "Qwen2.5-Math-7B-Instruct"
+    },
+    "run_dir": "/workspace/merge_tools/runs/qwen25_2/micr/qwen25_2",
+    "ops_dir": "/workspace/merge_tools/runs/qwen25_2/clustering/qwen25_2",
+    "memory_profile": "qwen2.5-7b",
+    "points": [],
+    "out_dir": "/workspace/merge_tools/runs/qwen25_2/analysis/qwen25_2/qwen25_2__qwen25_2__qwen2.5-7b"
+  },
+  "qwen25_2": {
+    "models": {
+      "Qwen2.5-Coder-7B-Instruct": "Qwen2.5-Coder-7B-Instruct",
+      "Qwen2.5-Math-7B-Instruct": "Qwen2.5-Math-7B-Instruct"
+    },
+    "run_dir": "/workspace/merge_tools/runs/qwen25_2/micr/qwen25_2",
+    "ops_dir": "/workspace/merge_tools/runs/qwen25_2/clustering/qwen25_2",
+    "memory_profile": "qwen2.5-7b",
+    "points": [
+      {
+        "name": "B",
+        "kind": "acc",
+        "budget": 1.0
+      },
+      {
+        "name": "C",
+        "kind": "acc",
+        "budget": 2.0
+      }
+    ],
+    "out_dir": "/workspace/merge_tools/runs/qwen25_2/analysis/qwen25_2"
+  }
+}

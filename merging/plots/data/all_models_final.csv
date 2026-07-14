@@ -1,0 +1,28 @@
+Set,Model,Accuracy_Delta_Percent,Memory_Saved_GB
+3-Qwen-32B,Light-IF 32B,-0.0,87.51
+3-Qwen-32B,T-pro-it 2.0,-1.8,87.51
+3-Qwen-32B,MedGo,-1.87,87.51
+5-llama,Medical,-0.62,33.95
+5-llama,Truth,1.94,33.95
+5-llama,Safety,2.3,33.95
+5-llama,Legal,-0.65,33.95
+5-llama,Finance,-1.75,33.95
+7-5-llama-2-DS,Medical,-1.25,35.26
+7-5-llama-2-DS,Truth,0.63,35.26
+7-5-llama-2-DS,Safety,2.52,35.26
+7-5-llama-2-DS,Legal,-0.65,35.26
+7-5-llama-2-DS,Finance,-1.75,35.26
+7-5-llama-2-DS,DS-Math,-1.8,35.26
+7-5-llama-2-DS,DS-Coder,1.22,35.26
+12-model,Medical,-1.25,123.31
+12-model,Truth,0.63,123.31
+12-model,Safety,2.52,123.31
+12-model,Legal,-0.65,123.31
+12-model,Finance,-1.75,123.31
+12-model,DS-Math,-1.8,123.31
+12-model,DS-Coder,1.22,123.31
+12-model,Coder,-1.21,123.31
+12-model,Math,1.3,123.31
+12-model,Light-IF 32B,-0.0,123.31
+12-model,T-pro-it 2.0,-1.8,123.31
+12-model,MedGo,-1.87,123.31

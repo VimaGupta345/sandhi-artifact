@@ -1,0 +1,94 @@
+{
+  "_comment": "label -> model registry for the figure pipeline (scripts/run_figures.py). local_path is a RELATIVE model dir-name resolved by load_registry() under ONE cache root: $SANDHI_MODELS_DIR if set, else $HF_HOME/models (default repo-local hf_cache/models). Weights download from hf_repo into that root when *.safetensors are missing, so the pipeline is self-contained by default and needs no /scratch mounts. All repos verified against the HF API 2026-07-11.",
+  "_optional_fields": "Optional per-entry knobs read by the eval runners: 'eval_limit' (int/float -> lm_eval --limit, eval_harness.registry_eval_limit) and 'apply_chat_template' (bool -> whether lm_eval prompts this model through its chat template on MC/loglikelihood tasks, eval_harness.registry_apply_chat_template). apply_chat_template is PER-MODEL because chat-tuned models can score at chance on raw MC prompts (Llama-3.1-8B-UltraMedical/medqa_4options 27.83 raw) while others handle raw fine (MedGo/medqa_4options 76.26 raw). Set it per model only after the GPU audit (chattmpl/audit_templates.py) confirms a large templated>raw delta; absent -> unchanged raw prompting. When it is toggled for a model, invalidate that model's stored baseline (micr baseline store) so baseline and candidates are prompted the same way.",
+  "Llama-3.1-8B-UltraMedical": {
+    "family": "llama-8b",
+    "task": "medqa_4options",
+    "runner": "normal",
+    "local_path": "Llama-3.1-8B-UltraMedical",
+    "hf_repo": "TsinghuaC3I/Llama-3.1-8B-UltraMedical"
+  },
+  "Llama-3.1-Hawkish-8B": {
+    "family": "llama-8b",
+    "task": "mmlu_econometrics",
+    "runner": "normal",
+    "local_path": "Llama-3.1-Hawkish-8B",
+    "hf_repo": "mukaj/Llama-3.1-Hawkish-8B"
+  },
+  "calme-2.3-legalkit-8b": {
+    "family": "llama-8b",
+    "task": "mmlu_professional_law",
+    "runner": "normal",
+    "local_path": "calme-2.3-legalkit-8b",
+    "hf_repo": "MaziyarPanahi/calme-2.3-legalkit-8b"
+  },
+  "Llama-SafetyGuard-Content-Binary": {
+    "family": "llama-8b",
+    "task": "sst2",
+    "runner": "normal",
+    "local_path": "Llama-SafetyGuard-Content-Binary",
+    "hf_repo": "K-intelligence/Llama-SafetyGuard-Content-Binary"
+  },
+  "Llama-3.1-8B-Instruct-multi-truth-judge": {
+    "family": "llama-8b",
+    "task": "truthfulqa_mc2",
+    "runner": "normal",
+    "local_path": "Llama-3.1-8B-Instruct-multi-truth-judge",
+    "hf_repo": "HiTZ/Llama-3.1-8B-Instruct-multi-truth-judge"
+  },
+  "Qwen2.5-Coder-7B-Instruct": {
+    "family": "qwen2.5-7b",
+    "task": "humaneval",
+    "runner": "normal",
+    "local_path": "Qwen2.5-Coder-7B-Instruct",
+    "hf_repo": "Qwen/Qwen2.5-Coder-7B-Instruct"
+  },
+  "Qwen2.5-Math-7B-Instruct": {
+    "family": "qwen2.5-7b",
+    "task": "gsm8k-cot",
+    "runner": "normal",
+    "local_path": "Qwen2.5-Math-7B-Instruct",
+    "hf_repo": "Qwen/Qwen2.5-Math-7B-Instruct"
+  },
+  "Light-IF-32B": {
+    "family": "qwen3-32b",
+    "task": "tinyMMLU",
+    "runner": "32b",
+    "local_path": "Light-IF-32B",
+    "hf_repo": "qihoo360/Light-IF-32B",
+    "_note": "weights resolved from the shared HF cache snapshot (no download needed)"
+  },
+  "T-pro-it-2.0": {
+    "family": "qwen3-32b",
+    "task": "m_mmlu_ru",
+    "runner": "32b",
+    "local_path": "T-pro-it-2.0",
+    "hf_repo": "t-tech/T-pro-it-2.0",
+    "_note": "weights resolved from the shared HF cache snapshot (no download needed)",
+    "eval_limit": 1000
+  },
+  "MedGo": {
+    "family": "qwen3-32b",
+    "task": "medqa_4options",
+    "runner": "32b",
+    "local_path": "MedGo",
+    "hf_repo": "OpenMedZoo/MedGo",
+    "_note": "weights resolved from the shared HF cache snapshot (no download needed)"
+  },
+  "deepseek-coder-7b-instruct-v1.5": {
+    "family": "deepseek-7b",
+    "task": "humaneval",
+    "runner": "normal",
+    "local_path": "deepseek-coder-7b-instruct-v1.5",
+    "hf_repo": "deepseek-ai/deepseek-coder-7b-instruct-v1.5",
+    "_note": "fig5c/5d reuse the existing 6_deepseek_standardized run; no re-run planned"
+  },
+  "deepseek-math-7b-instruct": {
+    "family": "deepseek-7b",
+    "task": "gsm8k-cot",
+    "runner": "normal",
+    "local_path": "deepseek-math-7b-instruct",
+    "hf_repo": "deepseek-ai/deepseek-math-7b-instruct",
+    "_note": "fig5c/5d reuse the existing 6_deepseek_standardized run; no re-run planned"
+  }
+}

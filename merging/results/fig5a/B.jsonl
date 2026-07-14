@@ -1,0 +1,3 @@
+[{"model": "Light-IF-32B", "layer": 15, "component": "mlp.down_proj"}, {"model": "MedGo", "layer": 15, "component": "mlp.down_proj"}, {"model": "T-pro-it-2.0", "layer": 15, "component": "mlp.down_proj"}]
+[{"model": "Light-IF-32B", "layer": 15, "component": "mlp.gate_proj"}, {"model": "MedGo", "layer": 15, "component": "mlp.gate_proj"}, {"model": "T-pro-it-2.0", "layer": 15, "component": "mlp.gate_proj"}]
+[{"model": "Light-IF-32B", "layer": 15, "component": "mlp.up_proj"}, {"model": "MedGo", "layer": 15, "component": "mlp.up_proj"}, {"model": "T-pro-it-2.0", "layer": 15, "component": "mlp.up_proj"}]

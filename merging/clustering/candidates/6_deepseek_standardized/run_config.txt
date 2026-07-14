@@ -1,0 +1,4 @@
+case: 6_deepseek_standardized
+models: deepseek-math-7b-instruct,deepseek-coder-7b-instruct-v1.5
+transform: standardize_by_model
+baseline_drop_threshold: 10.0

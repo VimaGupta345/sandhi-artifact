@@ -1,0 +1,7 @@
+# model weights & datasets (not part of the artifact repo)
+hf_cache/
+*.safetensors
+# python
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,13 @@
+domain,benchmark,base_model,base_score,source
+IF,tinyMMLU,Light-IF 32B,76.0,qwen3
+Russian,m_mmlu_ru,T-pro-it 2.0,75.2,qwen3
+medical,medqa_4options,MedGo,78.12,qwen3
+medical,medqa_4options,Medical,65.0,llama3.1
+truthfulness,truthfulqa_mc2,Truth,71.03,llama3.1
+toxicity,sst2,Safety,88.76,llama3.1
+legal,mmlu_professional_law,Legal,47.85,llama3.1
+financial,mmlu_econometrics,Finance,49.12,llama3.1
+math,gsm8k-cot,DS-Math,80.1,deepseek
+coding,humaneval,DS-Coder,75.61,deepseek
+coding,humaneval,Coder,87.8,qwen2.5
+math,gsm8k-cot,Math,90.7,qwen2.5

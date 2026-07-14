@@ -1,0 +1,5 @@
+point,label,cutoff,final_full_score
+B,deepseek-coder-7b-instruct-v1.5,12,67.68
+B,deepseek-math-7b-instruct,12,79.3
+C,deepseek-coder-7b-instruct-v1.5,15,67.07
+C,deepseek-math-7b-instruct,15,79.3

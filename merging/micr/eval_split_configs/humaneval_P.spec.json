@@ -1,0 +1,23 @@
+{
+  "task": "humaneval",
+  "seed": 42,
+  "fractions": [
+    0.5,
+    0.5
+  ],
+  "algorithm": "random.Random(f'micr-eval-split|{task}|{seed}') shuffle of range(n); P = first round(n*fractions[0]) (clamped to [1, n-1]), M = the rest; both sorted ascending",
+  "index_hash_algorithm": "sha256(','.join(indices)).hexdigest()[:16]",
+  "n_items": null,
+  "split_sizes": null,
+  "index_hashes": null,
+  "note": "n_items unknown at materialize time; the generated process_docs hook recomputes the identical partition from the dataset length at eval time",
+  "kind": "lm_eval-config",
+  "split": "P",
+  "variant_task": "humaneval_P",
+  "eval_split_name": "test",
+  "parent_yaml": "/opt/venv/lib/python3.12/site-packages/lm_eval/tasks/humaneval/humaneval.yaml",
+  "config_yaml": "/workspace/merge_tools/micr/eval_split_configs/humaneval_P.yaml",
+  "hook_module": "/workspace/merge_tools/micr/eval_split_configs/_micr_split_humaneval_P.py",
+  "include_path": "/workspace/merge_tools/micr/eval_split_configs",
+  "parent_process_docs": null
+}

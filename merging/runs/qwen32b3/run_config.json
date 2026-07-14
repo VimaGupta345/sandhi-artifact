@@ -1,0 +1,25 @@
+{
+  "run_name": "qwen32b3",
+  "created": "2026-07-13T18:28:55.529755+00:00",
+  "sets": [
+    "fig5a"
+  ],
+  "stages": [
+    "analysis"
+  ],
+  "settings": {
+    "perturbation": "avg",
+    "groups": "attn,mlp",
+    "noise_seed": 1234,
+    "split_seed": 42,
+    "profiler_eval_split": "P",
+    "micr_eval_split": "M",
+    "final_eval_split": "full",
+    "baseline_drop_threshold": 5.0,
+    "drop_tolerance": 2.0,
+    "batch_size": "auto",
+    "temperature": 0.0
+  },
+  "registry": "/workspace/merge_tools/models_download/hf_repos.json",
+  "note": "memory = distinct-tensor freed / sum(full on-disk N); profiler baselines measured on P, MICR baselines on M, final on full"
+}

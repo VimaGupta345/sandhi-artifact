@@ -1,0 +1,16 @@
+timestamp,step_idx,stage,op,component,layer,label,score,threshold,decision,scaled
+2026-07-14T00:12:22.611290+00:00,-1,0,baseline,baseline,-1,Qwen2.5-Coder-7B-Instruct,87.8,0.0,baseline,False
+2026-07-14T00:13:38.297433+00:00,0,1,merge,mlp,19,Qwen2.5-Coder-7B-Instruct,89.02,2.0,accepted,True
+2026-07-14T00:15:34.820315+00:00,1,1,merge,mlp,6,Qwen2.5-Coder-7B-Instruct,86.59,2.0,accepted,True
+2026-07-14T00:16:47.920992+00:00,2,1,merge,mlp,26,Qwen2.5-Coder-7B-Instruct,84.15,2.0,rejected,True
+2026-07-14T00:18:05.542814+00:00,3,1,merge,attn,12,Qwen2.5-Coder-7B-Instruct,82.93,2.0,rejected,True
+2026-07-14T00:19:19.546942+00:00,4,1,merge,attn,9,Qwen2.5-Coder-7B-Instruct,87.8,2.0,accepted,True
+2026-07-14T00:20:39.600137+00:00,5,1,merge,attn,5,Qwen2.5-Coder-7B-Instruct,87.8,2.0,accepted,True
+2026-07-14T00:21:42.010533+00:00,6,1,merge,attn,3,Qwen2.5-Coder-7B-Instruct,85.37,2.0,accepted,True
+2026-07-14T00:22:57.718433+00:00,7,1,merge,attn,15,Qwen2.5-Coder-7B-Instruct,85.37,2.0,accepted,True
+2026-07-14T00:24:21.402544+00:00,8,1,merge,attn,13,Qwen2.5-Coder-7B-Instruct,89.02,2.0,accepted,True
+2026-07-14T00:25:46.718158+00:00,9,1,merge,attn,11,Qwen2.5-Coder-7B-Instruct,89.02,2.0,accepted,True
+2026-07-14T00:27:14.382000+00:00,10,1,merge,attn,10,Qwen2.5-Coder-7B-Instruct,87.8,2.0,accepted,True
+2026-07-14T00:28:33.899306+00:00,11,1,merge,attn,8,Qwen2.5-Coder-7B-Instruct,87.8,2.0,accepted,True
+2026-07-14T00:29:58.409911+00:00,12,1,merge,attn,4,Qwen2.5-Coder-7B-Instruct,85.37,2.0,accepted,True
+2026-07-14T00:31:20.926085+00:00,13,1,merge,attn,2,Qwen2.5-Coder-7B-Instruct,86.59,2.0,accepted,True

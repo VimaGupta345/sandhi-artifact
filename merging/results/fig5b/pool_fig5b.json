@@ -1,0 +1,41 @@
+{
+  "fig5b__llama5__llama-8b": {
+    "models": {
+      "Llama-3.1-8B-UltraMedical": "Llama-3.1-8B-UltraMedical",
+      "Llama-3.1-8B-Instruct-multi-truth-judge": "Llama-3.1-8B-Instruct-multi-truth-judge",
+      "Llama-SafetyGuard-Content-Binary": "Llama-SafetyGuard-Content-Binary",
+      "calme-2.3-legalkit-8b": "calme-2.3-legalkit-8b",
+      "Llama-3.1-Hawkish-8B": "Llama-3.1-Hawkish-8B"
+    },
+    "run_dir": "runs/artifact_e2e_5b/micr/llama5",
+    "ops_dir": "runs/artifact_e2e_5b/clustering/llama5",
+    "memory_profile": "llama-8b",
+    "points": [],
+    "out_dir": "runs/artifact_e2e_5b/analysis/fig5b/fig5b__llama5__llama-8b"
+  },
+  "fig5b": {
+    "models": {
+      "Llama-3.1-8B-UltraMedical": "Llama-3.1-8B-UltraMedical",
+      "Llama-3.1-8B-Instruct-multi-truth-judge": "Llama-3.1-8B-Instruct-multi-truth-judge",
+      "Llama-SafetyGuard-Content-Binary": "Llama-SafetyGuard-Content-Binary",
+      "calme-2.3-legalkit-8b": "calme-2.3-legalkit-8b",
+      "Llama-3.1-Hawkish-8B": "Llama-3.1-Hawkish-8B"
+    },
+    "run_dir": "runs/artifact_e2e_5b/micr/llama5",
+    "ops_dir": "runs/artifact_e2e_5b/clustering/llama5",
+    "memory_profile": "llama-8b",
+    "points": [
+      {
+        "name": "B",
+        "kind": "acc",
+        "budget": 1.0
+      },
+      {
+        "name": "C",
+        "kind": "acc",
+        "budget": 2.0
+      }
+    ],
+    "out_dir": "runs/artifact_e2e_5b/analysis/fig5b"
+  }
+}

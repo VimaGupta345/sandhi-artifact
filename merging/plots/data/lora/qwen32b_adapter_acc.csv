@@ -1,0 +1,7 @@
+model,benchmark,lora_acc,ft_acc,base_acc
+qihoo360/Light-IF-32B,ifeval,0.2737,0.8669,0.8336
+TachyHealth/Gazal-R1-32B-sft-merged-preview,medqa_4options,0.7455,0.7478,0.7494
+OpenMedZoo/MedGo,medqa_4options,0.7604,0.7596,0.7494
+t-tech/T-pro-it-2.0,m_mmlu_ru,0.7542,0.7679,0.7517
+RefalMachine/RuadaptQwen3-32B-Instruct,m_mmlu_ru,0.7524,0.737,0.7517
+Goedel-LM/Goedel-Prover-V2-32B,minif2f,0,0,0

@@ -1,0 +1,5 @@
+domain,benchmark,multi_slerp,dare,ft_model,ft_score,base_model,base_score
+medical,medqa_4options,27.73,75.88,OpenMedZoo/MedGo,75.96,Qwen3-32B,74.94
+IF,ifeval,14.60,84.66,qihoo360/Light-IF-32B,86.69,Qwen3-32B,83.36
+Russian,m_mmlu_ru,22.70,77.34,t-tech/T-pro-it-2.0,76.79,Qwen3-32B,75.17
+tinyMMLU,tinyMMLU,28.39,79.30,N/A,N/A,Qwen3-32B,75.57

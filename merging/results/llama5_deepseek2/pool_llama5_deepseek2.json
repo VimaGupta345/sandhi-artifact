@@ -1,0 +1,46 @@
+{
+  "llama5_deepseek2__llama5_deepseek2__llama-8b": {
+    "models": {
+      "Llama-3.1-8B-UltraMedical": "Llama-3.1-8B-UltraMedical",
+      "Llama-3.1-8B-Instruct-multi-truth-judge": "Llama-3.1-8B-Instruct-multi-truth-judge",
+      "Llama-SafetyGuard-Content-Binary": "Llama-SafetyGuard-Content-Binary",
+      "calme-2.3-legalkit-8b": "calme-2.3-legalkit-8b",
+      "Llama-3.1-Hawkish-8B": "Llama-3.1-Hawkish-8B"
+    },
+    "run_dir": "/workspace/merge_tools/runs/llama5_deepseek2/micr/llama5_deepseek2",
+    "ops_dir": "/workspace/merge_tools/runs/llama5_deepseek2/clustering/llama5_deepseek2",
+    "memory_profile": "llama-8b",
+    "points": [],
+    "out_dir": "/workspace/merge_tools/runs/llama5_deepseek2/analysis/llama5_deepseek2/llama5_deepseek2__llama5_deepseek2__llama-8b"
+  },
+  "llama5_deepseek2__llama5_deepseek2__deepseek-7b": {
+    "models": {
+      "deepseek-math-7b-instruct": "deepseek-math-7b-instruct",
+      "deepseek-coder-7b-instruct-v1.5": "deepseek-coder-7b-instruct-v1.5"
+    },
+    "run_dir": "/workspace/merge_tools/runs/llama5_deepseek2/micr/llama5_deepseek2",
+    "ops_dir": "/workspace/merge_tools/runs/llama5_deepseek2/clustering/llama5_deepseek2",
+    "memory_profile": "deepseek-7b",
+    "points": [],
+    "out_dir": "/workspace/merge_tools/runs/llama5_deepseek2/analysis/llama5_deepseek2/llama5_deepseek2__llama5_deepseek2__deepseek-7b"
+  },
+  "llama5_deepseek2": {
+    "compose": [
+      "llama5_deepseek2__llama5_deepseek2__llama-8b",
+      "llama5_deepseek2__llama5_deepseek2__deepseek-7b"
+    ],
+    "points": [
+      {
+        "name": "B",
+        "kind": "acc",
+        "budget": 1.0
+      },
+      {
+        "name": "C",
+        "kind": "acc",
+        "budget": 2.0
+      }
+    ],
+    "out_dir": "/workspace/merge_tools/runs/llama5_deepseek2/analysis/llama5_deepseek2"
+  }
+}

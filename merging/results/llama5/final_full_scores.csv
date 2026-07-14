@@ -1,0 +1,11 @@
+point,label,cutoff,final_full_score
+B,Llama-3.1-8B-Instruct-multi-truth-judge,23,76.53
+B,Llama-3.1-8B-UltraMedical,23,62.7
+B,Llama-3.1-Hawkish-8B,23,54.39
+B,Llama-SafetyGuard-Content-Binary,23,88.99
+B,calme-2.3-legalkit-8b,23,49.74
+C,Llama-3.1-8B-Instruct-multi-truth-judge,52,73.1
+C,Llama-3.1-8B-UltraMedical,52,61.76
+C,Llama-3.1-Hawkish-8B,52,53.51
+C,Llama-SafetyGuard-Content-Binary,52,90.71
+C,calme-2.3-legalkit-8b,52,49.54

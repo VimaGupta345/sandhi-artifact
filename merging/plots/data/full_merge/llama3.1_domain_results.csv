@@ -1,0 +1,6 @@
+domain,benchmark,multi_slerp,dare,ft_model,ft_score,base_model,base_score
+medical,medqa_4options,66.18,74.63,TsinghuaC3I/Llama-3-8B-UltraMedical,77.21,Llama-3.1-8B,72.43
+financial,mmlu_econometrics,38.60,49.12,anjohn0077/fin-llama3.1-8b,54.39,Llama-3.1-8B,44.74
+legal,mmlu_professional_law,42.05,48.89,MaziyarPanahi/calme-2.3-legalkit-8b,50.2,Llama-3.1-8B,48.89
+toxicity,sst2,83.14,91.40,K-intelligence/Llama-SafetyGuard-Content-Binary,88.99,Llama-3.1-8B,76.61
+truthfulness,truthfulqa_mc2,56.21,63.48,HiTZ/Llama-3.1-8B-Instruct-multi-truth-judge,73.25,Llama-3.1-8B,45.26

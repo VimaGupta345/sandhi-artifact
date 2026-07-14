@@ -1,0 +1,35 @@
+{
+  "deepseek2__deepseek2__deepseek-7b": {
+    "models": {
+      "deepseek-math-7b-instruct": "deepseek-math-7b-instruct",
+      "deepseek-coder-7b-instruct-v1.5": "deepseek-coder-7b-instruct-v1.5"
+    },
+    "run_dir": "/workspace/merge_tools/runs/deepseek2/micr/deepseek2",
+    "ops_dir": "/workspace/merge_tools/runs/deepseek2/clustering/deepseek2",
+    "memory_profile": "deepseek-7b",
+    "points": [],
+    "out_dir": "/workspace/merge_tools/runs/deepseek2/analysis/deepseek2/deepseek2__deepseek2__deepseek-7b"
+  },
+  "deepseek2": {
+    "models": {
+      "deepseek-math-7b-instruct": "deepseek-math-7b-instruct",
+      "deepseek-coder-7b-instruct-v1.5": "deepseek-coder-7b-instruct-v1.5"
+    },
+    "run_dir": "/workspace/merge_tools/runs/deepseek2/micr/deepseek2",
+    "ops_dir": "/workspace/merge_tools/runs/deepseek2/clustering/deepseek2",
+    "memory_profile": "deepseek-7b",
+    "points": [
+      {
+        "name": "B",
+        "kind": "acc",
+        "budget": 1.0
+      },
+      {
+        "name": "C",
+        "kind": "acc",
+        "budget": 2.0
+      }
+    ],
+    "out_dir": "/workspace/merge_tools/runs/deepseek2/analysis/deepseek2"
+  }
+}

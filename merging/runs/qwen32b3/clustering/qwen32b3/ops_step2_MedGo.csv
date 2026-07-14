@@ -1,0 +1,13 @@
+op,component,layer,models
+merge,mlp_gate,12,"Light-IF-32B:12,MedGo:12,T-pro-it-2.0:9"
+merge,mlp_gate,53,"Light-IF-32B:53,MedGo:53,T-pro-it-2.0:53"
+merge,attn_k,23,"Light-IF-32B:23,MedGo:23,T-pro-it-2.0:11"
+merge,attn_o,38,"Light-IF-32B:38,MedGo:38,T-pro-it-2.0:35"
+merge,attn_v,12,"Light-IF-32B:12,MedGo:12,T-pro-it-2.0:12"
+merge,attn_o,25,"Light-IF-32B:25,MedGo:25,T-pro-it-2.0:32"
+merge,attn_o,34,"Light-IF-32B:34,MedGo:34,T-pro-it-2.0:24"
+merge,attn_o,35,"Light-IF-32B:35,MedGo:35,T-pro-it-2.0:40"
+merge,attn_o,10,"Light-IF-32B:10,MedGo:10,T-pro-it-2.0:11"
+merge,attn_o,24,"Light-IF-32B:24,MedGo:24,T-pro-it-2.0:50"
+merge,attn_q,61,"Light-IF-32B:61,MedGo:61,T-pro-it-2.0:47"
+merge,attn_o,37,"Light-IF-32B:37,MedGo:37,T-pro-it-2.0:60"

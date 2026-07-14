@@ -1,0 +1,16 @@
+timestamp,step_idx,stage,op,component,layer,label,score,threshold,decision,scaled
+2026-07-14T00:12:22.994897+00:00,-1,0,baseline,baseline,-1,Qwen2.5-Math-7B-Instruct,90.4,0.0,baseline,False
+2026-07-14T00:13:46.370803+00:00,0,1,merge,mlp,19,Qwen2.5-Math-7B-Instruct,91.2,2.0,accepted,True
+2026-07-14T00:15:48.616153+00:00,1,1,merge,mlp,6,Qwen2.5-Math-7B-Instruct,90.6,2.0,accepted,True
+2026-07-14T00:17:21.458905+00:00,2,1,merge,mlp,26,Qwen2.5-Math-7B-Instruct,88.9,2.0,accepted,True
+2026-07-14T00:18:49.683999+00:00,3,1,merge,attn,12,Qwen2.5-Math-7B-Instruct,90.7,2.0,accepted,True
+2026-07-14T00:20:09.313207+00:00,4,1,merge,attn,9,Qwen2.5-Math-7B-Instruct,91.0,2.0,accepted,True
+2026-07-14T00:21:29.881501+00:00,5,1,merge,attn,5,Qwen2.5-Math-7B-Instruct,89.4,2.0,accepted,True
+2026-07-14T00:22:53.906882+00:00,6,1,merge,attn,3,Qwen2.5-Math-7B-Instruct,90.1,2.0,accepted,True
+2026-07-14T00:24:17.394888+00:00,7,1,merge,attn,15,Qwen2.5-Math-7B-Instruct,90.6,2.0,accepted,True
+2026-07-14T00:25:43.440578+00:00,8,1,merge,attn,13,Qwen2.5-Math-7B-Instruct,90.4,2.0,accepted,True
+2026-07-14T00:27:09.170763+00:00,9,1,merge,attn,11,Qwen2.5-Math-7B-Instruct,91.4,2.0,accepted,True
+2026-07-14T00:28:33.659311+00:00,10,1,merge,attn,10,Qwen2.5-Math-7B-Instruct,90.9,2.0,accepted,True
+2026-07-14T00:29:58.554865+00:00,11,1,merge,attn,8,Qwen2.5-Math-7B-Instruct,90.9,2.0,accepted,True
+2026-07-14T00:31:22.431718+00:00,12,1,merge,attn,4,Qwen2.5-Math-7B-Instruct,91.7,2.0,accepted,True
+2026-07-14T00:32:44.549730+00:00,13,1,merge,attn,2,Qwen2.5-Math-7B-Instruct,91.7,2.0,accepted,True

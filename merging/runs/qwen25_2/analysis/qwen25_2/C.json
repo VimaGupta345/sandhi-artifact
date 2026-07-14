@@ -1,0 +1,158 @@
+[
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 19,
+      "component": "mlp.down_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 19,
+      "component": "mlp.down_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 6,
+      "component": "mlp.up_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 6,
+      "component": "mlp.up_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 26,
+      "component": "mlp.down_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 26,
+      "component": "mlp.down_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 12,
+      "component": "self_attn.k_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 12,
+      "component": "self_attn.k_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 12,
+      "component": "self_attn.o_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 12,
+      "component": "self_attn.o_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 12,
+      "component": "self_attn.v_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 12,
+      "component": "self_attn.v_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 9,
+      "component": "self_attn.q_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 9,
+      "component": "self_attn.q_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 9,
+      "component": "self_attn.v_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 9,
+      "component": "self_attn.v_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 5,
+      "component": "self_attn.k_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 5,
+      "component": "self_attn.k_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 5,
+      "component": "self_attn.q_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 5,
+      "component": "self_attn.q_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 15,
+      "component": "self_attn.o_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 15,
+      "component": "self_attn.o_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 10,
+      "component": "self_attn.v_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 10,
+      "component": "self_attn.v_proj"
+    }
+  ],
+  [
+    {
+      "model": "Qwen2.5-Coder-7B-Instruct",
+      "layer": 8,
+      "component": "self_attn.o_proj"
+    },
+    {
+      "model": "Qwen2.5-Math-7B-Instruct",
+      "layer": 8,
+      "component": "self_attn.o_proj"
+    }
+  ]
+]
