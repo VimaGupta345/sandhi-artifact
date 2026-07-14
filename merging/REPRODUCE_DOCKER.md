@@ -73,24 +73,6 @@ That is the whole thing — no model mounts, no `HF_HOME`. Why it's sudo-free:
   DeepSeek run; 32g gives headroom for the 5-GPU Llama run and 32B/vLLM work.
   Raise it if you ever see `Bus error` / `/dev/shm` errors.
 
-### Reuse this cluster's existing downloads (skip re-download)
-The team already has the 7–8B weights at `/scratch/shared_dir/unified_models`.
-Point one env var at them (read-only mount is fine) to skip re-downloading:
-```bash
-dock() {
-  docker run --rm --gpus all --shm-size=32g --ulimit nofile=524288:524288 \
-    --user "$(id -u):$(id -g)" -e USER="$(id -un)" -e HOME=/tmp \
-    -e SANDHI_MODELS_DIR=/scratch/shared_dir/unified_models \
-    -v /scratch/shared_dir/unified_models:/scratch/shared_dir/unified_models \
-    -v "$CODE":/workspace/merge_tools \
-    -w /workspace/merge_tools merge-tools:reference \
-    python scripts/run_figures.py "$@"
-}
-```
-`SANDHI_MODELS_DIR` is the single model-cache root (default `$HF_HOME/models`);
-absent models still download there. (The 32B Qwen models for fig5a are not in
-`unified_models`; they download on first use.)
-
 ## Sanity check first (no compute, ~5 s)
 ```bash
 dock --run-name smoke --sets llama5 --stages clustering --dry-run --gpus 0

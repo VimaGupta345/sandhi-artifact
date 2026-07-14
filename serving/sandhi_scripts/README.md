@@ -4,7 +4,7 @@ docker run --rm -it  --runtime nvidia --name <container_name> \
     --gpus '"device=0,1"' \
     --ipc=host \
     -p 8000:8000 \
-    -v /scratch/shared_dir/hf_cache:/root/.cache/huggingface \
+    -v /path/to/hf_cache:/root/.cache/huggingface \
     --entrypoint /bin/bash \
     sandhi:latest
 ```

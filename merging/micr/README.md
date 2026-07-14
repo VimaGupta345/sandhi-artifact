@@ -77,8 +77,8 @@ Example:
 
 ```json
 {
-  "deepseek-coder-7b-instruct-v1.5": "/scratch/shared_dir/unified_models/deepseek-coder-7b-instruct-v1.5",
-  "deepseek-math-7b-instruct": "/scratch/shared_dir/unified_models/deepseek-math-7b-instruct"
+  "deepseek-coder-7b-instruct-v1.5": "/path/to/models/deepseek-coder-7b-instruct-v1.5",
+  "deepseek-math-7b-instruct": "/path/to/models/deepseek-math-7b-instruct"
 }
 ```
 

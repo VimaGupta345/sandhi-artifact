@@ -117,7 +117,7 @@ target are set in each config.
 
 Approximate wall-clock per scenario: dominated by model downloads on first run;
 the sweeps themselves are minutes per request rate per target
-(`NUM_PROMPTS × rates × targets × 2 modes`). <!-- TODO(user): fill measured runtimes -->
+(`NUM_PROMPTS × rates × targets × 2 modes`).
 
 ## Merge specs
 
@@ -140,9 +140,7 @@ two pipelines (Figure 5 → Figure 6).
 - The 7- and 9-model cross-family specs used for the paper's Figure 6 runs are
   regenerated this way (compose `llama5` + `qwen25_2` [+ `deepseek2`] run-sets;
   the shipped per-pool profiles and results in `../merging/results/` make this
-  cheap). <!-- TODO(user): if you still have the exact paper spec files for the
-  7- and 9-model serving runs, drop them into specs/llama-qwen/ and
-  specs/llama-qwen-ds/ -->
+  cheap).
 
 ## Results
 
