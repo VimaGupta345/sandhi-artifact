@@ -114,6 +114,23 @@ dock --run-name llama5_deepseek2 --sets llama5_deepseek2 --stages all --gpus aut
 > is not recommended**; prefer the shipped profiles/results. The Pareto *shape*
 > is stable; the exact cutoff is not.
 
+### 3 · Every figure pool (fig5a–d + fig6a–e) — composed from the five runs (no GPU)
+The five runs above are the only compute. Every Figure 5 AND Figure 6 pool is an **additive composition** of them (only llama↔deepseek can cross-merge, and the joint run from step 2 carries that sharing; Qwen2.5 and Qwen3-32B share with nothing, so their freed bytes just add). Two pure-CSV scripts do the composition — no eval, no GPU, seconds; they work on the shipped `runs/`/`results/` as-is, or on your re-runs:
+
+```bash
+# all 9 pools: composed savings at Bpm/Cpm/Kpm vs the paper numbers
+docker run --rm --user "$(id -u):$(id -g)" -e USER="$(id -un)" -e HOME=/tmp \
+  -v "$CODE":/workspace/merge_tools -w /workspace/merge_tools merge-tools:reference \
+  python scripts/compose_figures.py       # -> results/FIGURE_COMPOSITIONS.md
+
+# per-set operating-point variants (Bpm/Cpm/Kpm/P with per-model cutoffs)
+docker run --rm --user "$(id -u):$(id -g)" -e USER="$(id -un)" -e HOME=/tmp \
+  -v "$CODE":/workspace/merge_tools -w /workspace/merge_tools merge-tools:reference \
+  python scripts/suggest_variants.py      # -> results/VARIANT_SUGGESTIONS.md
+```
+
+`compose_figures.py` auto-detects the five base runs by their `report.csv` member columns and prints which pools are computable. Each pool's **merge spec** (the serving handoff) comes from its atoms' analysis dirs: fig6a → `runs/deepseek2/analysis/deepseek2/`, fig6b → `runs/qwen25_2/…`, fig6d → `runs/llama5/…`, fig5c/fig6c → `runs/llama5_deepseek2/…`; the composed pools (fig5d, fig6e) use the union of their atoms' per-model specs.
+
 ## Where results land (all user-owned)
 `runs/<run-name>/analysis/<set>/`:
 - **report.csv** — savings % + per-model accuracy drops

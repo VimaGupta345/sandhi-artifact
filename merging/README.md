@@ -13,15 +13,16 @@ paper's rendered *figures* have narrower scope — read this before starting:
 
 | target | reproducible here? | how |
 |---|---|---|
-| **Model sets — all fig5 + fig6 pools** (`report.csv`, `pareto.png`, per-point `.json`+`.jsonl`) | **yes** | §A / `REPRODUCE_DOCKER.md` "All 9 figures" |
+| **Model sets — all fig5 + fig6 pools** (`report.csv`, `pareto.png`, per-point `.json`+`.jsonl`) | **yes** | §A / `REPRODUCE_DOCKER.md` § "Every figure pool" |
 | **Figure 5 plots** (accuracy + memory-savings bars) | **yes — from our `report.csv`** | §C / `plots/README.md` (`scripts/build_plot_data.py` ETL) |
 | **Fig 5 comparison baselines** (No-merge · Full-merge · LoRA) | **yes — all on the eval subset (M)** | §B: No-merge (`report.csv` A) · Full-merge (`anjohn0077/NEXS-multislerp-merges`) · LoRA (`anjohn0077/NEXS-lora-adapters`) |
 | **Figure 6 figures** (serving-deployment plots) | **no — out of scope** | only fig6's *model sets* (row 1) come from this pipeline |
 | **Operating points** (per set) | **yes** | A / B / C (global) · Bpm / Cpm / Kpm (per-model) · P (paper-close) — see § Operating points |
 
 ### A. Model sets — all 9 fig5 + fig6 pools (the pipeline's core deliverable)
-Run the 4 atomic run-sets once, then compose every pool at the analysis stage —
-full commands in **`REPRODUCE_DOCKER.md` → "All 9 figures"**. Each pool emits
+Run the 4 atomic run-sets once, then compose every pool from them —
+full commands in **`REPRODUCE_DOCKER.md` → "Every figure pool (fig5a–d +
+fig6a–e)"**. Each pool emits
 `analysis/<set>/`: `report.csv` (savings % + per-model drops), `sweep.csv`,
 `pareto.png`, `B/C.json` + `B/C.jsonl` (operating-point specs). **This includes
 the fig6 pools (6a–6e)** — for Figure 6 the pipeline's job ends at the Pareto
@@ -149,7 +150,7 @@ Runs write into the mounted repo, so results appear on the host at
   shared, per-model `results/profiler/`
 
 Distinct `--run-name`s keep multiple runs (e.g. two medical benchmarks) side by
-side. A full, cluster-specific walkthrough is in `REPRODUCE_DOCKER.md`; the
+side. A full Docker walkthrough is in `REPRODUCE_DOCKER.md`; the
 figure→model→benchmark map is in `FIGURE_MODEL_MAP.md`.
 
 ## Operating points, per-model cutoffs & figure composition
