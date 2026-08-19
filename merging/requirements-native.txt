@@ -1,0 +1,37 @@
+# Curated, resolvable dependency set for running the merging pipeline OUTSIDE
+# the reference Docker image (which already contains everything).
+#
+# This is the hand-maintained counterpart to requirements.txt, which is a full
+# `pip freeze` lockfile of the reference conda env: use requirements.txt with
+# `pip install --no-deps -r requirements.txt` to replicate that env exactly, or
+# install this file normally (`pip install -r requirements-native.txt`) for a
+# clean environment with only the pipeline's actual dependencies.
+#
+# Python 3.12. Versions match the reference environment's pins.
+
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.16.0
+matplotlib==3.10.7
+PyYAML==6.0.2
+tqdm==4.67.1
+
+torch==2.9.0
+transformers==4.57.1
+accelerate==1.6.0
+peft==0.16.0
+safetensors==0.5.3
+huggingface-hub==0.36.0
+datasets==4.0.0
+
+# Engine + evaluation harness (profiler / MICR / finaleval stages)
+vllm==0.11.2
+flashinfer-python==0.5.2
+flashinfer-cubin==0.5.2   # must equal flashinfer-python, or vLLM engine boot fails
+lm_eval==0.4.9.2
+
+# tinyBenchmarks is not on PyPI — install from GitHub:
+tinyBenchmarks @ git+https://github.com/felipemaiapolo/tinyBenchmarks
+
+# Optional — only for the Full-merge baseline (BASELINES.md), not the pipeline:
+# mergekit==0.1.4

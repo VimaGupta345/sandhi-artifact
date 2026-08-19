@@ -117,6 +117,8 @@ SETS = {
     "fig6d": {"runsets": ["llama5"], "reuse": {}, "paper_mem": None},
     "fig6e": {"runsets": ["llama5", "qwen25_2", "deepseek2"], "reuse": {},
               "paper_mem": None},
+    # 7-model llama+qwen serving pool (the llama-qwen scenario in serving/).
+    "fig6f": {"runsets": ["llama5", "qwen25_2"], "reuse": {}, "paper_mem": None},
 }
 
 LOCKED = {
@@ -391,7 +393,7 @@ def load_registry():
 SET_ALIASES = {"5a": "fig5a", "5b": "fig5b", "5c": "fig5c", "5d": "fig5d",
                "a": "fig5a", "b": "fig5b", "c": "fig5c", "d": "fig5d",
                "6a": "fig6a", "6b": "fig6b", "6c": "fig6c", "6d": "fig6d",
-               "6e": "fig6e"}
+               "6e": "fig6e", "6f": "fig6f"}
 
 
 def resolve_set(name: str) -> str:

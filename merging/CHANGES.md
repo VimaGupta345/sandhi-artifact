@@ -70,15 +70,18 @@ artifact-evaluation-ready** reproduction of Figures 5 & 6.
   vLLM-spawning evals in one container exhaust the default 1024 FD soft limit,
   which disables persistent-eval and then thrashes. Raising it keeps
   persistent-eval on (one reused engine). Add it to `dock()`.
-- **32B finaleval replay is a CLI-wiring gap (small fix), not missing logic.**
-  The replay engine is shared: `run_single_target_pipeline` (in `run_eval.py`)
-  implements the full replay path (`save_variant_dir`, `replay_mode`,
-  `micr_replay.json`), and `run_eval_32b.py` delegates to it — but
-  `run_eval_32b.py`'s own argparse doesn't define/forward the 4 replay flags
-  (`--replay_steps_csv`, `--replay_cutoff`, `--replay_cutoff_mode`,
-  `--save_variant_dir`), so finaleval's call argparse-errors first. Fix = add the
-  4 `add_argument`s + pass them through. Until then, fig5a/fig5d get the full
-  Pareto (savings + M-split accuracy); only the 32B full-set numbers are blocked.
+- **32B finaleval replay CLI wiring — FIXED.** `run_eval_32b.py` now defines
+  and forwards the 4 replay flags (`--replay_steps_csv`, `--replay_cutoff`,
+  `--replay_cutoff_mode`, `--save_variant_dir`) to the shared replay engine in
+  `run_eval.py`, with the same validation. fig5a/fig5d full-set replay runs
+  through `run_eval_32b.py` directly.
+- **Generated eval-split configs are no longer checked in.** Committed configs
+  embedded absolute `include:` paths from the environment that generated them,
+  and lm_eval's TaskManager aborts on the first stale YAML in the include dir
+  even for tasks the run never touches (this broke `--sets llama5` on a fresh
+  clone at the first profiler call). `micr/eval_split_configs/` now ships only
+  a README; the driver's `prereq` stage materializes every needed config
+  against the live environment, and `.gitignore` keeps generated files out.
 - scaling-sidecar `makedirs` — benign `FileNotFoundError` log noise during
   scaler-run finaleval (self-heals; the `.npz` still lands). Staged, not applied.
 

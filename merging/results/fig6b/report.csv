@@ -1,0 +1,7 @@
+point,criterion,cutoff,groups,merging_groups,savings_mb,savings_pct,Qwen2.5-Coder-7B-Instruct__baseline,Qwen2.5-Coder-7B-Instruct__score,Qwen2.5-Coder-7B-Instruct__drop,Qwen2.5-Coder-7B-Instruct__cutoff,Qwen2.5-Math-7B-Instruct__baseline,Qwen2.5-Math-7B-Instruct__score,Qwen2.5-Math-7B-Instruct__drop,Qwen2.5-Math-7B-Instruct__cutoff,mean_drop
+A,unmerged reference,-1,0,0,0.0,0.0,87.8,87.8,0.0,-1,90.7,90.7,0.0,-1,0.0
+B,acc drop <= 1.0%,10,12,12,527.1,1.73,87.8,87.8,0.0,10,90.7,90.9,-0.2,10,-0.1
+C,acc drop <= 2.0%,11,13,13,552.7,1.81,87.8,86.59,1.21,11,90.7,90.3,0.4,11,0.8
+Bpm,per-model acc drop <= 1.0%,pm,12,12,527.1,1.73,87.8,87.8,0.0,10,90.7,92.0,-1.3,13,-0.65
+Cpm,per-model acc drop <= 2.0%,pm,13,13,552.7,1.81,87.8,86.59,1.21,11,90.7,92.0,-1.3,13,-0.05
+Kpm,"per-model knee (savings/accuracy sweet spot, <=2%)",pm,13,13,552.7,1.81,87.8,86.59,1.21,11,90.7,92.0,-1.3,13,-0.05

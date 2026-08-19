@@ -182,6 +182,10 @@ def run_single_target_pipeline(
     eval_split: str = "full",
     merge_device: str = "auto",
     scaling_mode: str = "auto",
+    replay_steps_csv: Optional[str] = None,
+    replay_cutoff: Optional[int] = None,
+    replay_cutoff_mode: str = "step_idx",
+    save_variant_dir: Optional[str] = None,
 ) -> None:
     """
     Delegate to ``run_eval.run_single_target_pipeline`` with the 32B choices
@@ -230,6 +234,10 @@ def run_single_target_pipeline(
         merge_device=merge_device,
         eval_split=eval_split,
         scaling_mode=scaling_mode,
+        replay_steps_csv=replay_steps_csv,
+        replay_cutoff=replay_cutoff,
+        replay_cutoff_mode=replay_cutoff_mode,
+        save_variant_dir=save_variant_dir,
     )
 
 
@@ -306,7 +314,39 @@ Examples:
              "AUTO_SCALE_FAMILIES 'qwen' auto-trigger must not fire. Default "
              "'auto' keeps the historical behavior for direct CLI use.",
     )
+    # Replay flags, mirroring run_eval.py (finaleval calls this script with
+    # them; see scripts/run_figures.py and CHANGES.md "32B finaleval replay").
+    replay = parser.add_argument_group("replay")
+    replay.add_argument(
+        "--replay_steps_csv",
+        default=None,
+        help="A steps.csv produced by a previous run of this script.",
+    )
+    replay.add_argument(
+        "--replay_cutoff",
+        type=int,
+        default=None,
+        help="Inclusive. Apply only accepted steps at or before this cutoff. "
+             "Omit to apply every accepted step.",
+    )
+    replay.add_argument(
+        "--replay_cutoff_mode",
+        choices=["step_idx", "line"],
+        default="step_idx",
+        help="How to read --replay_cutoff ('step_idx' matches steps.csv's "
+             "step_idx column; 'line' is a 1-based CSV line number).",
+    )
+    replay.add_argument(
+        "--save_variant_dir",
+        default=None,
+        help="Copy the final replayed model here (replay mode only).",
+    )
     args = parser.parse_args()
+
+    if args.replay_cutoff is not None and args.replay_steps_csv is None:
+        parser.error("--replay_cutoff requires --replay_steps_csv")
+    if args.save_variant_dir and args.replay_steps_csv is None:
+        parser.error("--save_variant_dir requires --replay_steps_csv")
 
     eval_enabled = not args.no_eval
 
@@ -331,6 +371,10 @@ Examples:
         eval_split=args.eval_split,
         merge_device=args.merge_device,
         scaling_mode=args.scaling,
+        replay_steps_csv=args.replay_steps_csv,
+        replay_cutoff=args.replay_cutoff,
+        replay_cutoff_mode=args.replay_cutoff_mode,
+        save_variant_dir=args.save_variant_dir,
     )
 
 

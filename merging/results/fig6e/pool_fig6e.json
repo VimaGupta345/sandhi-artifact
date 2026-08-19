@@ -1,0 +1,58 @@
+{
+  "fig6e__llama5__llama-8b": {
+    "models": {
+      "Llama-3.1-8B-UltraMedical": "Llama-3.1-8B-UltraMedical",
+      "Llama-3.1-8B-Instruct-multi-truth-judge": "Llama-3.1-8B-Instruct-multi-truth-judge",
+      "Llama-SafetyGuard-Content-Binary": "Llama-SafetyGuard-Content-Binary",
+      "calme-2.3-legalkit-8b": "calme-2.3-legalkit-8b",
+      "Llama-3.1-Hawkish-8B": "Llama-3.1-Hawkish-8B"
+    },
+    "run_dir": "/workspace/merge_tools/runs/fig6_specs/micr/llama5",
+    "ops_dir": "/workspace/merge_tools/runs/fig6_specs/clustering/llama5",
+    "memory_profile": "llama-8b",
+    "points": [],
+    "out_dir": "/workspace/merge_tools/runs/fig6_specs/analysis/fig6e/fig6e__llama5__llama-8b"
+  },
+  "fig6e__qwen25_2__qwen2.5-7b": {
+    "models": {
+      "Qwen2.5-Coder-7B-Instruct": "Qwen2.5-Coder-7B-Instruct",
+      "Qwen2.5-Math-7B-Instruct": "Qwen2.5-Math-7B-Instruct"
+    },
+    "run_dir": "/workspace/merge_tools/runs/fig6_specs/micr/qwen25_2",
+    "ops_dir": "/workspace/merge_tools/runs/fig6_specs/clustering/qwen25_2",
+    "memory_profile": "qwen2.5-7b",
+    "points": [],
+    "out_dir": "/workspace/merge_tools/runs/fig6_specs/analysis/fig6e/fig6e__qwen25_2__qwen2.5-7b"
+  },
+  "fig6e__deepseek2__deepseek-7b": {
+    "models": {
+      "deepseek-math-7b-instruct": "deepseek-math-7b-instruct",
+      "deepseek-coder-7b-instruct-v1.5": "deepseek-coder-7b-instruct-v1.5"
+    },
+    "run_dir": "/workspace/merge_tools/runs/fig6_specs/micr/deepseek2",
+    "ops_dir": "/workspace/merge_tools/runs/fig6_specs/clustering/deepseek2",
+    "memory_profile": "deepseek-7b",
+    "points": [],
+    "out_dir": "/workspace/merge_tools/runs/fig6_specs/analysis/fig6e/fig6e__deepseek2__deepseek-7b"
+  },
+  "fig6e": {
+    "compose": [
+      "fig6e__llama5__llama-8b",
+      "fig6e__qwen25_2__qwen2.5-7b",
+      "fig6e__deepseek2__deepseek-7b"
+    ],
+    "points": [
+      {
+        "name": "B",
+        "kind": "acc",
+        "budget": 1.0
+      },
+      {
+        "name": "C",
+        "kind": "acc",
+        "budget": 2.0
+      }
+    ],
+    "out_dir": "/workspace/merge_tools/runs/fig6_specs/analysis/fig6e"
+  }
+}

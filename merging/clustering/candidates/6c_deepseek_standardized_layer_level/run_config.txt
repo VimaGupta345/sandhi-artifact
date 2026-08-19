@@ -1,0 +1,4 @@
+case: 6c_deepseek_standardized_layer_level
+models: deepseek-math-7b-instruct,deepseek-coder-7b-instruct-v1.5
+transform: layer_level_joint_standardized
+baseline_drop_threshold: 10.0

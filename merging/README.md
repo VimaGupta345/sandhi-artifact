@@ -16,7 +16,7 @@ paper's rendered *figures* have narrower scope — read this before starting:
 | **Model sets — all fig5 + fig6 pools** (`report.csv`, `pareto.png`, per-point `.json`+`.jsonl`) | **yes** | §A / `REPRODUCE_DOCKER.md` "All 9 figures" |
 | **Figure 5 plots** (accuracy + memory-savings bars) | **yes — from our `report.csv`** | §C / `plots/README.md` (`scripts/build_plot_data.py` ETL) |
 | **Fig 5 comparison baselines** (No-merge · Full-merge · LoRA) | **yes — all on the eval subset (M)** | §B: No-merge (`report.csv` A) · Full-merge (`anjohn0077/NEXS-multislerp-merges`) · LoRA (`anjohn0077/NEXS-lora-adapters`) |
-| **Figure 6 figures** (serving-deployment plots) | **no — out of scope** | only fig6's *model sets* (row 1) come from this pipeline |
+| **Figure 6 figures** (serving-deployment plots) | **yes — via `../serving/`** | this pipeline emits fig6's *model sets* (row 1); the serving harness in `../serving/` measures the deployment plots |
 | **Operating points** (per set) | **yes** | A / B / C (global) · Bpm / Cpm / Kpm (per-model) · P (paper-close) — see § Operating points |
 
 ### A. Model sets — all 9 fig5 + fig6 pools (the pipeline's core deliverable)
@@ -63,10 +63,12 @@ baselines), **not** auto-derived from a fresh pipeline run — so the figures
 reproduce **from the shipped tables**, not end-to-end from §A. (End-to-end would
 need an ETL from `report.csv` into the SANDHI columns plus the §B baselines.)
 
-### D. Figure 6 (serving-deployment figures) — out of scope
-Figure 6's serving-benchmark plots come from a downstream serving harness that is
-**not** part of this artifact. What the pipeline reproduces for Figure 6 is each
-pool's **model set** (Pareto + B/C specs — row 1 / §A, sets `fig6a`–`fig6e`).
+### D. Figure 6 (serving-deployment figures) — see `../serving/`
+Figure 6's serving-benchmark plots come from the serving harness in
+[`../serving/`](../serving/), not from this directory. What this pipeline
+contributes to Figure 6 is each pool's **model set** (Pareto + operating-point
+specs — row 1 / §A, sets `fig6a`–`fig6f`); the serving harness consumes those
+specs (`../serving/README.md § Merge specs`) and measures throughput/TTFT.
 
 ## One command per figure set
 
@@ -270,3 +272,13 @@ micr/results/{7_llamas,6_deepseek}_standardized + clustering/candidates/... are
 the recorded runs used for fig5c reuse and for the memory-model validation:
 `python scripts/build_operating_points.py --pool 7_llamas --validate`
 must report ~34.5% at the reference cutoffs.
+
+Note on `results/fig5b/final_full_scores.csv`: it comes from an earlier
+recorded run whose B/C cutoffs were not written into the file (empty `cutoff`
+column) and whose scores differ slightly from the current `results/llama5/`
+rerun. Use `results/llama5/final_full_scores.csv` (cutoffs recorded) as the
+reference for the 5-Llama pool; the fig5b file is kept as the historical
+record. Shipped full-set scores exist for the global **B and C operating
+points only**; every other number in `report.csv`/`sweep.csv` (including the
+`Bpm`/`Cpm`/`Kpm`/`P` points) is on the M-split eval subset, as described
+above.

@@ -1,0 +1,8 @@
+prepared_rows: 32
+clustered_rows: 32
+initial_candidates: 0
+step1_candidates: 0
+step2_input_candidates: 0
+stage2_candidates: 21
+stage1_ops_rows: 0
+stage2_ops_rows: 42

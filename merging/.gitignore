@@ -5,3 +5,10 @@ hf_cache/
 __pycache__/
 *.pyc
 .DS_Store
+# runtime-generated eval-split configs (embed environment-local paths; see micr/eval_split_configs/README.md)
+micr/eval_split_configs/*.yaml
+micr/eval_split_configs/*.spec.json
+micr/eval_split_configs/_micr_split_*.py
+
+# derived spec-composition run (recreate: run_figures.py --run-name fig6_specs --sets 6a,6b,6d,6e,6f --stages analysis,collect)
+runs/fig6_specs/
