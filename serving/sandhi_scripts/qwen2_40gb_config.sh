@@ -18,7 +18,7 @@ declare -A MODELS=(
 # Sharing configuration
 ############################
 
-SHARED_SPEC="merged_spec_up_to_cutoff.json"
+SHARED_SPEC="qwen2_spec.json"
 
 ############################
 # Benchmark configuration

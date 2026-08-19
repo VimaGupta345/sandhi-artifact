@@ -18,15 +18,17 @@ shows **2.11×** and **564×** respectively.
 | `sandhi_scripts/*_config.sh` | one config per deployment scenario (see table below) |
 | `sandhi_scripts/parse_and_plot_results.py` | log parser + plot renderer (throughput and P95 TTFT vs request rate, baseline vs sandhi) |
 | `sandhi_scripts/gpu_alloc.py` | ballast allocator — pins `GPU_ALLOC_GIB` GiB per GPU to emulate a smaller-memory deployment |
-| `specs/` | SANDHI shared-layer merge specs consumed by the sandhi-mode servers (see *Merge specs*) |
-| `specs/convert_spec.py` | converts a merging-pipeline spec (`../merging/`) into the serving spec format |
+| `specs/` | one merge spec per scenario, emitted by the merging pipeline (see *Merge specs*) |
+| `specs/convert_spec.py` | normalizes legacy merging-side spec naming into the serving spec format |
 
 ## Provenance
 
-`sandhi_scripts/` is copied unmodified from the SANDHI vLLM fork:
+`sandhi_scripts/` originates from the SANDHI vLLM fork:
 <https://github.com/nandanmeda1999/vllm_merged_model>, branch
 `users/nmeda6/shared-components`, commit
-`a90cc51e9e19b16172fc28090ba1b0189b50427b`. That fork (a vLLM derivative,
+`a90cc51e9e19b16172fc28090ba1b0189b50427b`, with artifact-side fixes applied
+here (pool aligned to Table 2, per-scenario spec filenames, and the sandhi-mode
+spec-coverage guard in `server_utils.sh`). That fork (a vLLM derivative,
 Apache-2.0) contains the SANDHI serving stack itself — the
 `--shared-layers-ptrs-path` / `--shared-layers-spec-path` server flags used
 below are implemented there. The prebuilt runtime ships as a Docker image (next
@@ -56,6 +58,17 @@ section), so there is no need to build the fork.
    docker tag  nandanmeda1999/sandhi-inference:latest sandhi:latest
    ```
 
+   Pin by digest for stability:
+   `nandanmeda1999/sandhi-inference@sha256:3e5c79604bbf18ae48f9d7668971d9953fe34b012267eff721a56520f8605f9f`.
+   The image contains the SANDHI vLLM build (`0.11.1.dev14+gf0dd2fcb6`, from
+   the fork/commit above) and **[kvcached](https://github.com/ovg-project/kvcached)
+   v0.1.3**, an elastic GPU-virtual-memory KV-cache allocator. The harness runs
+   **both arms — baseline and sandhi — with kvcached enabled**
+   (`ENABLE_KVCACHED=true`, `KVCACHED_AUTOPATCH=1` in `run_all.sh`), so the
+   comparison isolates SANDHI's weight dedup: the baseline is independent
+   serving with the same elastic KV allocator, not stock vLLM static
+   allocation.
+
 2. Start the container (adjust `--gpus` and the HF-cache host path):
 
    ```bash
@@ -72,14 +85,14 @@ section), so there is no need to build the fork.
 
    ```bash
    docker cp serving/sandhi_scripts/ sandhi_eval:/vllm-workspace/
-   docker cp serving/specs/llama5/llama_merged_spec_up_to_cutoff.json sandhi_eval:/vllm-workspace/sandhi_scripts/
-   docker cp serving/specs/ds2/ds_merged_spec_up_to_cutoff.json      sandhi_eval:/vllm-workspace/sandhi_scripts/
-   docker cp serving/specs/qwen2/merged_spec_up_to_cutoff.json       sandhi_eval:/vllm-workspace/sandhi_scripts/
+   docker cp serving/specs/. sandhi_eval:/vllm-workspace/sandhi_scripts/
    ```
 
-   (Configs reference the spec by the relative filename in `SHARED_SPEC`, so
-   the spec for the scenario you run must sit next to the scripts — or edit
-   `SHARED_SPEC` in the config to an absolute path.)
+   Each scenario config names its own spec file (`SHARED_SPEC`, distinct per
+   scenario), resolved relative to the working directory — keep the specs next
+   to the scripts, or set an absolute path in the config. Before starting
+   sandhi-mode servers, `server_utils.sh` verifies the spec exists and covers
+   every model in the pool, and refuses to start otherwise.
 
 ## Run
 
@@ -100,14 +113,20 @@ via `docker exec -it sandhi_eval /bin/bash`.
 
 ## Deployment scenarios (configs)
 
-| config | pool | GPUs (TP) | ballast/GPU | spec file (`SHARED_SPEC`) |
-|---|---|---|---|---|
-| `ds2_40gb_config.sh` | 2× DeepSeek-7B (coder, math) | 1 | 100 GiB | `ds_merged_spec_up_to_cutoff.json` (shipped: `specs/ds2/`) |
-| `qwen2_40gb_config.sh` | 2× Qwen2.5-7B (Coder, Math) | 1 | 100 GiB | `merged_spec_up_to_cutoff.json` (shipped: `specs/qwen2/`) |
-| `llama5_config.sh` | 5× Llama-3.1/3-8B domain fine-tunes | 1 | 20 GiB | `llama_merged_spec_up_to_cutoff.json` (shipped: `specs/llama5/`) |
-| `llama-qwen_config.sh` | 7 models: 5× Llama + 2× Qwen2.5-7B | 2 (TP=2) | 30 GiB | `merged_spec_up_to_cutoff.json` (generate — see *Merge specs*) |
-| `llama-qwen-ds_config.sh` | 9 models: 5× Llama + 2× Qwen + 2× DeepSeek | 2 (TP=2) | 12 GiB | `merged_spec_up_to_cutoff.json` (generate — see *Merge specs*) |
-| `template_config.sh` | template for new pools | — | — | — |
+| config | pool | merging set | GPUs (TP) | ballast/GPU | spec (`SHARED_SPEC`) |
+|---|---|---|---|---|---|
+| `ds2_40gb_config.sh` | 2× DeepSeek-7B (coder, math) | `fig6a` | 1 | 100 GiB | `ds2_spec.json` |
+| `qwen2_40gb_config.sh` | 2× Qwen2.5-7B (Coder, Math) | `fig6b` | 1 | 100 GiB | `qwen2_spec.json` |
+| `llama5_config.sh` | 5× Llama-3.1-8B domain fine-tunes | `fig6d` | 1 | 20 GiB | `llama5_spec.json` |
+| `llama-qwen_config.sh` | 7 models: 5× Llama + 2× Qwen2.5-7B | `fig6f` | 2 (TP=2) | 30 GiB | `llama_qwen_spec.json` |
+| `llama-qwen-ds_config.sh` | 9 models: 5× Llama + 2× Qwen + 2× DeepSeek | `fig6e` | 2 (TP=2) | 12 GiB | `llama_qwen_ds_spec.json` |
+| `template_config.sh` | template for new pools | — | — | — | — |
+
+The pools use exactly the models the merging pipeline evaluates (Table 2 of the
+paper). Earlier revisions of this harness served two models the pipeline never
+profiled (`TsinghuaC3I/Llama-3-8B-UltraMedical`, `us4/fin-llama3.1-8b`); the
+configs were reconciled to the Table 2 pool (`Llama-3.1-8B-UltraMedical`,
+`Llama-3.1-Hawkish-8B`) so that every serving spec is a pipeline output.
 
 The ballast (`GPU_ALLOC_GIB`) pins that much GPU memory before the servers
 start, emulating the paper's constrained-memory deployments on whatever GPU you
@@ -127,22 +146,21 @@ into one. **These specs are the output of the merging pipeline in
 [`../merging/`](../merging/)** — this is the hand-off point between the paper's
 two pipelines (Figure 5 → Figure 6).
 
-- Shipped, ready to use: `specs/llama5/`, `specs/ds2/` (the specs used for the
-  paper's serving runs) and `specs/qwen2/` (the shipped `C` operating point of
-  the `qwen25_2` pool).
-- To produce a spec for any pool yourself: run the merging pipeline
-  (`../merging/scripts/run_figures.py --sets 6a|6b|6c|6d|6e …`, see
-  `../merging/README.md`) and take the operating-point spec
-  `runs/<run>/analysis/<set>/C.json` (or `B/Bpm/Cpm/Kpm.json`) — it is directly
-  consumable as `SHARED_SPEC`. Specs emitted by
-  `../merging/scripts/build_merge_groups.py` use short attention names; pass
-  them through `specs/convert_spec.py` to normalize.
-- The 7- and 9-model cross-family specs used for the paper's Figure 6 runs are
-  regenerated this way (compose `llama5` + `qwen25_2` [+ `deepseek2`] run-sets;
-  the shipped per-pool profiles and results in `../merging/results/` make this
-  cheap). <!-- TODO(user): if you still have the exact paper spec files for the
-  7- and 9-model serving runs, drop them into specs/llama-qwen/ and
-  specs/llama-qwen-ds/ -->
+- The five shipped specs are each pool's **`Cpm` operating point** (every model
+  at its own deepest cutoff with ≤2% M-split drop — the accuracy budget stated
+  in the paper), taken from `../merging/results/fig6{a,b,d,e,f}/Cpm.json`. For
+  the single-family pools `Cpm` coincides with the global `C` point; for the
+  cross-family pools it is the point where one fragile model does not cap the
+  others.
+- To regenerate them (or produce a spec for a new pool): run the merging
+  pipeline's analysis stage over the composed run-sets and take the
+  operating-point spec of your choice — e.g.
+  `python scripts/run_figures.py --run-name specs --sets 6a,6b,6d,6e,6f
+  --stages analysis,collect` against the shipped run data, then
+  `runs/specs/analysis/<set>/{B,C,Bpm,Cpm,Kpm}.json`. Any of these is directly
+  consumable as `SHARED_SPEC`. (Specs emitted by the legacy
+  `scripts/build_merge_groups.py` use short attention names; pass them through
+  `specs/convert_spec.py` to normalize.)
 
 ## Results
 

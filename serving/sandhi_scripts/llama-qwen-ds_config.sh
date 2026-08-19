@@ -9,11 +9,11 @@ TENSOR_PARALLEL_SIZE=2
 GPU_ALLOC_GIB=12
 
 declare -A MODELS=(
-  [12301]="TsinghuaC3I/Llama-3-8B-UltraMedical"
+  [12301]="TsinghuaC3I/Llama-3.1-8B-UltraMedical"
   [12302]="HiTZ/Llama-3.1-8B-Instruct-multi-truth-judge"
   [12303]="K-intelligence/Llama-SafetyGuard-Content-Binary"
   [12304]="MaziyarPanahi/calme-2.3-legalkit-8b"
-  [12305]="us4/fin-llama3.1-8b"
+  [12305]="mukaj/Llama-3.1-Hawkish-8B"
   [12306]="Qwen/Qwen2.5-Coder-7B-Instruct"
   [12307]="Qwen/Qwen2.5-Math-7B-Instruct"
   [12308]="deepseek-ai/deepseek-coder-7b-instruct-v1.5"
@@ -24,7 +24,7 @@ declare -A MODELS=(
 # Sharing configuration
 ############################
 
-SHARED_SPEC="merged_spec_up_to_cutoff.json"
+SHARED_SPEC="llama_qwen_ds_spec.json"
 
 ############################
 # Benchmark configuration
@@ -32,7 +32,7 @@ SHARED_SPEC="merged_spec_up_to_cutoff.json"
 
 BENCH_TARGETS=(llama qwen ds)
 
-BENCH_MODEL_llama="TsinghuaC3I/Llama-3-8B-UltraMedical"
+BENCH_MODEL_llama="TsinghuaC3I/Llama-3.1-8B-UltraMedical"
 REQUEST_RATES_llama=(3 5 7 10)
 NUM_PROMPTS_llama=200
 INPUT_LEN_llama=100

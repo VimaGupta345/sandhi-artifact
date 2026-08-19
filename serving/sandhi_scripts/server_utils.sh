@@ -12,6 +12,27 @@ start_servers() {
     local sharing_flags=""
 
     if [[ "$mode" == "sandhi" ]]; then
+        # Fail fast on a missing or mismatched spec: SHARED_SPEC must exist and
+        # contain every model in this config's pool. Configs use distinct spec
+        # filenames per scenario, but a copy/paste mistake here would otherwise
+        # produce a silently under-shared "sandhi" run.
+        if [[ ! -f "$SHARED_SPEC" ]]; then
+            echo "SHARED_SPEC not found: $SHARED_SPEC (run from the directory holding the spec, or set an absolute path in the config)"
+            exit 1
+        fi
+        if ! python3 - "$SHARED_SPEC" "${MODELS[@]}" <<'PYEOF'
+import json, sys
+spec_path, models = sys.argv[1], sys.argv[2:]
+spec_models = {e["model"] for g in json.load(open(spec_path)) for e in g}
+missing = [m for m in models if m.split("/")[-1] not in spec_models]
+if missing:
+    print(f"SHARED_SPEC {spec_path} covers {sorted(spec_models)} but is missing: {missing}")
+    sys.exit(1)
+PYEOF
+        then
+            echo "Spec/pool mismatch — refusing to start sandhi-mode servers."
+            exit 1
+        fi
         sharing_flags="\
             --shared-layers-ptrs-path $SHARED_HANDLES \
             --shared-layers-spec-path $SHARED_SPEC"

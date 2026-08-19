@@ -1,0 +1,404 @@
+INFO 12-10 00:10:16 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:10:23 [api_server.py:1839] vLLM API server version 0.11.0
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:10:23 [utils.py:233] non-default args: {'model_tag': '/scratch/shared_dir/unified_models/fin-llama3.1-8b', 'port': 8008, 'model': '/scratch/shared_dir/unified_models/fin-llama3.1-8b', 'max_model_len': 4096, 'kv_cache_memory_bytes': 2000000000, 'enable_prefix_caching': True, 'max_num_seqs': 250}
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:10:23 [model.py:548] Resolved architecture: LlamaForCausalLM
+[1;36m(APIServer pid=3444097)[0;0m `torch_dtype` is deprecated! Use `dtype` instead!
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:10:23 [model.py:1511] Using max model len 4096
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:10:23 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 12-10 00:10:27 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:31 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:31 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='/scratch/shared_dir/unified_models/fin-llama3.1-8b', speculative_config=None, tokenizer='/scratch/shared_dir/unified_models/fin-llama3.1-8b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=/scratch/shared_dir/unified_models/fin-llama3.1-8b, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":496,"local_cache_dir":null}
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:34 [parallel_state.py:1208] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m WARNING 12-10 00:10:34 [topk_topp_sampler.py:66] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:35 [gpu_model_runner.py:2604] Starting to load model /scratch/shared_dir/unified_models/fin-llama3.1-8b...
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:35 [gpu_model_runner.py:2636] Loading model from scratch...
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:36 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:02,  1.43it/s]
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.82it/s]
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.56it/s]
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.27it/s]
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.37it/s]
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m 
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:39 [default_loader.py:347] Loading weights took 3.21 seconds
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:40 [gpu_model_runner.py:2655] Model loading took 14.9889 GiB and 3.967711 seconds
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:45 [backends.py:548] Using cache directory: /nethome/nmeda6/.cache/vllm/torch_compile_cache/c5f63a27b6/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:45 [backends.py:559] Dynamo bytecode transform time: 5.05 s
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:47 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 2.004 s
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:47 [monitor.py:34] torch.compile takes 5.05 s in total
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:48 [gpu_worker.py:251] Initial free memory 138.6251220703125 GiB, reserved 1.86GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:48 [kv_cache_utils.py:1087] GPU KV cache size: 15,248 tokens
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:10:48 [kv_cache_utils.py:1091] Maximum concurrency for 4,096 tokens per request: 3.72x
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/65 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   2%|▏         | 1/65 [00:00<00:36,  1.76it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 4/65 [00:00<00:09,  6.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%|▉         | 6/65 [00:00<00:06,  8.47it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 8/65 [00:01<00:11,  4.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|█▋        | 11/65 [00:01<00:07,  7.18it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|██        | 13/65 [00:01<00:06,  7.55it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  23%|██▎       | 15/65 [00:02<00:09,  5.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  28%|██▊       | 18/65 [00:02<00:06,  7.35it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  32%|███▏      | 21/65 [00:02<00:04,  9.63it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 23/65 [00:03<00:06,  6.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  42%|████▏     | 27/65 [00:03<00:04,  9.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|████▌     | 30/65 [00:03<00:03, 11.36it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 33/65 [00:04<00:04,  7.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 37/65 [00:04<00:02,  9.55it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  62%|██████▏   | 40/65 [00:04<00:02, 11.55it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▍   | 42/65 [00:05<00:03,  7.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  68%|██████▊   | 44/65 [00:05<00:02,  8.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  72%|███████▏  | 47/65 [00:05<00:01, 10.30it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▌  | 49/65 [00:06<00:01, 10.55it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 51/65 [00:06<00:02,  6.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 53/65 [00:06<00:01,  7.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  85%|████████▍ | 55/65 [00:07<00:01,  6.56it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 57/65 [00:07<00:01,  5.50it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  92%|█████████▏| 60/65 [00:07<00:00,  7.62it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  95%|█████████▌| 62/65 [00:08<00:00,  9.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  98%|█████████▊| 64/65 [00:08<00:00, 10.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 65/65 [00:08<00:00,  7.42it/s]
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/34 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   9%|▉         | 3/34 [00:00<00:01, 28.44it/s]Capturing CUDA graphs (decode, FULL):  18%|█▊        | 6/34 [00:00<00:00, 28.33it/s]Capturing CUDA graphs (decode, FULL):  26%|██▋       | 9/34 [00:00<00:01, 23.61it/s]Capturing CUDA graphs (decode, FULL):  35%|███▌      | 12/34 [00:01<00:02,  8.69it/s]Capturing CUDA graphs (decode, FULL):  47%|████▋     | 16/34 [00:01<00:01, 12.94it/s]Capturing CUDA graphs (decode, FULL):  59%|█████▉    | 20/34 [00:01<00:00, 16.24it/s]Capturing CUDA graphs (decode, FULL):  68%|██████▊   | 23/34 [00:02<00:01,  8.60it/s]Capturing CUDA graphs (decode, FULL):  79%|███████▉  | 27/34 [00:02<00:00, 11.67it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████ | 31/34 [00:02<00:00, 14.57it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 34/34 [00:02<00:00, 16.02it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 34/34 [00:02<00:00, 13.91it/s]
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:11:00 [gpu_model_runner.py:3482] Graph capturing finished in 12 secs, took 0.89 GiB
+[1;36m(EngineCore_DP0 pid=3537789)[0;0m INFO 12-10 00:11:00 [core.py:210] init engine (profile, create kv cache, warmup model) took 20.74 seconds
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [loggers.py:150] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 953
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [api_server.py:1634] Supported_tasks: ['generate']
+[1;36m(APIServer pid=3444097)[0;0m WARNING 12-10 00:11:01 [model.py:1390] Default sampling parameters have been overridden by the model's Hugging Face generation config recommended from the model creator. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [serving_responses.py:137] Using default chat sampling params from model: {'temperature': 0.6, 'top_p': 0.9}
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [serving_chat.py:139] Using default chat sampling params from model: {'temperature': 0.6, 'top_p': 0.9}
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [serving_completion.py:76] Using default completion sampling params from model: {'temperature': 0.6, 'top_p': 0.9}
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [api_server.py:1912] Starting vLLM API server 0 on http://0.0.0.0:8008
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:34] Available routes are:
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /openapi.json, Methods: HEAD, GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /docs, Methods: HEAD, GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /docs/oauth2-redirect, Methods: HEAD, GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /redoc, Methods: HEAD, GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /health, Methods: GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /load, Methods: GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /ping, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /ping, Methods: GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /tokenize, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /detokenize, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/models, Methods: GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /version, Methods: GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/responses, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/responses/{response_id}, Methods: GET
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/responses/{response_id}/cancel, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/chat/completions, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/completions, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/embeddings, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /pooling, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /classify, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /score, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/score, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/audio/transcriptions, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/audio/translations, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /rerank, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v1/rerank, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /v2/rerank, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /scale_elastic_ep, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /is_scaling_elastic_ep, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /invocations, Methods: POST
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:01 [launcher.py:42] Route: /metrics, Methods: GET
+[1;36m(APIServer pid=3444097)[0;0m INFO:     Started server process [3444097]
+[1;36m(APIServer pid=3444097)[0;0m INFO:     Waiting for application startup.
+[1;36m(APIServer pid=3444097)[0;0m INFO:     Application startup complete.
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:48996 - "GET /health HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:51424 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:11 [loggers.py:130] Engine 000: Avg prompt throughput: 9.5 tokens/s, Avg generation throughput: 11.6 tokens/s, Running: 1 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.5%, Prefix cache hit rate: 0.0%
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:51424 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45204 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45212 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45216 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45228 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45242 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45246 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45248 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45256 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45268 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45276 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45288 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45298 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45306 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45316 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45318 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45320 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45334 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45340 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45350 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45362 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45368 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45384 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45398 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45406 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45418 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45422 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45436 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45450 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45458 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45464 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45480 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45486 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45496 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45500 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45516 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45518 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45534 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45546 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45552 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45560 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45568 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45584 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45594 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45604 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45618 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45626 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45632 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45648 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:21 [loggers.py:130] Engine 000: Avg prompt throughput: 349.8 tokens/s, Avg generation throughput: 1683.8 tokens/s, Running: 18 reqs, Waiting: 31 reqs, GPU KV cache usage: 96.8%, Prefix cache hit rate: 46.1%
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45662 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45674 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:51424 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45204 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45212 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45216 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45228 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45242 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45246 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33796 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33812 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33824 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33840 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45248 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33848 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33852 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33858 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33866 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33882 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45256 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45268 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45276 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45288 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45298 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45306 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45316 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45318 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45320 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45334 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33888 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33892 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33894 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33896 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33904 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45340 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33912 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33928 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33936 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33944 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33948 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45350 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33950 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33952 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33958 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33966 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33974 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33982 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:33994 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34008 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:45362 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34012 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:31 [loggers.py:130] Engine 000: Avg prompt throughput: 649.9 tokens/s, Avg generation throughput: 3997.5 tokens/s, Running: 28 reqs, Waiting: 26 reqs, GPU KV cache usage: 98.3%, Prefix cache hit rate: 37.8%
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:41 [loggers.py:130] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 3182.8 tokens/s, Running: 7 reqs, Waiting: 0 reqs, GPU KV cache usage: 32.4%, Prefix cache hit rate: 37.9%
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:11:51 [loggers.py:130] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 212.4 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 37.9%
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34642 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34642 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34658 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34668 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34678 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34688 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34700 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34714 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34720 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34726 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34736 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34748 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34756 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34766 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34778 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34784 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34790 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34804 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34816 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34826 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34832 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34846 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34860 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34866 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:12:01 [loggers.py:130] Engine 000: Avg prompt throughput: 240.0 tokens/s, Avg generation throughput: 536.6 tokens/s, Running: 23 reqs, Waiting: 0 reqs, GPU KV cache usage: 45.5%, Prefix cache hit rate: 37.3%
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34880 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34886 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34888 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34902 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34914 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34930 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34938 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34946 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34948 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34954 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34966 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34970 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37756 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37758 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37768 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37776 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37780 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37788 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37802 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37812 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37822 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37834 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37846 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37856 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37864 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37880 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37882 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37894 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37910 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37922 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37932 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37948 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37960 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37976 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37980 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:37996 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38000 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38006 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38012 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38026 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38032 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38034 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38042 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38054 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38068 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38072 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38088 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38098 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38110 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38126 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38128 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38142 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38144 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38154 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38164 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38176 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38182 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38188 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38196 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38210 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34642 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38216 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34658 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38220 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38226 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34668 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34678 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34688 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34700 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34714 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38242 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38248 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38252 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:34720 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38258 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38268 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:38276 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:12:11 [loggers.py:130] Engine 000: Avg prompt throughput: 529.7 tokens/s, Avg generation throughput: 3771.3 tokens/s, Running: 23 reqs, Waiting: 45 reqs, GPU KV cache usage: 99.3%, Prefix cache hit rate: 35.2%
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:12:21 [loggers.py:130] Engine 000: Avg prompt throughput: 240.0 tokens/s, Avg generation throughput: 3871.7 tokens/s, Running: 19 reqs, Waiting: 9 reqs, GPU KV cache usage: 99.8%, Prefix cache hit rate: 42.6%
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:12:31 [loggers.py:130] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 909.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 42.2%
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35708 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35708 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35722 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35736 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35748 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35758 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35762 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35778 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35792 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:12:41 [loggers.py:130] Engine 000: Avg prompt throughput: 90.0 tokens/s, Avg generation throughput: 142.3 tokens/s, Running: 8 reqs, Waiting: 0 reqs, GPU KV cache usage: 9.0%, Prefix cache hit rate: 42.0%
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35796 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35806 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35822 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35830 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35836 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35844 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35850 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35854 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35856 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35868 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35874 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:35884 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39154 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39168 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39178 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39184 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39186 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39194 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39204 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39208 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39218 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39224 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39230 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39244 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39254 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39258 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39272 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39282 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39294 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39300 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39314 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39324 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39330 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39338 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39344 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39350 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39358 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39368 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39370 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39374 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39382 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39394 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39406 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39412 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39414 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39428 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39438 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39452 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39464 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39474 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39480 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39484 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39494 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39502 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39508 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39512 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39524 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39530 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39534 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39540 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39550 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39558 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39570 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39580 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39586 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39592 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39606 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39618 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39632 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39644 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39660 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39676 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39678 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39688 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39702 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39706 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39712 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39728 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39738 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39740 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39746 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39754 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39758 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39774 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39778 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39784 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39790 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39794 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39804 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39810 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39820 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO:     127.0.0.1:39832 - "POST /v1/completions HTTP/1.1" 200 OK
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:12:51 [loggers.py:130] Engine 000: Avg prompt throughput: 559.7 tokens/s, Avg generation throughput: 3709.0 tokens/s, Running: 22 reqs, Waiting: 51 reqs, GPU KV cache usage: 98.7%, Prefix cache hit rate: 40.2%
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:13:01 [loggers.py:130] Engine 000: Avg prompt throughput: 359.9 tokens/s, Avg generation throughput: 3936.6 tokens/s, Running: 21 reqs, Waiting: 11 reqs, GPU KV cache usage: 98.0%, Prefix cache hit rate: 39.8%
+[1;36m(APIServer pid=3444097)[0;0m INFO 12-10 00:13:08 [launcher.py:99] Shutting down FastAPI HTTP server.
+[rank0]:[W1210 00:13:09.820729044 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+[1;36m(APIServer pid=3444097)[0;0m INFO:     Shutting down
+[1;36m(APIServer pid=3444097)[0;0m INFO:     Waiting for application shutdown.
+[1;36m(APIServer pid=3444097)[0;0m INFO:     Application shutdown complete.

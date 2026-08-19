@@ -10,11 +10,11 @@ GPU_ALLOC_GIB=0
 MAX_NUM_SEQS="128"
 
 declare -A MODELS=(
-  [12301]="TsinghuaC3I/Llama-3-8B-UltraMedical"
+  [12301]="TsinghuaC3I/Llama-3.1-8B-UltraMedical"
   [12302]="HiTZ/Llama-3.1-8B-Instruct-multi-truth-judge"
   [12303]="K-intelligence/Llama-SafetyGuard-Content-Binary"
   [12304]="MaziyarPanahi/calme-2.3-legalkit-8b"
-  [12305]="us4/fin-llama3.1-8b"
+  [12305]="mukaj/Llama-3.1-Hawkish-8B"
   [12306]="Qwen/Qwen2.5-Coder-7B-Instruct"
   [12307]="Qwen/Qwen2.5-Math-7B-Instruct"
 )
@@ -23,7 +23,7 @@ declare -A MODELS=(
 # Sharing configuration
 ############################
 
-SHARED_SPEC="/nethome/nmeda6/vllm/merged_spec_up_to_cutoff.json"
+SHARED_SPEC="/path/to/your_spec.json"
 
 ############################
 # Benchmark configuration

@@ -73,6 +73,22 @@ run_benchmarks() {
     echo "Model: $bench_model" | tee -a "$LOGFILE"
     echo "==================================" | tee -a "$LOGFILE"
 
+    # Resolve the bench model's cached snapshot and pass it as --tokenizer:
+    # transformers' tokenizer loading makes a hub network probe for llama-family
+    # tokenizers that crashes under HF_HUB_OFFLINE=1; a local path skips it.
+    local -a tokenizer_flags=()
+    local tok_path=""
+    tok_path=$(python3 -c "
+import sys
+from huggingface_hub import snapshot_download
+try:
+    print(snapshot_download('$bench_model', local_files_only=True))
+except Exception:
+    pass" 2>/dev/null)
+    if [[ -n "$tok_path" ]]; then
+        tokenizer_flags=(--tokenizer "$tok_path")
+    fi
+
     for RPS in "${request_rates_ref[@]}"; do
 
         echo "RPS=$RPS" | tee -a "$LOGFILE"
@@ -80,6 +96,7 @@ run_benchmarks() {
         CUDA_VISIBLE_DEVICES="${CUDA_DEVICES%%,*}" \
         vllm bench serve \
             --model "$bench_model" \
+            "${tokenizer_flags[@]}" \
             --port "$bench_port" \
             --num-prompts "$num_prompts" \
             --metric-percentiles 95,99 \

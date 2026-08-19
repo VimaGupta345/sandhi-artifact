@@ -18,7 +18,7 @@ declare -A MODELS=(
 # Sharing configuration
 ############################
 
-SHARED_SPEC="ds_merged_spec_up_to_cutoff.json"
+SHARED_SPEC="ds2_spec.json"
 
 ############################
 # Benchmark configuration
