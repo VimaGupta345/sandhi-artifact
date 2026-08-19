@@ -20,6 +20,20 @@ start_servers() {
             echo "SHARED_SPEC not found: $SHARED_SPEC (run from the directory holding the spec, or set an absolute path in the config)"
             exit 1
         fi
+        # Under HF_HUB_OFFLINE, vLLM resolves HF repo ids to cache snapshot
+        # PATHS, whose basename (a commit hash) matches no spec entry — the
+        # sandhi arm would silently degrade to independent serving. Offline,
+        # MODELS must be local directories named after the model.
+        if [[ -n "${HF_HUB_OFFLINE:-}" && "${HF_HUB_OFFLINE}" != "0" ]]; then
+            local m=""
+            for m in "${MODELS[@]}"; do
+                if [[ ! -d "$m" ]]; then
+                    echo "HF_HUB_OFFLINE is set but MODELS entry '$m' is not a local directory;"
+                    echo "spec matching would silently fail. Use named local model dirs offline."
+                    exit 1
+                fi
+            done
+        fi
         if ! python3 - "$SHARED_SPEC" "${MODELS[@]}" <<'PYEOF'
 import json, sys
 spec_path, models = sys.argv[1], sys.argv[2:]

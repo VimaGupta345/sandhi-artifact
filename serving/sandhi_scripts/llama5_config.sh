@@ -6,7 +6,7 @@
 
 CUDA_DEVICES="0"
 TENSOR_PARALLEL_SIZE=1
-GPU_ALLOC_GIB=20
+GPU_ALLOC_GIB=40
 
 declare -A MODELS=(
   [12301]="TsinghuaC3I/Llama-3.1-8B-UltraMedical"

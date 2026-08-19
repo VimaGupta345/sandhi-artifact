@@ -94,6 +94,15 @@ section), so there is no need to build the fork.
    sandhi-mode servers, `server_utils.sh` verifies the spec exists and covers
    every model in the pool, and refuses to start otherwise.
 
+   **Model-name matching caveat:** the loader matches spec entries against
+   `basename(model)` of what the engine was launched with. HF repo ids
+   (`Org/Name`) match fine, and so do local model directories named after the
+   model (`/models/Name`). But if vLLM resolves an HF id to its cache
+   *snapshot path* (this happens under `HF_HUB_OFFLINE=1`), the basename
+   becomes the snapshot hash, **no spec entry matches, and the sandhi arm
+   silently degrades to independent serving**. When running offline, point
+   `MODELS` at named local model directories instead of HF ids.
+
 ## Run
 
 Inside the container:
@@ -113,20 +122,28 @@ via `docker exec -it sandhi_eval /bin/bash`.
 
 ## Deployment scenarios (configs)
 
-| config | pool | merging set | GPUs (TP) | ballast/GPU | spec (`SHARED_SPEC`) |
-|---|---|---|---|---|---|
-| `ds2_40gb_config.sh` | 2× DeepSeek-7B (coder, math) | `fig6a` | 1 | 100 GiB | `ds2_spec.json` |
-| `qwen2_40gb_config.sh` | 2× Qwen2.5-7B (Coder, Math) | `fig6b` | 1 | 100 GiB | `qwen2_spec.json` |
-| `llama5_config.sh` | 5× Llama-3.1-8B domain fine-tunes | `fig6d` | 1 | 20 GiB | `llama5_spec.json` |
-| `llama-qwen_config.sh` | 7 models: 5× Llama + 2× Qwen2.5-7B | `fig6f` | 2 (TP=2) | 30 GiB | `llama_qwen_spec.json` |
-| `llama-qwen-ds_config.sh` | 9 models: 5× Llama + 2× Qwen + 2× DeepSeek | `fig6e` | 2 (TP=2) | 12 GiB | `llama_qwen_ds_spec.json` |
-| `template_config.sh` | template for new pools | — | — | — | — |
+| config | pool | merging set | GPUs (TP) | emulated budget | ballast/GPU (H200) | spec (`SHARED_SPEC`) |
+|---|---|---|---|---|---|---|
+| `ds2_40gb_config.sh` | 2× DeepSeek-7B (coder, math) | `fig6a` | 1 | A100-40GB | 100 GiB | `ds2_spec.json` |
+| `qwen2_40gb_config.sh` | 2× Qwen2.5-7B (Coder, Math) | `fig6b` | 1 | A100-40GB | 100 GiB | `qwen2_spec.json` |
+| `llama5_config.sh` | 5× Llama-3.1-8B domain fine-tunes | `fig6d` | 1 | 80 GB | 40 GiB | `llama5_spec.json` |
+| `llama-qwen_config.sh` | 7 models: 5× Llama + 2× Qwen2.5-7B | `fig6f` | 2 (TP=2) | 2× 80 GB | 38 GiB | `llama_qwen_spec.json` |
+| `llama-qwen-ds_config.sh` | 9 models: 5× Llama + 2× Qwen + 2× DeepSeek | `fig6e` | 2 (TP=2) | constrained | 12 GiB | `llama_qwen_ds_spec.json` |
+| `template_config.sh` | template for new pools | — | — | — | — | — |
 
 The pools use exactly the models the merging pipeline evaluates (Table 2 of the
 paper). Earlier revisions of this harness served two models the pipeline never
 profiled (`TsinghuaC3I/Llama-3-8B-UltraMedical`, `us4/fin-llama3.1-8b`); the
 configs were reconciled to the Table 2 pool (`Llama-3.1-8B-UltraMedical`,
-`Llama-3.1-Hawkish-8B`) so that every serving spec is a pipeline output.
+`Llama-3.1-Hawkish-8B`) so that every serving spec is a pipeline output. The
+*emulated budget* column is the paper's deployment size for each scenario
+(§5.3); the ballast pins enough of an H200's 141.6 GiB to leave that budget
+free, so the improvement dynamics depend on the deployment budget, not on the
+physical card. Note the harness pays a real per-server overhead beyond weights
+(~4 GiB per server at TP=1, ~6 GiB per rank at TP=2), so the ballast values
+above are calibrated to leave the *paper's KV headroom* after servers boot; if
+your GPUs differ, adjust `GPU_ALLOC_GIB` so free-memory-after-boot matches
+the scenario's KV budget rather than applying `GPU_GiB − budget` blindly.
 
 The ballast (`GPU_ALLOC_GIB`) pins that much GPU memory before the servers
 start, emulating the paper's constrained-memory deployments on whatever GPU you
@@ -164,7 +181,11 @@ two pipelines (Figure 5 → Figure 6).
 
 ## Results
 
-After a run, `<result_dir>/results/` contains:
+**Recorded reference runs for all five scenarios ship in
+[`results/`](results/)** — full server logs (both arms), raw benchmark
+sweeps, and rendered plots, with a summary table in `results/README.md`.
+
+After a run of your own, `<result_dir>/results/` contains:
 
 - `plots/*.png` — per benchmark target: **token throughput vs request rate**
   and **P95 TTFT vs request rate**, baseline vs sandhi — the Figure 6 panels;
