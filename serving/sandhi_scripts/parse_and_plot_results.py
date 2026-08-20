@@ -57,7 +57,10 @@ def parse_log(log_path: Path):
         record = {
             "mode": mode_name,
             "port": current_port,
-            "model": current_model,
+            # Key on the model's basename so the two arms pair up even when
+            # they serve the same model from different paths (e.g. the sandhi
+            # arm serving materialized merged variants via MODELS_SANDHI).
+            "model": current_model.rstrip("/").split("/")[-1] if current_model else current_model,
             "target": current_target,
             "rps": current_rps,
             "p95_ttft_ms": current_metrics.get("p95_ttft_ms"),

@@ -51,3 +51,15 @@ PLOT_DIR="$RESULTS_DIR/plots"
 mkdir -p "$SERVER_LOG_DIR"
 mkdir -p "$BENCH_LOG_DIR"
 mkdir -p "$PLOT_DIR"
+
+# Optional: serve the MATERIALIZED merged variants in the sandhi arm (exact
+# weights validated by Figure 5). Build them with the merging pipeline's
+# replay (merging/GENERATE_VARIANTS.md, Cpm cutoff 52 for this pool), mount
+# them, and uncomment:
+# declare -A MODELS_SANDHI=(
+#   [12301]="/variants/Llama-3.1-8B-UltraMedical"
+#   [12302]="/variants/Llama-3.1-8B-Instruct-multi-truth-judge"
+#   [12303]="/variants/Llama-SafetyGuard-Content-Binary"
+#   [12304]="/variants/calme-2.3-legalkit-8b"
+#   [12305]="/variants/Llama-3.1-Hawkish-8B"
+# )

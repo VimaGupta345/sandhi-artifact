@@ -66,6 +66,13 @@ run_benchmarks() {
         return 1
     fi
 
+    # When the sandhi arm serves materialized merged variants (MODELS_SANDHI),
+    # the server on this port registered the variant path as its model name —
+    # address the bench requests to it.
+    if [[ "$mode" == "sandhi" ]] && declare -p MODELS_SANDHI >/dev/null 2>&1; then
+        bench_model="${MODELS_SANDHI[$bench_port]}"
+    fi
+
     echo "" | tee -a "$LOGFILE"
     echo "==================================" | tee -a "$LOGFILE"
     echo "Target: $target_name" | tee -a "$LOGFILE"

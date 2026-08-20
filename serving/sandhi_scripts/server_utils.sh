@@ -9,6 +9,17 @@ start_servers() {
 
     mkdir -p "$SERVER_LOG_DIR/$mode"
 
+    # Optional per-arm pool: when a config defines MODELS_SANDHI (same ports,
+    # paths to the MATERIALIZED merged variants — see GENERATE_VARIANTS.md in
+    # ../merging), the sandhi arm serves those weights, so the deduplicated
+    # deployment runs exactly the models whose accuracy Figure 5 validates.
+    # Without it, both arms serve MODELS (dedup shares the owner's tensor;
+    # identical performance, but the shared weights are not the merged ones).
+    local -n pool_ref=MODELS
+    if [[ "$mode" == "sandhi" ]] && declare -p MODELS_SANDHI >/dev/null 2>&1; then
+        local -n pool_ref=MODELS_SANDHI
+    fi
+
     local sharing_flags=""
 
     if [[ "$mode" == "sandhi" ]]; then
@@ -26,7 +37,7 @@ start_servers() {
         # MODELS must be local directories named after the model.
         if [[ -n "${HF_HUB_OFFLINE:-}" && "${HF_HUB_OFFLINE}" != "0" ]]; then
             local m=""
-            for m in "${MODELS[@]}"; do
+            for m in "${pool_ref[@]}"; do
                 if [[ ! -d "$m" ]]; then
                     echo "HF_HUB_OFFLINE is set but MODELS entry '$m' is not a local directory;"
                     echo "spec matching would silently fail. Use named local model dirs offline."
@@ -34,7 +45,7 @@ start_servers() {
                 fi
             done
         fi
-        if ! python3 - "$SHARED_SPEC" "${MODELS[@]}" <<'PYEOF'
+        if ! python3 - "$SHARED_SPEC" "${pool_ref[@]}" <<'PYEOF'
 import json, sys
 spec_path, models = sys.argv[1], sys.argv[2:]
 spec_models = {e["model"] for g in json.load(open(spec_path)) for e in g}
@@ -62,9 +73,9 @@ PYEOF
     echo "Starting servers ($mode)"
     echo "======================================"
 
-    for PORT in $(printf "%s\n" "${!MODELS[@]}" | sort -n); do
+    for PORT in $(printf "%s\n" "${!pool_ref[@]}" | sort -n); do
 
-        MODEL="${MODELS[$PORT]}"
+        MODEL="${pool_ref[$PORT]}"
         local ipc_name="kvcached_instance_${PORT}"
 
         echo "Launching $MODEL on port $PORT"

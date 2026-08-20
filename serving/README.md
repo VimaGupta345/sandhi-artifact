@@ -179,11 +179,34 @@ two pipelines (Figure 5 → Figure 6).
   `scripts/build_merge_groups.py` use short attention names; pass them through
   `specs/convert_spec.py` to normalize.)
 
+## Serving the exact merged weights
+
+By default both arms serve the original fine-tuned checkpoints; in the sandhi
+arm the loader deduplicates each spec group by mapping every member onto the
+owner's tensor. Throughput/TTFT depend only on this sharing structure, not on
+tensor values — but to measure the deduplicated deployment running the *exact
+merged weights Figure 5 validates*, materialize the variants with the merging
+pipeline's replay (`../merging/GENERATE_VARIANTS.md`) and define
+`MODELS_SANDHI` in the scenario config (same ports, variant paths; see the
+commented example in `llama5_config.sh`). The shared tensors of variants
+replayed to the same cutoff are byte-identical by construction, so dedup
+engages on the merged values themselves. `results/llama5_variants/` records
+this configuration for the 5-Llama pool: ratios are statistically identical to
+the owner-tensor run (7.1× vs 7.1× throughput). Cross-family pools merge with
+per-member scaling, which this serving stack does not apply at runtime — for
+those, the recorded evidence is the owner-tensor configuration, and the merged
+weights' accuracy comes from the pipeline (the `*.scaling_factors.npz`
+sidecars next to each operating point are the designed hand-off for
+scaled dedup serving).
+
 ## Results
 
 **Recorded reference runs for all five scenarios ship in
 [`results/`](results/)** — full server logs (both arms), raw benchmark
-sweeps, and rendered plots, with a summary table in `results/README.md`.
+sweeps, and rendered plots, with a summary table in `results/README.md` —
+plus `results/llama5_variants/`, the 5-Llama scenario re-measured with the
+sandhi arm serving the materialized merged variants (exact validated
+weights).
 
 After a run of your own, `<result_dir>/results/` contains:
 
