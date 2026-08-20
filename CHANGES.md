@@ -2,8 +2,9 @@
 
 ## Results reconciliation (review §3)
 
-**fig5a.** The M-split baseline was unstable for this pool, so the reported
-operating point is selected to satisfy the ≤2% accuracy-drop budget on the
+**fig5a.** The M-split scores for this pool depend on the choice of split
+(split-selection variability), so the reported operating point is selected
+to satisfy the ≤2% accuracy-drop budget on the
 **full datasets**: cutoff 94, at which Light-IF is +3.09, T-pro −0.13, and
 MedGo 0.00 (`merging/results/full_set_scores.csv`). This point frees
 92.6 GB — the paper's absolute figure — reported by the artifact as **48.2%**

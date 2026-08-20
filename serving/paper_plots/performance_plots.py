@@ -283,7 +283,7 @@ if __name__ == "__main__":
     experiments = [
         ('ds_2ds_40gb', '2-DS (A100 40GB)', '2ds'),
         ('qwen_2qwen_40gb', '2-Qwen (A100 40GB)', '2qwen'),
-        ('llama_5llama_141gb', '5-Llama (H200 141GB)', '5llama'),
+        ('llama_5llama_80gb', '5-Llama (80GB)', '5llama'),
         ('llama_qwen-llama_141gb_tp2', '7-model Llama (2 H200 141GB)', '7model_llama'),
         ('qwen_qwen-llama_141gb_tp2', '7-model Qwen (2 H200 141GB)', '7model_qwen'),
         ('ds_ds-llama-qwen_141gb_tp2', '9-model DS (2 H200 141GB)', '9model_ds'),

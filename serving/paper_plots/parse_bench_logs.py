@@ -25,7 +25,7 @@ from pathlib import Path
 SCENARIOS = {
     "ds2": [("deepseek", "ds_2ds_40gb")],
     "qwen2": [("qwen2_5", "qwen_2qwen_40gb")],
-    "llama5": [("llama", "llama_5llama_141gb")],
+    "llama5": [("llama", "llama_5llama_80gb")],
     "llama_qwen": [
         ("llama", "llama_qwen-llama_141gb_tp2"),
         ("qwen2_5", "qwen_qwen-llama_141gb_tp2"),

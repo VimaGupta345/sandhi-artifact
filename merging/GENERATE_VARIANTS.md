@@ -141,6 +141,12 @@ unless stated):
 Drop `--no_eval` on any of these to also reproduce the full-set score recorded
 in `results/full_set_scores.csv` for that model.
 
+Every other pool follows the same loops: take the pool's run-set(s) from
+`FIGURE_MODEL_MAP.md`, its cutoffs from the corresponding `report.csv`, and
+`--scaling` per the rule above. The joint cross-family pool (fig5c/fig6c,
+run-set `llama5_deepseek2`) is the worked example in § Per-model points; the
+32B pool (`qwen32b3`) follows the 32B note above.
+
 ## Notes
 - **Point A** is the unmerged reference (cutoff −1, no merges) — there is no
   variant to build; it's each base model at its `label_map.json` path.

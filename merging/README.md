@@ -247,9 +247,10 @@ investigation. Until resolved, the pair carries no accuracy claim and the
 replicates as documented.
 
 **Fig 5a — operating point selected on full-set accuracy (48.2% / 92.6 GB).**
-The M-split baseline was unstable for this pool (the M-split is a small
-evaluation subsample), so the reported operating point was selected to
-satisfy the ≤2% accuracy-drop budget on the **full datasets**: cutoff 94
+The M-split scores for this pool depend on the choice of split — a different
+split seed yields different per-model drops — so the reported operating point
+is selected to satisfy the ≤2% accuracy-drop budget on the **full datasets**:
+cutoff 94
 (`results/fig5a/sweep.csv`), at which Light-IF is +3.09, T-pro −0.13, and
 MedGo 0.00 (`results/full_set_scores.csv`). This point frees **92.6 GB —
 48.2%** under this pipeline's memory model (192 GB, the sum of full on-disk

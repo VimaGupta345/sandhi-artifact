@@ -31,6 +31,4 @@ random 100-in/900-out, `--ignore-eos`). Rates: llama {2,5,7,10,15,20}, qwen3
 The recorded runs used stock vLLM 0.11.0 on H200 hosts, with the A100
 memory budgets set via `--kv-cache-memory-bytes`. The offload penalty is visible
 directly in the bench logs (e.g. Qwen3 @ 14 GB offload, RPS 1: median TTFT
-732 ms vs sub-100 ms unoffloaded). The recorded llama runs served the
-`fin-llama3.1-8b` checkpoint — a Llama-3.1-8B fine-tune, so the memory
-footprint and offload volume match the paper's pair.
+732 ms vs sub-100 ms unoffloaded).
