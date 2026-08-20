@@ -48,8 +48,11 @@ throughput/TTFT — stated in both READMEs. The 32B replay flags in
 `run_eval_32b.py` are wired.
 
 **Figures 7–11 and §5.9.** `serving/offloading/` ships the recorded Fig 8/9
-runs plus a parameterized launcher. The top-level README maps every remaining
-figure to its harness or recorded data.
+runs plus a parameterized launcher. Fig 7 is each pool's analysis output
+(`pareto.png`, `sweep.csv`); Fig 10 is covered by `merging/BASELINES.md` and
+`merging/plots/data/lora/`; Fig 11 by `merging/micr/run_eval_quantized.py`;
+the §5.9 ablations by the recorded layer-level runs under
+`merging/clustering/candidates/` and `merging/micr/top_k_experiment.py`.
 
 ## Smaller issues (review §5)
 

@@ -134,18 +134,6 @@ weights, built with `merging/GENERATE_VARIANTS.md` and enabled via
 `MODELS_SANDHI` (see `serving/README.md` § Serving the exact merged weights);
 both configurations agree within a few percent.
 
-## Other figures (7–12) and §5.9 ablations
-
-| figure | what | where in this repo |
-|---|---|---|
-| Fig 7 | accuracy–memory Pareto per pool | `merging/` analysis output (`pareto.png`, `sweep.csv` per set) |
-| Fig 8 | reducing offload volume, 3× Qwen3-32B | `serving/offloading/` (recorded runs + launcher) |
-| Fig 9 | eliminating offloading, 2× Llama-8B | `serving/offloading/` |
-| Fig 10 | LoRA vs SANDHI (Llama) | `merging/BASELINES.md` + `merging/plots/data/lora/` |
-| Fig 11 | quantized models | `merging/micr/run_eval_quantized.py` |
-| Fig 12 | Mixture-of-Experts | no harness in this repository |
-| §5.9 | layer-level vs component-level; profiler CAR | recorded layer-level runs in `merging/clustering/candidates/{7b_llamas,6c_deepseek}_standardized_layer_level/`; component selection in `merging/micr/top_k_experiment.py` |
-
 ## Dependencies
 
 - **Python packages** — installable with pip. `merging/requirements.txt` is a
