@@ -13,7 +13,7 @@ Generated from `scripts/run_figures.py` SETS/RUNSETS + `models_download/hf_repos
 
 ## Figure 6 — serving / deployment pools
 
-_Compositions of existing run-sets (no new profiling/MICR). The pipeline emits the Pareto frontier + operating-point specs; cutoff choice + serving are downstream/out of scope._
+_Compositions of existing run-sets (no new profiling/MICR). The pipeline emits the Pareto frontier + operating-point specs; cutoff choice and serving happen downstream in `../serving/`._
 
 | Figure | #models | Composition | Models |
 |---|---|---|---|

@@ -49,7 +49,7 @@ throughput/TTFT — stated in both READMEs. The 32B replay flags in
 
 **Figures 7–11 and §5.9.** `serving/offloading/` ships the recorded Fig 8/9
 runs plus a parameterized launcher. The top-level README maps every remaining
-figure to its harness or recorded data and states Fig 12 is out of scope.
+figure to its harness or recorded data.
 
 ## Smaller issues (review §5)
 

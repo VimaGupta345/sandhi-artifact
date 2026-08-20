@@ -5,7 +5,7 @@ profiling → component clustering → MICR merge-and-evaluate → memory analys
 (distinct-tensor freed / sum of full on-disk model sizes), emitting Pareto
 plots and operating-point merge specs.
 
-## Scope
+## What this pipeline produces
 
 The pipeline produces the **model sets** (memory/accuracy Pareto frontier and
 operating-point merge specs) for every Figure 5 and Figure 6 pool:

@@ -143,7 +143,7 @@ both configurations agree within a few percent.
 | Fig 9 | eliminating offloading, 2× Llama-8B | `serving/offloading/` |
 | Fig 10 | LoRA vs SANDHI (Llama) | `merging/BASELINES.md` + `merging/plots/data/lora/` |
 | Fig 11 | quantized models | `merging/micr/run_eval_quantized.py` |
-| Fig 12 | Mixture-of-Experts | out of scope for this artifact (no harness shipped) |
+| Fig 12 | Mixture-of-Experts | no harness in this repository |
 | §5.9 | layer-level vs component-level; profiler CAR | recorded layer-level runs in `merging/clustering/candidates/{7b_llamas,6c_deepseek}_standardized_layer_level/`; component selection in `merging/micr/top_k_experiment.py` |
 
 ## Dependencies
