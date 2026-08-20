@@ -79,7 +79,7 @@ figure to its harness or recorded data and states Fig 12 is out of scope.
 
 - **5-Llama serving.** The recorded run exceeds the paper's printed
   improvement (7.1× / 2534× vs 1.1× / 197×); the improvement magnitude
-  depends on the emulated memory budget, and the recorded configuration is
+  depends on the configured memory budget, and the recorded configuration is
   fully specified and reproducible as shipped (`serving/results/README.md`).
 - **Qwen2.5 pair (Figure 6b).** Under investigation; the pair currently
   carries no accuracy claim and the 2-Qwen serving scenario should be

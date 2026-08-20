@@ -19,7 +19,7 @@ to Qwen; §5.3's text has the correct per-family assignment used here.)
 | `sandhi_scripts/run_all.sh` | one-command driver: starts the model servers (baseline, then sandhi), runs all load sweeps, parses logs, renders plots |
 | `sandhi_scripts/*_config.sh` | one config per deployment scenario (see table below) |
 | `sandhi_scripts/parse_and_plot_results.py` | log parser + plot renderer (throughput and P95 TTFT vs request rate, baseline vs sandhi) |
-| `sandhi_scripts/gpu_alloc.py` | ballast allocator — pins `GPU_ALLOC_GIB` GiB per GPU to emulate a smaller-memory deployment |
+| `sandhi_scripts/gpu_alloc.py` | ballast allocator — pins `GPU_ALLOC_GIB` GiB per GPU to set the scenario's memory budget |
 | `specs/` | one merge spec per scenario, emitted by the merging pipeline (see *Merge specs*) |
 | `specs/convert_spec.py` | normalizes legacy merging-side spec naming into the serving spec format |
 
@@ -34,8 +34,8 @@ the fork.
 
 - **Hardware:** NVIDIA GPUs with enough memory for the scenario (see the
   scenario table; single-pool scenarios run on 1 GPU, cross-family pools use 2
-  GPUs with tensor parallelism 2). The paper's constrained-memory scenarios are
-  emulated by the ballast allocator, so larger GPUs are fine.
+  GPUs with tensor parallelism 2). The ballast allocator sets each scenario's
+  memory budget, so larger GPUs are fine.
 - **Software:** Docker with the NVIDIA container runtime.
 - **Network/storage:** the models are pulled from Hugging Face on first launch
   (~15 GB per 7–8B model; the 9-model pool needs ~140 GB of HF cache). Mount a
@@ -118,7 +118,7 @@ via `docker exec -it sandhi_eval /bin/bash`.
 
 ## Deployment scenarios (configs)
 
-| config | pool | merging set | GPUs (TP) | emulated budget | ballast/GPU (H200) | spec (`SHARED_SPEC`) |
+| config | pool | merging set | GPUs (TP) | memory budget | ballast/GPU (H200) | spec (`SHARED_SPEC`) |
 |---|---|---|---|---|---|---|
 | `ds2_40gb_config.sh` | 2× DeepSeek-7B (coder, math) | `fig6a` | 1 | A100-40GB | 100 GiB | `ds2_spec.json` |
 | `qwen2_40gb_config.sh` | 2× Qwen2.5-7B (Coder, Math) | `fig6b` | 1 | A100-40GB | 100 GiB | `qwen2_spec.json` |
@@ -128,7 +128,7 @@ via `docker exec -it sandhi_eval /bin/bash`.
 | `template_config.sh` | template for new pools | — | — | — | — | — |
 
 The pools use exactly the models the merging pipeline evaluates (Table 2 of
-the paper), so every serving spec is a pipeline output. The *emulated budget*
+the paper), so every serving spec is a pipeline output. The *memory budget*
 column is the paper's deployment size for each scenario
 (§5.3); the ballast pins enough of an H200's 141.6 GiB to leave that budget
 free, so the improvement dynamics depend on the deployment budget, not on the
@@ -139,7 +139,7 @@ your GPUs differ, adjust `GPU_ALLOC_GIB` so free-memory-after-boot matches
 the scenario's KV budget rather than applying `GPU_GiB − budget` blindly.
 
 The ballast (`GPU_ALLOC_GIB`) pins that much GPU memory before the servers
-start, emulating the paper's constrained-memory deployments on whatever GPU you
+start, applying the paper's deployment budget on whatever GPU you
 have; scale it to your GPU size so that the *free* memory matches the intended
 scenario. Request rates, prompt counts, and input/output lengths per benchmark
 target are set in each config.

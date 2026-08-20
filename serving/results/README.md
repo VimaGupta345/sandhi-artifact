@@ -27,7 +27,7 @@ weights):
 
 The recorded 5-Llama run exceeds the paper's printed improvement
 (7.1× / 2534× vs 1.1× / 197×); the improvement magnitude depends on the
-emulated memory budget (see the scenario table in `../README.md`), and the
+configured memory budget (see the scenario table in `../README.md`), and the
 recorded configuration is fully specified in `llama5_config.sh`.
 
 The owner-tensor runs (same scenarios without the `_variants` suffix) agree
@@ -36,5 +36,5 @@ ratios depend on the sharing structure, not tensor values. Per-rate tables
 are in the benchmark logs; the plots show the full sweeps. The divergence
 ordering (DeepSeek → Llama → Qwen, by per-token KV size) and the 9-model
 headline ratios reproduce the paper's claims closely. Absolute numbers depend
-on the emulated deployment budget (ballast) — see the scenario table in
+on the configured deployment budget (ballast) — see the scenario table in
 `../README.md`.
