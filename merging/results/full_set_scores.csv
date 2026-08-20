@@ -1,0 +1,9 @@
+model,task,protocol,baseline_full,merged_full,merged_point,delta,notes
+Light-IF-32B,tinyMMLU,0-shot raw,76.21,79.30,fig5a cutoff 94,+3.09,
+T-pro-it-2.0,m_mmlu_ru,0-shot raw,76.71,76.58,fig5a cutoff 94,-0.13,
+MedGo,medqa_4options,0-shot raw,75.96,75.96,fig5a cutoff 94,0.00,merged c93: 75.81 (-0.15)
+Llama-3.1-8B-UltraMedical,medqa_4options,1-shot + chat template (registry),62.07,61.76,llama5 cutoff 52,-0.31,protocol-matched pair; table-crossing with 0-shot ft_acc 78.68 is invalid
+deepseek-coder-7b-instruct-v1.5,humaneval,harness,69.51,67.68,ds2 Cpm cutoff 15 (scaled),-1.83,unscaled variant identical score
+deepseek-math-7b-instruct,gsm8k-cot,harness,81.30,79.30,ds2 Cpm cutoff 15 (scaled),-2.00,unscaled variant: 78.5 (-2.8)
+Qwen2.5-Coder-7B-Instruct,humaneval,harness,82.32,77.44,qwen25_2 Cpm cutoff 11 (scaled),-4.88,unscaled: 79.88 (-2.44); deterministic across repeats
+Qwen2.5-Math-7B-Instruct,gsm8k-cot,harness,90.10,90.70,qwen25_2 Cpm cutoff 13 (scaled),+0.60,unscaled: 84.3 (-5.8) — scaling essential
