@@ -192,16 +192,12 @@ commented example in `llama5_config.sh`). The shared tensors of variants
 replayed to the same cutoff are byte-identical by construction, so dedup
 engages on the merged values themselves. `results/llama5_variants/` records
 this configuration for the 5-Llama pool: ratios are statistically identical to
-the owner-tensor run (7.1× vs 7.1× throughput). Cross-pretrain merges
-(DeepSeek/Qwen pairs) bake **per-member row scaling** into each variant, so
-their shared groups are not byte-identical across members (verified: 21/21 DS
-and 13/13 Qwen groups differ; mean row scale 1.03–1.64) — exact-weight dedup
-for those pools requires runtime scaling application, which this serving stack
-does not implement. The `*.scaling_factors.npz` sidecars next to each
-operating point are the designed hand-off for such scaled dedup serving. For
-these pools the recorded evidence is the owner-tensor configuration
-(performance-identical sharing structure), and the merged weights' accuracy
-comes from the pipeline's full-set scores.
+the owner-tensor run (7.1× vs 7.1× throughput). Cross-family pools merge with
+per-member scaling, which this serving stack does not apply at runtime — for
+those, the recorded evidence is the owner-tensor configuration, and the merged
+weights' accuracy comes from the pipeline (the `*.scaling_factors.npz`
+sidecars next to each operating point are the designed hand-off for
+scaled dedup serving).
 
 ## Results
 
