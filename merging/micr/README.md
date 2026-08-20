@@ -77,8 +77,8 @@ Example:
 
 ```json
 {
-  "deepseek-coder-7b-instruct-v1.5": "/scratch/shared_dir/unified_models/deepseek-coder-7b-instruct-v1.5",
-  "deepseek-math-7b-instruct": "/scratch/shared_dir/unified_models/deepseek-math-7b-instruct"
+  "deepseek-coder-7b-instruct-v1.5": "hf_cache/models/deepseek-coder-7b-instruct-v1.5",
+  "deepseek-math-7b-instruct": "hf_cache/models/deepseek-math-7b-instruct"
 }
 ```
 
@@ -91,8 +91,8 @@ Instead, the LoRA script uses these locations (both env-overridable):
   `meta-llama/Llama-3.1-8B`. **Note:** this HF repo is gated — accept the Meta
   Llama 3.1 license on Hugging Face and authenticate (`HF_TOKEN` /
   `huggingface-cli login`) before running, or point the env var at a local copy.
-- adapter root: `ADAPTER_ROOT` — env `MICR_LORA_ADAPTER_ROOT`, default is a
-  cluster-internal path. Download the per-domain adapters from
+- adapter root: `ADAPTER_ROOT` — env `MICR_LORA_ADAPTER_ROOT`, default
+  `./lora_adapters`. Download the per-domain adapters from
   `anjohn0077/NEXS-lora-adapters` (see `BASELINES.md`) into a local directory
   laid out per `LABEL_TO_ADAPTER_DIR`, and set
   `MICR_LORA_ADAPTER_ROOT=/path/to/adapters`.

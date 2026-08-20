@@ -1,5 +1,7 @@
 # model weights & datasets (not part of the artifact repo)
 hf_cache/
+# superseded files kept locally for reference, not shipped
+stale-data/
 *.safetensors
 # python
 __pycache__/

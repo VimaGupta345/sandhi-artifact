@@ -10,8 +10,6 @@ This directory contains `gaussian_profiler.py`, a tool designed to profile Large
 
 ## Script: `gaussian_profiler.py`
 
-> **Note:** This script was formerly named `gaussian_experiment.py`.
-
 This is the main driver for the Gaussian noise sensitivity profiling. It performs a sweep across model layers, applying noise to specific parameter groups and evaluating the resulting model on downstream tasks.
 
 ### Features
@@ -24,7 +22,7 @@ This is the main driver for the Gaussian noise sensitivity profiling. It perform
 
 ### Usage
 
-The script now accepts all parameters via command-line arguments (no config file required).
+All parameters are passed via command-line arguments (no config file required).
 
 ```bash
 python gaussian_profiler.py \
@@ -49,7 +47,7 @@ python gaussian_profiler.py \
 - `--tasks`: Comma-separated list of tasks to evaluate (e.g., `math,coder`). Default: `math,coder`.
 - `--output_csv`: Path where the results CSV will be saved (appended if exists). Default: `output/gaussian_sanity_results.csv`.
 - `--gpus`: Optional `CUDA_VISIBLE_DEVICES` string (e.g., `0,1`).
-- `--tmp_dir`: Directory for temporary model saves. Default: `<TMP_DIR>`.
+- `--tmp_dir`: Directory for temporary model saves. Default: `/tmp/micr_tmp` (override with `MICR_TMP_ROOT`).
 - `--start_layer`: (Optional) Start index for the layer sweep (inclusive). Defaults to 0.
 - `--end_layer`: (Optional) End index for the layer sweep (inclusive). Defaults to the last layer.
 - `--debug`: (Flag) Enable verbose debug output, printing state transitions and perturbation details.
@@ -167,9 +165,8 @@ For each perturbation step:
 5. Evaluate the 4-bit checkpoint.
 6. Delete both temporary directories (baseline is always reloaded per step).
 
-### Marlin Compatibility
-
-This workflow is **conceptually compatible** with Marlin-style 4-bit inference (perturb FP → quantize → eval), but **Marlin specifically requires GPTQ/AWQ-style quantized weights**. The current implementation uses the `bnb` (BitsAndBytes) backend because GPTQ/AWQ quantization libraries are not included here by default. If you later add a GPTQ/AWQ backend, the same two-temp-dir workflow can be reused to enable Marlin execution.
+The implementation uses the `bnb` (BitsAndBytes) backend; GPTQ/AWQ
+quantization libraries are not included.
 
 ### Sample Script: `run_profiling_4bit.sh`
 

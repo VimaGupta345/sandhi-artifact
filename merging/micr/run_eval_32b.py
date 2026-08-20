@@ -315,7 +315,7 @@ Examples:
              "'auto' keeps the historical behavior for direct CLI use.",
     )
     # Replay flags, mirroring run_eval.py (finaleval calls this script with
-    # them; see scripts/run_figures.py and CHANGES.md "32B finaleval replay").
+    # them; see scripts/run_figures.py).
     replay = parser.add_argument_group("replay")
     replay.add_argument(
         "--replay_steps_csv",

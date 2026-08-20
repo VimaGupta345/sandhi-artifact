@@ -904,7 +904,6 @@ def run_sanity_check(
     # Initialize EnvironmentManager with defaults (None)
     env_manager = EnvironmentManager(None, None)
     
-    # FIXME: tmp dir should be updated for each user.
     tmp_dir_root = tmp_dir if tmp_dir else os.environ.get("MICR_TMP_ROOT", "/tmp/micr_tmp")
     os.makedirs(tmp_dir_root, exist_ok=True)
 

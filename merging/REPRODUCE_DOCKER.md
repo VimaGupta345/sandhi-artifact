@@ -4,7 +4,7 @@ Runs the SANDHI pipeline (gaussian profiler → clustering → MICR → analysis
 Pareto + operating-point specs) inside the reference container. **Code is mounted
 at runtime — no image rebuild.** Everything runs as **your own user — no `sudo`,
 no `root`, no `chown`** — and is **self-contained by default** (models/datasets
-download into your repo; nothing under `/scratch` needs mounting).
+download into your repo; no external model store needs mounting).
 
 ## Two ways to reproduce — pick one
 - **A · Skip straight to the measurements** (no GPU, minutes). Every shipped run
@@ -12,7 +12,8 @@ download into your repo; nothing under `/scratch` needs mounting).
   (`micr/<set>/<model>/steps.csv`) **and** the finished measurements
   (`analysis/<set>/report.csv` — memory savings + per-model accuracy at each
   operating point A/B/C/Bpm/Cpm/Kpm/P). If you only want the numbers or the
-  Figure-5 plots, read those / re-render (Part 3) — nothing to recompute. To
+  Figure-5 plots, read those or re-render them (see "Render the Figure-5
+  panels" below) — nothing to recompute. To
   rebuild the actual merged **weights** at an operating point *without*
   re-profiling or re-running MICR, **replay** the recorded `steps.csv` — see
   `GENERATE_VARIANTS.md`.
@@ -38,7 +39,7 @@ command. One cache holds everything: `$CODE/hf_cache/{models,datasets,modules}`.
 
 ## The wrapper (paste once per shell)
 ```bash
-CODE=/path/to/artifacts_worktree      # <-- the artifact repo (you own it)
+CODE=/path/to/this/repo      # <-- the artifact repo (you own it)
 
 dock() {   # dock <run_figures args...>
   docker run --rm --gpus all --shm-size=32g --ulimit nofile=524288:524288 \
@@ -73,23 +74,14 @@ That is the whole thing — no model mounts, no `HF_HOME`. Why it's sudo-free:
   DeepSeek run; 32g gives headroom for the 5-GPU Llama run and 32B/vLLM work.
   Raise it if you ever see `Bus error` / `/dev/shm` errors.
 
-### Reuse this cluster's existing downloads (skip re-download)
-The team already has the 7–8B weights at `/scratch/shared_dir/unified_models`.
-Point one env var at them (read-only mount is fine) to skip re-downloading:
+### Reuse an existing model directory (skip re-download)
+If the model weights already exist on the machine, mount that directory
+(read-only is fine) and point `SANDHI_MODELS_DIR` at it:
 ```bash
-dock() {
-  docker run --rm --gpus all --shm-size=32g --ulimit nofile=524288:524288 \
-    --user "$(id -u):$(id -g)" -e USER="$(id -un)" -e HOME=/tmp \
-    -e SANDHI_MODELS_DIR=/scratch/shared_dir/unified_models \
-    -v /scratch/shared_dir/unified_models:/scratch/shared_dir/unified_models \
-    -v "$CODE":/workspace/merge_tools \
-    -w /workspace/merge_tools merge-tools:reference \
-    python scripts/run_figures.py "$@"
-}
+  -e SANDHI_MODELS_DIR=/path/to/models -v /path/to/models:/path/to/models
 ```
 `SANDHI_MODELS_DIR` is the single model-cache root (default `$HF_HOME/models`);
-absent models still download there. (The 32B Qwen models for fig5a are not in
-`unified_models`; they download on first use.)
+absent models still download there.
 
 ## Sanity check first (no compute, ~5 s)
 ```bash
@@ -138,8 +130,9 @@ dock --run-name llama5_deepseek2 --sets llama5_deepseek2 --stages all --gpus aut
 - **sweep.csv** — full cutoff table · **pareto.png** — the frontier
 - **B.jsonl / C.jsonl** and **B.json / C.json** (and `Bpm`/`Cpm`/`Kpm`/`P`) —
   operating-point merge specs (one group per line, and a single JSON array;
-  `self_attn.*` naming; single-model groups dropped — only k≥2 shared recipes
-  that actually save memory). These are the compact *recipe*.
+  `self_attn.*` naming; single-model touched-but-unmerged groups included, so
+  each spec is the full per-tensor recipe — the savings model itself counts
+  only k≥2 shared groups). These are the compact *recipe*.
 Intermediates: `runs/<run>/{profiler,clustering,micr,finaleval}/`. `collect` also
 copies reportables into `results/<set>/` and profiles into `results/profiler/`.
 
@@ -152,6 +145,28 @@ cutoff and writes the merged safetensors to `variants/<run>/<point>_<model>/`.
 - deepseek2 / qwen25_2: ~40–60 min each · llama5 from scratch: ~90–130 min on
   5 GPUs · qwen32b3: ~60–90 min · llama5_deepseek2 (profiles reused):
   ~40–60 min · rendering the panels: seconds (no GPU).
+
+Per-model breakdown (profiling evaluates one perturbed variant per
+(layer, group) cell on split P; MICR merge-and-evaluates one accepted step at
+a time on split M):
+
+| model | task | profiling | MICR | MICR steps |
+|---|---|---:|---:|---:|
+| deepseek-coder-7b-instruct-v1.5 | humaneval | 59.5m | 21.5m | 16 |
+| deepseek-math-7b-instruct | gsm8k-cot | 56.7m | 22.5m | 16 |
+| Llama-3.1-8B-Instruct-multi-truth-judge | truthfulqa_mc2 | 28.8m | 35.5m | 53 |
+| Llama-3.1-8B-UltraMedical | medqa (1-shot) | 26.8m | 18.0m | 39 |
+| Llama-3.1-Hawkish-8B | mmlu_econometrics | 5.8m | 8.6m | 26 |
+| Llama-SafetyGuard-Content-Binary | sst2 | 6.3m | 15.5m | 49 |
+| calme-2.3-legalkit-8b | mmlu_professional_law | 22.0m | 24.5m | 43 |
+| Light-IF-32B | tinyMMLU | 3.6h | 85.9m | 130 |
+| MedGo | medqa | 3.2h | 82.9m | 128 |
+| T-pro-it-2.0 | m_mmlu_ru | 2.1h | 107.9m | 130 |
+
+At 8B, profiling and MICR are roughly balanced (light tasks profile in ~6 min,
+generative/MC tasks in 20–30 min); at 32B, profiling dominates. Runs that
+reuse profiles (e.g. the joint `llama5_deepseek2` run) skip profiling
+entirely — MICR only, 9.5–37.7 min per model.
 
 ## Profiles: reuse vs from-scratch (`--profiles`)
 Per-model, set-independent. `redo` = re-sweep every model from scratch;
@@ -177,4 +192,4 @@ docker run --rm --user "$(id -u):$(id -g)" -e USER="$(id -un)" -e HOME=/tmp \
   merge-tools:reference python accuracy_memory_figures.py
 # -> plots/figures/{3-Qwen-32B,5-llama,7-5-llama-2-DS,12-model}.pdf
 ```
-Config→panel map and provenance are in `plots/README.md`.
+Config→panel map and data sources are in `plots/README.md`.

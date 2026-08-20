@@ -26,7 +26,11 @@ P99 TTFT, output token throughput). `plots/` has the rendered llama-pair panels.
 `run_offload_experiment.sh` re-runs any configuration; the recorded parameters
 are baked in as defaults (max_model_len 4096, max_num_seqs 250, 100 prompts,
 random 100-in/900-out, `--ignore-eos`). Rates: llama {2,5,7,10,15,20}, qwen3
-{1,2,5,10}. The recorded runs used stock vLLM 0.11.0 on H200s emulating the
-A100 budgets via `--kv-cache-memory-bytes`; the offload penalty is visible
+{1,2,5,10}.
+
+The recorded runs used stock vLLM 0.11.0 on H200 hosts, emulating the A100
+budgets via `--kv-cache-memory-bytes`. The offload penalty is visible
 directly in the bench logs (e.g. Qwen3 @ 14 GB offload, RPS 1: median TTFT
-732 ms vs sub-100 ms unoffloaded).
+732 ms vs sub-100 ms unoffloaded). The recorded llama runs served the
+`fin-llama3.1-8b` checkpoint — a Llama-3.1-8B fine-tune, so the memory
+footprint and offload volume match the paper's pair.

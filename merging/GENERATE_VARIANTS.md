@@ -53,7 +53,7 @@ dock python micr/run_eval.py \
 
 ## All models at an operating point (B or C), in one pass
 ```bash
-CODE=/path/to/artifacts_worktree; cd "$CODE"
+CODE=/path/to/this/repo; cd "$CODE"
 RUN=llama5; RS=llama5; SET=llama5; POINT=B; SCALING=off   # adjust per run-set
 
 # cutoff for this point, read from report.csv:
@@ -92,12 +92,11 @@ per-model composition: reproduce each atom (`5llama+ds`, `2qwen`, `3qwen32b`) at
 its own per-model cutoffs (the `Cpm` recipe below already lands fig5d at 37.7% ≈
 paper 38%). See `results/FIGURE_COMPOSITIONS.md`.
 
-For a 32B run-set (`qwen32b3`) use `micr/run_eval.py` directly on a 32B-capable
-card (`--gpu_ids 0`); each 62 GB model needs a working copy, so run them **one
-at a time** (`/tmp` fills otherwise). Do **not** use `run_eval_32b.py` — its CLI
-lacks the replay flags. `run_eval.py` replay now reorders blocks to the recorded
-`steps.csv` order, so the 32B plans align (the B1 fix; earlier 32B replays
-aborted with "misaligned plan").
+For a 32B run-set (`qwen32b3`) run the replay on a 32B-capable card
+(`--gpu_ids 0`); each 62 GB model needs a working copy, so run them **one at a
+time** (`/tmp` fills otherwise). `micr/run_eval_32b.py` accepts the same replay
+flags (it delegates to `run_eval.py`); replay reorders blocks to the recorded
+`steps.csv` order, so the 32B plans align.
 
 ## Per-model points (`Bpm` / `Cpm` / `Kpm`), each model at its own cutoff
 Same as above but read the cutoff **per model** from its `<model>__cutoff`
@@ -120,6 +119,27 @@ done
 The per-model cutoffs decouple a fragile member from a robust one (e.g. in the
 cross pool llama→c55 while deepseek-coder→c14), which is what recovers the
 savings; see `results/VARIANT_SUGGESTIONS.md` for each set's chosen cutoffs.
+
+## Rebuilding the recorded reference variants
+
+The merged variants are too large to ship (tens of GB per pool), so the
+artifact commits the recipes, not the weights — replay recreates them
+byte-identically. The variants behind the recorded serving runs
+(`../serving/results/*_variants/`) and the full-set scores
+(`results/full_set_scores.csv`) are reproducible with the loops above and
+these parameters (cutoffs read from the named `report.csv` at point `Cpm`
+unless stated):
+
+| variant set | models | run / run-set (`steps.csv`) | cutoffs from | `--scaling` |
+|---|---|---|---|---|
+| 5-Llama serving (`fig6d`) | 5× Llama | `llama5` / `llama5` | `results/fig6d/report.csv` | off |
+| 2-DeepSeek serving (`fig6a`) | 2× DeepSeek | `deepseek2` / `deepseek2` | `results/fig6a/report.csv` | **off** — unscaled replay makes shared tensors byte-identical so serving dedup engages (scores match the scaled build; see `full_set_scores.csv` notes) |
+| 2-Qwen serving (`fig6b`) | 2× Qwen2.5 | `qwen25_2` / `qwen25_2` | `results/fig6b/report.csv` | off — same reason |
+| cross-family members (7/9-model pools) | DeepSeek + Qwen2.5 | their base runs as above | `results/fig6{e,f}/report.csv` | **on** — per-member scaled-baked weights (the `.npz` sidecar is the designed hand-off) |
+| fig5a full-set evidence | 3× Qwen3-32B | `qwen32b3` / `qwen32b3` | global `--replay_cutoff 94 --replay_cutoff_mode step_idx` | off |
+
+Drop `--no_eval` on any of these to also reproduce the full-set score recorded
+in `results/full_set_scores.csv` for that model.
 
 ## Notes
 - **Point A** is the unmerged reference (cutoff −1, no merges) — there is no

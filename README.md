@@ -1,14 +1,18 @@
 # SANDHI
 
 Code for the SOSP 2026 paper **"SANDHI: Fine-Grained Merging for Memory
-Efficient Multi-Model Serving"**.
+Efficient Multi-Model Serving"**. Changes made in response to artifact
+evaluation are summarized in [CHANGES.md](CHANGES.md).
 
 SANDHI serves a pool of fine-tuned LLMs in less GPU memory by selectively
 merging per-layer attention/MLP projections across models and deduplicating
 the merged tensors at serving time. Across pools of 2–12 models this frees
-26.7%–49.8% of weight memory while slightly improving average task accuracy,
-and the freed memory expands KV-cache capacity — up to 2.93× higher throughput
-and 1052× lower P95 TTFT than independent serving.
+26.7%–48.2% of weight memory while preserving full-dataset task accuracy
+within a ≤2% budget, and the freed memory expands KV-cache capacity — up to
+2.93× higher throughput and 1052× lower P95 TTFT than independent serving.
+(The 3× Qwen3-32B operating point is selected on full-dataset accuracy —
+see `merging/README.md` § Recorded references; 48.2% is the artifact's
+figure for the paper's 92.6 GB operating point.)
 
 ## Layout
 
@@ -33,7 +37,7 @@ Both parts run in prebuilt Docker images:
 
 ## Setup
 
-We use NVIDIA H200 GPUs (144 GB HBM) unless stated otherwise. Machines are
+We use NVIDIA H200 GPUs (141 GB HBM) unless stated otherwise. Machines are
 equipped with AMD EPYC processors, connected via NVLink where applicable, and
 run Ubuntu 22.04 with CUDA 12.6. Tensor-parallel degree is set per experiment
 according to the compute and memory requirements of multi-model serving.
@@ -91,7 +95,7 @@ docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp \
 python scripts/run_figures.py --run-name r1 --sets 5b --gpus auto
 ```
 
-Sets: `5a`–`5d` and `6a`–`6e`. Results land in
+Sets: `5a`–`5d` and `6a`–`6f`. Results land in
 `merging/runs/<run>/analysis/<set>/` (`report.csv`, `pareto.png`, operating
 points). Baselines: `merging/BASELINES.md`.
 
@@ -101,6 +105,9 @@ points). Baselines: `merging/BASELINES.md`.
 ```bash
 bash run_all.sh --config <scenario>_config.sh --run-base-dir /vllm-workspace/<out>
 ```
+
+`serving/paper_plots/` renders the Figure 6 panels in the paper's style from
+the recorded (or your own) results.
 
 ## Other figures (7–12) and §5.9 ablations
 
@@ -113,6 +120,37 @@ bash run_all.sh --config <scenario>_config.sh --run-base-dir /vllm-workspace/<ou
 | Fig 11 | quantized models | `merging/micr/run_eval_quantized.py` |
 | Fig 12 | Mixture-of-Experts | out of scope for this artifact (no harness shipped) |
 | §5.9 | layer-level vs component-level; profiler CAR | recorded layer-level runs in `merging/clustering/candidates/{7b_llamas,6c_deepseek}_standardized_layer_level/`; component selection in `merging/micr/top_k_experiment.py` |
+
+## Dependencies
+
+- **Python packages** — installable with pip. `merging/requirements.txt` is a
+  pip-freeze lockfile of the reference environment (Python 3.12; install with
+  `pip install --no-deps -r requirements.txt`); `merging/requirements-native.txt`
+  is the minimal normally-installable set. The Docker images below ship both
+  environments preinstalled, so no manual installation is needed.
+- **OS-level dependencies** (CUDA 12.6 stack, vLLM builds, and
+  [kvcached](https://github.com/ovg-project/kvcached) v0.1.3 — the elastic
+  KV-cache allocator both serving arms run with) are contained in the two
+  prebuilt Docker images, pinned by digest in `merging/README.md` and
+  `serving/README.md` — pull them as shown there; no image build is needed or
+  expected. All recorded reference results in this repository were produced
+  with these exact images. Their sources are
+  [`ikhyunAn/merge-tools-docker`](https://github.com/ikhyunAn/merge-tools-docker)
+  (merging) and the SANDHI vLLM fork
+  ([`nandanmeda1999/vllm_merged_model`](https://github.com/nandanmeda1999/vllm_merged_model))
+  (serving). Host requirements: Docker with the NVIDIA container runtime and
+  NVIDIA GPUs.
+- **Exotic dependencies** are downloaded and built automatically:
+  model weights and datasets resolve from Hugging Face into a repo-local cache
+  on first use; `tinyBenchmarks` installs from its git URL (noted in
+  `requirements.txt`); `mergekit` (Figure 5 full-merge baseline only) installs
+  with `pip install mergekit` (`merging/BASELINES.md`).
+- **Gated dependencies** — every model used by the paper's scenarios is
+  ungated. The only gated repo is `meta-llama/Llama-3.1-8B`, needed solely as
+  the base for the LoRA baseline: accept the Meta Llama 3.1 license on Hugging
+  Face and authenticate with `HF_TOKEN` (`merging/BASELINES.md`). Without
+  access, the shipped precomputed LoRA results (`merging/plots/data/lora/`)
+  reproduce that baseline's figures.
 
 ## License
 

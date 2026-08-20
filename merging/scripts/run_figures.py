@@ -1044,8 +1044,7 @@ def main():
                          "Scale to 2 for vLLM/generative 32B tasks that reserve memory at "
                          "boot (e.g. ifeval).")
     ap.add_argument("--hf-home", default=None,
-                    help="HF cache dir. Precedence: this flag > HF_HOME env > <repo>/hf_cache. "
-                         "On this cluster: /scratch/shared_dir/hf_cache (shared, has all models).")
+                    help="HF cache dir. Precedence: this flag > HF_HOME env > <repo>/hf_cache.")
     ap.add_argument("--dry-run", action="store_true", help="Print every command without executing")
     ap.add_argument("--profiles", choices=["ask", "reuse", "redo"], default="ask",
                     help="When a reusable profile CSV already exists: 'ask' prompts "
@@ -1100,15 +1099,11 @@ def main():
             ap.error(f"unknown stage {s}; choose from {list(STAGES)}")
 
     # HF cache precedence: --hf-home > HF_HOME env > <repo>/hf_cache (self-contained
-    # default so a fresh clone needs no machine-specific paths). On this cluster pass
-    # HF_HOME=/scratch/shared_dir/hf_cache to reuse the shared team cache, which
-    # already holds all 12 models and most datasets.
+    # default so a fresh clone needs no machine-specific paths).
     # The reference image bakes HF_HOME=/cache/huggingface, which is root-owned
-    # AND ephemeral under --rm (anything downloaded there vanishes when the
-    # container exits). So we IGNORE that baked default and always use the
-    # persistent, writable repo-local <repo>/hf_cache -- identical behavior as
-    # root or non-root, fully self-contained, no /scratch mount. A DELIBERATE
-    # HF_HOME (e.g. a shared cluster cache) or --hf-home is still honored.
+    # and ephemeral under --rm, so that baked default is ignored in favor of the
+    # persistent, writable repo-local <repo>/hf_cache. A deliberate HF_HOME
+    # (e.g. a shared cluster cache) or --hf-home is still honored.
     if args.hf_home:
         os.environ["HF_HOME"] = args.hf_home
     elif os.environ.get("HF_HOME", "").rstrip("/") in ("", "/cache", "/cache/huggingface"):

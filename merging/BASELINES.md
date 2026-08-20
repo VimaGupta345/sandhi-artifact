@@ -39,7 +39,7 @@ to per-domain adapters (`anjohn0077/NEXS-<domain>-lora`, + six Qwen3-32B ones).
 `manifest.json` maps domain → source model → adapter repo → benchmark, and that
 repo's **README is the full serving/eval guide**. Essentials (Llama family):
 ```bash
-# fetch adapters (or use the cluster's /scratch/shared_dir/lora/... sanitized copies):
+# fetch adapters:
 for d in finance legal medical toxicity truthfulness; do
   hf download "anjohn0077/NEXS-${d}-lora" --local-dir "./adapters/${d}"; done
 

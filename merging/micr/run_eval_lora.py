@@ -52,7 +52,7 @@ from merge_tools.micr.baselines import get_baseline  # type: ignore
 # Constants
 # HF repo id resolves via HF_HOME anywhere; override with the env var.
 BASE_MODEL_PATH = os.environ.get("MICR_LORA_BASE_MODEL", "meta-llama/Llama-3.1-8B")
-ADAPTER_ROOT = os.environ.get("MICR_LORA_ADAPTER_ROOT", "/scratch/shared_dir/lora/llama")
+ADAPTER_ROOT = os.environ.get("MICR_LORA_ADAPTER_ROOT", "./lora_adapters")
 
 # Mapping from CSV Label -> Adapter Directory Name
 LABEL_TO_ADAPTER_DIR = {

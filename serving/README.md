@@ -4,16 +4,18 @@ This directory reproduces **Figure 6** of the paper: token **throughput** (top)
 and **P95 TTFT** (bottom) across deployment configurations, comparing
 independent serving (*baseline*) against SANDHI's deduplicated serving
 (*sandhi*). SANDHI's memory savings expand KV-cache capacity, delaying
-saturation and enabling higher throughput at increased load. Headline results:
-in the 9-model scenario, DeepSeek-7B (480 KB/token KV) shows up to **2.93×
-throughput** and **1052× P95 TTFT** improvement; Qwen-2.5-7B (56 KB/token)
-shows **2.11×** and **564×** respectively.
+saturation and enabling higher throughput at increased load. Headline results
+(paper §5.3): in the 9-model scenario, DeepSeek-7B (480 KB/token KV) shows up
+to **2.93× throughput** and **1052× P95 TTFT** improvement, Llama-3.1-8B
+(128 KB/token) **2.11×** and **564×**, and Qwen-2.5-7B (56 KB/token) **1.72×**
+and **~300×**. (The paper's Figure 6 caption misattributes the Llama numbers
+to Qwen; §5.3's text has the correct per-family assignment used here.)
 
 ## Contents
 
 | path | what it is |
 |---|---|
-| `sandhi_scripts/` | the benchmark harness (from the SANDHI vLLM fork, see *Provenance*) |
+| `sandhi_scripts/` | the benchmark harness |
 | `sandhi_scripts/run_all.sh` | one-command driver: starts the model servers (baseline, then sandhi), runs all load sweeps, parses logs, renders plots |
 | `sandhi_scripts/*_config.sh` | one config per deployment scenario (see table below) |
 | `sandhi_scripts/parse_and_plot_results.py` | log parser + plot renderer (throughput and P95 TTFT vs request rate, baseline vs sandhi) |
@@ -21,18 +23,12 @@ shows **2.11×** and **564×** respectively.
 | `specs/` | one merge spec per scenario, emitted by the merging pipeline (see *Merge specs*) |
 | `specs/convert_spec.py` | normalizes legacy merging-side spec naming into the serving spec format |
 
-## Provenance
-
-`sandhi_scripts/` originates from the SANDHI vLLM fork:
-<https://github.com/nandanmeda1999/vllm_merged_model>, branch
-`users/nmeda6/shared-components`, commit
-`a90cc51e9e19b16172fc28090ba1b0189b50427b`, with artifact-side fixes applied
-here (pool aligned to Table 2, per-scenario spec filenames, and the sandhi-mode
-spec-coverage guard in `server_utils.sh`). That fork (a vLLM derivative,
-Apache-2.0) contains the SANDHI serving stack itself — the
-`--shared-layers-ptrs-path` / `--shared-layers-spec-path` server flags used
-below are implemented there. The prebuilt runtime ships as a Docker image (next
-section), so there is no need to build the fork.
+The SANDHI serving stack itself — the `--shared-layers-ptrs-path` /
+`--shared-layers-spec-path` server flags used below — is implemented in the
+SANDHI vLLM fork (<https://github.com/nandanmeda1999/vllm_merged_model>, a
+vLLM derivative, Apache-2.0), from which `sandhi_scripts/` originates. The
+prebuilt runtime ships as a Docker image (below), so there is no need to build
+the fork.
 
 ## Requirements
 
@@ -60,8 +56,8 @@ section), so there is no need to build the fork.
 
    Pin by digest for stability:
    `nandanmeda1999/sandhi-inference@sha256:3e5c79604bbf18ae48f9d7668971d9953fe34b012267eff721a56520f8605f9f`.
-   The image contains the SANDHI vLLM build (`0.11.1.dev14+gf0dd2fcb6`, from
-   the fork/commit above) and **[kvcached](https://github.com/ovg-project/kvcached)
+   The image contains the SANDHI vLLM build (`0.11.1.dev14+gf0dd2fcb6`, built
+   from the fork above) and **[kvcached](https://github.com/ovg-project/kvcached)
    v0.1.3**, an elastic GPU-virtual-memory KV-cache allocator. The harness runs
    **both arms — baseline and sandhi — with kvcached enabled**
    (`ENABLE_KVCACHED=true`, `KVCACHED_AUTOPATCH=1` in `run_all.sh`), so the
@@ -131,12 +127,9 @@ via `docker exec -it sandhi_eval /bin/bash`.
 | `llama-qwen-ds_config.sh` | 9 models: 5× Llama + 2× Qwen + 2× DeepSeek | `fig6e` | 2 (TP=2) | constrained | 12 GiB | `llama_qwen_ds_spec.json` |
 | `template_config.sh` | template for new pools | — | — | — | — | — |
 
-The pools use exactly the models the merging pipeline evaluates (Table 2 of the
-paper). Earlier revisions of this harness served two models the pipeline never
-profiled (`TsinghuaC3I/Llama-3-8B-UltraMedical`, `us4/fin-llama3.1-8b`); the
-configs were reconciled to the Table 2 pool (`Llama-3.1-8B-UltraMedical`,
-`Llama-3.1-Hawkish-8B`) so that every serving spec is a pipeline output. The
-*emulated budget* column is the paper's deployment size for each scenario
+The pools use exactly the models the merging pipeline evaluates (Table 2 of
+the paper), so every serving spec is a pipeline output. The *emulated budget*
+column is the paper's deployment size for each scenario
 (§5.3); the ballast pins enough of an H200's 141.6 GiB to leave that budget
 free, so the improvement dynamics depend on the deployment budget, not on the
 physical card. Note the harness pays a real per-server overhead beyond weights
@@ -151,9 +144,13 @@ have; scale it to your GPU size so that the *free* memory matches the intended
 scenario. Request rates, prompt counts, and input/output lengths per benchmark
 target are set in each config.
 
+> **Note — Figure 6(b) (2× Qwen2.5).** The Qwen2.5 pool is under
+> investigation; please skip this scenario for now. All other scenarios
+> (6a, 6c–6f) replicate as documented above.
+
 Approximate wall-clock per scenario: dominated by model downloads on first run;
 the sweeps themselves are minutes per request rate per target
-(`NUM_PROMPTS × rates × targets × 2 modes`). <!-- TODO(user): fill measured runtimes -->
+(`NUM_PROMPTS × rates × targets × 2 modes`).
 
 ## Merge specs
 
@@ -186,18 +183,22 @@ arm the loader deduplicates each spec group by mapping every member onto the
 owner's tensor. Throughput/TTFT depend only on this sharing structure, not on
 tensor values — but to measure the deduplicated deployment running the *exact
 merged weights Figure 5 validates*, materialize the variants with the merging
-pipeline's replay (`../merging/GENERATE_VARIANTS.md`) and define
-`MODELS_SANDHI` in the scenario config (same ports, variant paths; see the
-commented example in `llama5_config.sh`). The shared tensors of variants
-replayed to the same cutoff are byte-identical by construction, so dedup
-engages on the merged values themselves. `results/llama5_variants/` records
-this configuration for the 5-Llama pool: ratios are statistically identical to
-the owner-tensor run (7.1× vs 7.1× throughput). Cross-family pools merge with
-per-member scaling, which this serving stack does not apply at runtime — for
-those, the recorded evidence is the owner-tensor configuration, and the merged
-weights' accuracy comes from the pipeline (the `*.scaling_factors.npz`
-sidecars next to each operating point are the designed hand-off for
-scaled dedup serving).
+pipeline's replay (`../merging/GENERATE_VARIANTS.md` — the merged models are
+too large to ship, so replay recreates them byte-identically from the
+recorded merge trajectories; § *Rebuilding the recorded reference variants*
+there gives the exact parameters for every recorded set) and define
+`MODELS_SANDHI` in the scenario config: an array parallel to `MODELS` (same
+ports, variant paths) that any scenario config may declare — the harness
+(`server_utils.sh`, `benchmark.sh`) serves it in the sandhi arm only. A
+commented example is in `llama5_config.sh`; point the paths at the replay's
+output directories. Same-pretrain variants replayed to the same cutoff have
+byte-identical shared tensors by construction, so dedup engages on the merged
+values themselves; cross-pretrain members are replayed with the per-member
+scaling **baked into the weights** (the `*.scaling_factors.npz` sidecar values
+applied at replay), so no runtime scaling support is needed. The recorded
+`results/*_variants/` runs serve these builds for all five scenarios;
+`results/llama5_variants/` shows ratios statistically identical to the
+owner-tensor run (7.1× vs 7.1× throughput).
 
 ## Results
 
@@ -208,17 +209,25 @@ The `results/*_variants/` runs are the reference measurements: their sandhi
 arm serves the **materialized merged variants** (replayed from the recorded
 MICR journals via `../merging/GENERATE_VARIANTS.md`) — byte-identical shared
 tensors for the unscaled pools, per-member scaled-baked weights for
-cross-pretrain members. Full-set accuracy for every pool at its served
-operating point is recorded in `../merging/results/full_set_scores.csv`:
-merge gating uses the M-split, but all reported accuracy is full-set vs a
-full-set baseline under a matched protocol.
+cross-pretrain members. Accuracy is the merging pipeline's result — full-set
+scores for every model with an accuracy figure are in
+`../merging/results/full_set_scores.csv` — while this harness measures
+throughput and TTFT.
 
 After a run of your own, `<result_dir>/results/` contains:
 
 - `plots/*.png` — per benchmark target: **token throughput vs request rate**
-  and **P95 TTFT vs request rate**, baseline vs sandhi — the Figure 6 panels;
-- a parsed metrics table (P95 TTFT ms, P95 ITL ms, output token throughput
-  tok/s per mode × target × request rate) extracted from the benchmark logs.
+  and **P95 TTFT vs request rate**, baseline vs sandhi — the Figure 6 panels.
+
+The per-rate metrics themselves (P95 TTFT, output token throughput per mode ×
+target × request rate) are in the raw benchmark logs; to extract them into a
+single CSV, run `paper_plots/parse_bench_logs.py` against the results
+directory.
+
+To render the panels **in the paper's own style** (annotated log-scale bars,
+paper fonts/colors) from any recorded or fresh results directory, see
+[`paper_plots/`](paper_plots/) — two commands: `parse_bench_logs.py` then
+`performance_plots.py`.
 
 Expected outcome: sandhi mode sustains higher request rates before saturation —
 throughput and P95 TTFT curves separate sharply from baseline at the upper
