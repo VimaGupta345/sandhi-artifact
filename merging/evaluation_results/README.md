@@ -5,15 +5,37 @@ evaluations behind `../results/full_set_scores.csv`. Each file's `config`
 block identifies exactly what was evaluated: `config.model_args.pretrained`
 is the checkpoint path (an unmerged model for baseline rows, a
 `variants/...` replay output for merged rows), and `results.<task>` holds the
-score the CSV cites. Files are timestamped; where several outputs exist for
-one task, the CSV cites the run at the recorded operating point — match via
-the checkpoint path in `config`.
+score the CSV cites.
 
-Known gaps, disclosed: this directory was brought under version control after
-some runs had already completed, so a few earlier outputs were overwritten by
-later runs (e.g. the deepseek-math gsm8k baseline) and the tinyMMLU output
-behind Light-IF-32B's merged score is not present. The affected scores are
-reproducible with the commands below.
+## File → CSV row map
+
+| CSV row | side | raw output | score |
+|---|---|---|---|
+| UltraMedical / medqa | baseline | `medqa_4options_fs_…T07-18-11` | 62.07 |
+| UltraMedical / medqa | merged (fig6d_Cpm) | `medqa_4options_fs_…T07-18-53` | 61.76 |
+| Multi-Truth / truthfulqa_mc2 | baseline | `truthfulqa_mc2_…T08-51-14` | 73.07 |
+| SafetyGuard / sst2 | baseline | `sst2_…T08-51-47` | 88.99 |
+| Calme-LegalKit / mmlu-prof-law | baseline | `mmlu_professional_law_…T08-52-42` | 49.48 |
+| Hawkish / mmlu-econometrics | baseline | `mmlu_econometrics_…T08-53-12` | 55.26 |
+| DS-Coder / humaneval | baseline | `humaneval_…T06-19-22` | 69.51 |
+| DS-Coder / humaneval | merged (unscaled) | `humaneval_…T06-30-21` | 67.68 |
+| DS-Coder / humaneval | merged (scaled) | `humaneval_…T06-35-21` | 67.68 |
+| DS-Math / gsm8k-cot | baseline | `../vendor/math-evaluation-harness/output/gsm8k/` (acc 81.3) | 81.30 |
+
+The remaining `humaneval_*` files (scores 82.32, 79.88, 77.44) are the
+Qwen2.5-Coder evaluations; that pool is under investigation and currently has
+no CSV row (see `../README.md`).
+
+## Rows without a shipped raw output
+
+The merged-side outputs for the four Llama models other than UltraMedical
+(90.71 / 73.10 / 49.54 / 53.51), the merged DS-Math score (79.30), and both
+sides of the three Qwen3-32B rows (the math harness and the 32B evals write
+to fixed paths, so later runs replaced these files) are reproducible with the
+commands below; the scores are recorded in the CSV. Note the vendored math
+harness writes to a fixed path (`vendor/math-evaluation-harness/output/`), so
+re-running gsm8k overwrites the shipped DS-Math baseline output — restore it
+with `git checkout -- merging/vendor/math-evaluation-harness/output/gsm8k/`.
 
 ## Reproducing a merged-side score
 
