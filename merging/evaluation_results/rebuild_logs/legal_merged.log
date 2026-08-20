@@ -1,0 +1,25 @@
+=== legal_merged : mmlu_professional_law on variants/fig6d_Cpm/calme-2.3-legalkit-8b  2026-08-20T13:24:03+00:00
+INFO:lm_eval.__main__:Selected Tasks: ['mmlu_professional_law']
+INFO:lm_eval.evaluator:Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+INFO:lm_eval.evaluator:Initializing hf model, with arguments: {'pretrained': '/workspace/merge_tools/variants/fig6d_Cpm/calme-2.3-legalkit-8b', 'dtype':
+        'bfloat16'}
+INFO:lm_eval.models.huggingface:Using device 'cuda'
+INFO:lm_eval.models.huggingface:Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:05<00:15,  5.16s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:10<00:10,  5.24s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:15<00:05,  5.17s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:16<00:00,  3.60s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:16<00:00,  4.18s/it]
+INFO:lm_eval.tasks:Selected tasks:
+INFO:lm_eval.tasks:Task: mmlu_professional_law (mmlu/default/mmlu_professional_law.yaml)
+INFO:lm_eval.api.task:Building contexts for mmlu_professional_law on rank 0...
+  0%|          | 0/1534 [00:00<?, ?it/s]  7%|▋         | 111/1534 [00:00<00:01, 1103.90it/s] 15%|█▍        | 224/1534 [00:00<00:01, 1115.15it/s] 22%|██▏       | 336/1534 [00:00<00:01, 1115.86it/s] 29%|██▉       | 449/1534 [00:00<00:00, 1120.10it/s] 37%|███▋      | 562/1534 [00:00<00:00, 1121.35it/s] 44%|████▍     | 676/1534 [00:00<00:00, 1124.40it/s] 51%|█████▏    | 789/1534 [00:00<00:00, 1124.27it/s] 59%|█████▉    | 902/1534 [00:00<00:00, 1125.47it/s] 66%|██████▌   | 1015/1534 [00:00<00:00, 1124.15it/s] 74%|███████▎  | 1129/1534 [00:01<00:00, 1126.95it/s] 81%|████████  | 1243/1534 [00:01<00:00, 1128.23it/s] 88%|████████▊ | 1357/1534 [00:01<00:00, 1129.74it/s] 96%|█████████▌| 1472/1534 [00:01<00:00, 1133.08it/s]100%|██████████| 1534/1534 [00:01<00:00, 1125.86it/s]
+INFO:lm_eval.evaluator:Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/6136 [00:00<?, ?it/s]Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+Running loglikelihood requests:   0%|          | 1/6136 [00:09<16:29:35,  9.68s/it]Running loglikelihood requests:   4%|▍         | 257/6136 [00:10<02:56, 33.26it/s] Running loglikelihood requests:   8%|▊         | 513/6136 [00:11<01:20, 69.86it/s]Running loglikelihood requests:  13%|█▎        | 769/6136 [00:12<00:48, 109.75it/s]Running loglikelihood requests:  17%|█▋        | 1025/6136 [00:12<00:33, 150.94it/s]Running loglikelihood requests:  21%|██        | 1281/6136 [00:13<00:25, 192.94it/s]Running loglikelihood requests:  25%|██▌       | 1537/6136 [00:14<00:19, 232.86it/s]Running loglikelihood requests:  29%|██▉       | 1793/6136 [00:14<00:16, 270.77it/s]Running loglikelihood requests:  33%|███▎      | 2049/6136 [00:15<00:13, 305.94it/s]Running loglikelihood requests:  38%|███▊      | 2305/6136 [00:16<00:11, 338.33it/s]Running loglikelihood requests:  42%|████▏     | 2561/6136 [00:16<00:09, 366.25it/s]Running loglikelihood requests:  46%|████▌     | 2817/6136 [00:17<00:08, 392.84it/s]Running loglikelihood requests:  50%|█████     | 3073/6136 [00:17<00:07, 418.21it/s]Running loglikelihood requests:  54%|█████▍    | 3329/6136 [00:18<00:06, 442.46it/s]Running loglikelihood requests:  58%|█████▊    | 3585/6136 [00:18<00:05, 461.81it/s]Running loglikelihood requests:  63%|██████▎   | 3841/6136 [00:19<00:04, 484.39it/s]Running loglikelihood requests:  67%|██████▋   | 4097/6136 [00:19<00:04, 503.65it/s]Running loglikelihood requests:  71%|███████   | 4353/6136 [00:20<00:03, 523.70it/s]Running loglikelihood requests:  75%|███████▌  | 4609/6136 [00:20<00:02, 546.79it/s]Running loglikelihood requests:  79%|███████▉  | 4865/6136 [00:20<00:02, 567.49it/s]Running loglikelihood requests:  83%|████████▎ | 5121/6136 [00:21<00:01, 593.19it/s]Running loglikelihood requests:  88%|████████▊ | 5377/6136 [00:21<00:01, 620.48it/s]Running loglikelihood requests:  92%|█████████▏| 5633/6136 [00:21<00:00, 660.14it/s]Running loglikelihood requests:  96%|█████████▌| 5889/6136 [00:22<00:00, 743.67it/s]Running loglikelihood requests: 100%|██████████| 6136/6136 [00:22<00:00, 275.74it/s]
+fatal: not a git repository (or any parent up to mount point /workspace)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+INFO:lm_eval.loggers.evaluation_tracker:Saving results aggregated
+hf (pretrained=/workspace/merge_tools/variants/fig6d_Cpm/calme-2.3-legalkit-8b,dtype=bfloat16), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto (64)
+|     Tasks      |Version|Filter|n-shot|Metric|   |Value |   |Stderr|
+|----------------|------:|------|-----:|------|---|-----:|---|-----:|
+|professional_law|      1|none  |     0|acc   |↑  |0.4954|±  |0.0128|
+
+[legal_merged] OK -> mmlu_professional_law_output_2026-08-20T13-25-13.371368.json  2026-08-20T13:25:13+00:00

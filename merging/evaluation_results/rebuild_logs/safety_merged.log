@@ -1,0 +1,27 @@
+=== safety_merged : sst2 on variants/fig6d_Cpm/Llama-SafetyGuard-Content-Binary  2026-08-20T13:23:31+00:00
+INFO:lm_eval.__main__:Selected Tasks: ['sst2']
+INFO:lm_eval.evaluator:Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+INFO:lm_eval.evaluator:Initializing hf model, with arguments: {'pretrained': '/workspace/merge_tools/variants/fig6d_Cpm/Llama-SafetyGuard-Content-Binary', 'dtype':
+        'bfloat16'}
+INFO:lm_eval.models.huggingface:Using device 'cuda'
+INFO:lm_eval.models.huggingface:Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.05it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.10it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.14it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.66it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.40it/s]
+WARNING:lm_eval.api.task:[Task: sst2] metric acc is defined, but aggregation is not. using default aggregation=mean
+WARNING:lm_eval.api.task:[Task: sst2] metric acc is defined, but higher_is_better is not. using default higher_is_better=True
+INFO:lm_eval.tasks:Selected tasks:
+INFO:lm_eval.tasks:Task: sst2 (glue/sst2/default.yaml)
+INFO:lm_eval.api.task:Building contexts for sst2 on rank 0...
+  0%|          | 0/872 [00:00<?, ?it/s] 52%|█████▏    | 455/872 [00:00<00:00, 4547.14it/s]100%|██████████| 872/872 [00:00<00:00, 4558.28it/s]
+INFO:lm_eval.evaluator:Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/1744 [00:00<?, ?it/s]Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+Running loglikelihood requests:   0%|          | 1/1744 [00:01<52:28,  1.81s/it]Running loglikelihood requests:   7%|▋         | 129/1744 [00:01<00:17, 92.27it/s]Running loglikelihood requests:  15%|█▍        | 257/1744 [00:02<00:07, 199.02it/s]Running loglikelihood requests:  22%|██▏       | 385/1744 [00:02<00:04, 317.83it/s]Running loglikelihood requests:  29%|██▉       | 513/1744 [00:02<00:02, 448.12it/s]Running loglikelihood requests:  37%|███▋      | 641/1744 [00:02<00:01, 579.98it/s]Running loglikelihood requests:  44%|████▍     | 769/1744 [00:02<00:01, 708.35it/s]Running loglikelihood requests:  53%|█████▎    | 923/1744 [00:02<00:00, 884.44it/s]Running loglikelihood requests:  66%|██████▌   | 1153/1744 [00:02<00:00, 1037.52it/s]Running loglikelihood requests:  81%|████████  | 1409/1744 [00:02<00:00, 1198.52it/s]Running loglikelihood requests:  95%|█████████▌| 1665/1744 [00:03<00:00, 1410.46it/s]Running loglikelihood requests: 100%|██████████| 1744/1744 [00:03<00:00, 569.79it/s] 
+fatal: not a git repository (or any parent up to mount point /workspace)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+INFO:lm_eval.loggers.evaluation_tracker:Saving results aggregated
+hf (pretrained=/workspace/merge_tools/variants/fig6d_Cpm/Llama-SafetyGuard-Content-Binary,dtype=bfloat16), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto (64)
+|Tasks|Version|Filter|n-shot|Metric|   |Value |   |Stderr|
+|-----|------:|------|-----:|------|---|-----:|---|-----:|
+|sst2 |      1|none  |     0|acc   |↑  |0.9071|±  |0.0098|
+
+[safety_merged] OK -> sst2_output_2026-08-20T13-24-03.886828.json  2026-08-20T13:24:03+00:00

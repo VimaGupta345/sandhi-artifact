@@ -1,0 +1,24 @@
+=== econ_merged : mmlu_econometrics on variants/fig6d_Cpm/Llama-3.1-Hawkish-8B  2026-08-20T13:26:27+00:00
+INFO:lm_eval.__main__:Selected Tasks: ['mmlu_econometrics']
+INFO:lm_eval.evaluator:Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+INFO:lm_eval.evaluator:Initializing hf model, with arguments: {'pretrained': '/workspace/merge_tools/variants/fig6d_Cpm/Llama-3.1-Hawkish-8B', 'dtype': 'bfloat16'}
+INFO:lm_eval.models.huggingface:Using device 'cuda'
+INFO:lm_eval.models.huggingface:Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:05<00:15,  5.16s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:10<00:10,  5.16s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:15<00:05,  5.10s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:16<00:00,  3.57s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:16<00:00,  4.14s/it]
+INFO:lm_eval.tasks:Selected tasks:
+INFO:lm_eval.tasks:Task: mmlu_econometrics (mmlu/default/mmlu_econometrics.yaml)
+INFO:lm_eval.api.task:Building contexts for mmlu_econometrics on rank 0...
+  0%|          | 0/114 [00:00<?, ?it/s] 99%|█████████▉| 113/114 [00:00<00:00, 1125.80it/s]100%|██████████| 114/114 [00:00<00:00, 1123.42it/s]
+INFO:lm_eval.evaluator:Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/456 [00:00<?, ?it/s]Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+Running loglikelihood requests:   0%|          | 1/456 [00:03<23:06,  3.05s/it]Running loglikelihood requests:  56%|█████▋    | 257/456 [00:03<00:01, 111.48it/s]Running loglikelihood requests: 100%|██████████| 456/456 [00:03<00:00, 140.98it/s]
+fatal: not a git repository (or any parent up to mount point /workspace)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+INFO:lm_eval.loggers.evaluation_tracker:Saving results aggregated
+hf (pretrained=/workspace/merge_tools/variants/fig6d_Cpm/Llama-3.1-Hawkish-8B,dtype=bfloat16), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto (64)
+|   Tasks    |Version|Filter|n-shot|Metric|   |Value |   |Stderr|
+|------------|------:|------|-----:|------|---|-----:|---|-----:|
+|econometrics|      1|none  |     0|acc   |↑  |0.5351|±  |0.0469|
+
+[econ_merged] OK -> mmlu_econometrics_output_2026-08-20T13-27-11.902631.json  2026-08-20T13:27:11+00:00

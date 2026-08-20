@@ -21,6 +21,18 @@ score the CSV cites.
 | DS-Coder / humaneval | merged (unscaled) | `humaneval_…T06-30-21` | 67.68 |
 | DS-Coder / humaneval | merged (scaled) | `humaneval_…T06-35-21` | 67.68 |
 | DS-Math / gsm8k-cot | baseline | `../vendor/math-evaluation-harness/output/gsm8k/` (acc 81.3) | 81.30 |
+| DS-Math / gsm8k-cot | merged (scaled) | `gsm8k_cot_dsmath_merged_metrics_…T13-29-09.json` (+ per-sample `.jsonl`) | 79.30 |
+| Multi-Truth / truthfulqa_mc2 | merged (fig6d_Cpm) | `truthfulqa_mc2_…T13-26-27` | 73.10 |
+| SafetyGuard / sst2 | merged (fig6d_Cpm) | `sst2_…T13-24-03` | 90.71 |
+| Calme-LegalKit / mmlu-prof-law | merged (fig6d_Cpm) | `mmlu_professional_law_…T13-25-13` | 49.54 |
+| Hawkish / mmlu-econometrics | merged (fig6d_Cpm) | `mmlu_econometrics_…T13-27-11` | 53.51 |
+| Light-IF-32B / tinyMMLU | baseline | `tinyMMLU_…T13-29-30` | 76.21 |
+| MedGo / medqa | baseline | `medqa_4options_…T13-29-05` | 75.96 |
+| MedGo / medqa | merged (c94) | `medqa_4options_…T13-25-44` | 75.96 |
+| T-pro-it-2.0 / m_mmlu_ru | baseline | `m_mmlu_ru_…T13-32-25` | 76.71 |
+
+Console logs for the regenerated outputs are in `rebuild_logs/`, produced by
+`rebuild_runner.sh` (the same invocations documented below).
 
 The remaining `humaneval_*` files (scores 82.32, 79.88, 77.44) are the
 Qwen2.5-Coder evaluations; that pool is under investigation and currently has
@@ -28,14 +40,13 @@ no CSV row (see `../README.md`).
 
 ## Rows without a shipped raw output
 
-The merged-side outputs for the four Llama models other than UltraMedical
-(90.71 / 73.10 / 49.54 / 53.51), the merged DS-Math score (79.30), and both
-sides of the three Qwen3-32B rows (the math harness and the 32B evals write
-to fixed paths, so later runs replaced these files) are reproducible with the
-commands below; the scores are recorded in the CSV. Note the vendored math
-harness writes to a fixed path (`vendor/math-evaluation-harness/output/`), so
-re-running gsm8k overwrites the shipped DS-Math baseline output — restore it
-with `git checkout -- merging/vendor/math-evaluation-harness/output/gsm8k/`.
+Only the two remaining merged-side scores — Light-IF-32B (79.30) and
+T-pro-it-2.0 (76.58) at cutoff 94 — currently lack a shipped output; they are
+reproducible with the commands below (replay to cutoff 94, then evaluate).
+Note the vendored math harness writes to a fixed path
+(`vendor/math-evaluation-harness/output/`), so re-running gsm8k overwrites
+the shipped DS-Math baseline output — restore it with
+`git checkout -- merging/vendor/math-evaluation-harness/output/gsm8k/`.
 
 ## Reproducing a merged-side score
 
