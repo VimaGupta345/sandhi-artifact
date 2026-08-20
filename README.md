@@ -99,15 +99,34 @@ Sets: `5a`–`5d` and `6a`–`6f`. Results land in
 `merging/runs/<run>/analysis/<set>/` (`report.csv`, `pareto.png`, operating
 points). Baselines: `merging/BASELINES.md`.
 
-**Figure 6 (serving)** — one command per deployment scenario; see
+**Figure 6 (serving)** — one command per deployment scenario; full details in
 [`serving/README.md`](serving/README.md):
 
 ```bash
-bash run_all.sh --config <scenario>_config.sh --run-base-dir /vllm-workspace/<out>
+# start the serving container (1 GPU for single-pool scenarios, 2 for cross-family)
+docker run --rm -it --runtime nvidia --name sandhi_eval --gpus '"device=0,1"' \
+    --ipc=host -p 8000:8000 -v /path/to/hf_cache:/root/.cache/huggingface \
+    --entrypoint /bin/bash sandhi:latest
+
+# from the host: copy in the harness and the merge specs
+docker cp serving/sandhi_scripts/ sandhi_eval:/vllm-workspace/
+docker cp serving/specs/. sandhi_eval:/vllm-workspace/sandhi_scripts/
+
+# inside the container: one command per scenario
+cd /vllm-workspace/sandhi_scripts
+bash run_all.sh --config llama5_config.sh       --run-base-dir /vllm-workspace/llama5_out
+bash run_all.sh --config ds2_40gb_config.sh     --run-base-dir /vllm-workspace/ds2_out
+bash run_all.sh --config llama-qwen_config.sh   --run-base-dir /vllm-workspace/llama_qwen_out
+bash run_all.sh --config llama-qwen-ds_config.sh --run-base-dir /vllm-workspace/llama_qwen_ds_out
+# (qwen2_40gb_config.sh — Figure 6b — is under investigation; skip for now)
+
+# render the paper-style panels from any results directory (host; pandas+matplotlib)
+cd serving/paper_plots
+python parse_bench_logs.py --results-root ../results   # or your run's results dir
+python performance_plots.py                            # -> figures/*.pdf
 ```
 
-`serving/paper_plots/` renders the Figure 6 panels in the paper's style from
-the recorded (or your own) results.
+Recorded reference runs for all scenarios ship in `serving/results/`.
 
 ## Other figures (7–12) and §5.9 ablations
 

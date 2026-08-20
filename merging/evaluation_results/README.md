@@ -48,20 +48,17 @@ file here.
 ## Reproducing a baseline-side score ("registry protocol")
 
 "Registry protocol" means: the model's registry task from
-`../models_download/hf_repos.json`, evaluated on the **full** dataset (no
-`--limit`), temperature 0, with the per-model `apply_chat_template` /
-few-shot settings from that registry entry's `_optional_fields`. Concretely,
-via lm_eval against the unmerged checkpoint, e.g. for UltraMedical
-(1-shot + chat template per its registry entry):
-
-```bash
-lm_eval --model vllm \
-  --model_args pretrained=<path-to-unmerged-model>,dtype=bfloat16,gpu_memory_utilization=0.8 \
-  --tasks medqa_4options --num_fewshot 1 --apply_chat_template \
-  --batch_size auto --output_path merging/evaluation_results/
-```
-
-Models whose registry entry sets no chat template (e.g. MedGo, raw 0-shot)
-drop `--num_fewshot`/`--apply_chat_template`. The merged side of each pair is
-evaluated with the identical invocation, so baseline and merged scores are
-always protocol-matched.
+`../models_download/hf_repos.json`, evaluated on the **full** dataset,
+temperature 0, with the per-model few-shot and `apply_chat_template` settings
+from that registry entry's `_optional_fields`. The faithful reproduction path
+is through the evaluation harness (`micr/eval_harness.py`), which reads the
+registry and applies those settings automatically — including chat templating,
+which the harness applies itself rather than via lm_eval's
+`--apply_chat_template` flag (so the lm_eval output config here shows
+`chat_template: False`; the 1-shot task variant, e.g. `medqa_4options_fs`,
+carries the prompting). Running the replay with evaluation enabled (previous
+section) at cutoff −1 conceptually corresponds to the baseline; in practice
+the shipped baseline files were produced by the same harness invocation used
+for the merged side, so baseline and merged scores are always
+protocol-matched — verify any pair by comparing the two files' `config`
+blocks, which differ only in the checkpoint path.
