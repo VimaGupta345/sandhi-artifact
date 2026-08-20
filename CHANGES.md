@@ -113,3 +113,7 @@ figure to its harness or recorded data and states Fig 12 is out of scope.
 - Correct the Fig 5a per-model annotations and the abstract's savings range.
 - State in §5.1 that both serving arms run with kvcached, and cite the exact
   vLLM versions above.
+- Correct the model name in the Figure 9 description: the recorded offloading
+  runs served `fin-llama3.1-8b` (same Llama-3.1-8B architecture; identical
+  weight footprint and offload volume) — acknowledged in
+  `serving/offloading/README.md`.

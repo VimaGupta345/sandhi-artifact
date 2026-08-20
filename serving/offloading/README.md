@@ -32,3 +32,8 @@ The recorded runs used stock vLLM 0.11.0 on H200 hosts, with the A100
 memory budgets set via `--kv-cache-memory-bytes`. The offload penalty is visible
 directly in the bench logs (e.g. Qwen3 @ 14 GB offload, RPS 1: median TTFT
 732 ms vs sub-100 ms unoffloaded).
+
+Note: the recorded llama runs served `fin-llama3.1-8b`, not the pair named in
+the paper's Figure 9 description. It is a Llama-3.1-8B fine-tune, so the
+weight footprint and offload volume are identical; the model name will be
+corrected in the camera-ready.
