@@ -134,6 +134,9 @@ weights, built with `merging/GENERATE_VARIANTS.md` and enabled via
 `MODELS_SANDHI` (see `serving/README.md` § Serving the exact merged weights);
 both configurations agree within a few percent.
 
+Figures 7–11 and the §5.9 ablations are out of scope for this artifact; its
+reproduction claims cover Figures 5 and 6.
+
 ## Dependencies
 
 - **Python packages** — installable with pip. `merging/requirements.txt` is a
