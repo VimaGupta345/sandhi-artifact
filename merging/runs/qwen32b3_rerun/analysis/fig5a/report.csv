@@ -1,0 +1,8 @@
+point,criterion,cutoff,groups,merging_groups,savings_mb,savings_pct,Light-IF-32B__baseline,Light-IF-32B__score,Light-IF-32B__drop,Light-IF-32B__cutoff,T-pro-it-2.0__baseline,T-pro-it-2.0__score,T-pro-it-2.0__drop,T-pro-it-2.0__cutoff,MedGo__baseline,MedGo__score,MedGo__drop,MedGo__cutoff,mean_drop
+A,unmerged reference,-1,0,0,0.0,0.0,76.0,76.0,0.0,-1,75.2,75.2,0.0,-1,78.12,78.12,0.0,-1,0.0
+B,acc drop <= 1.0%,0,3,3,1572.9,0.8,76.0,76.0,0.0,0,75.2,74.8,0.4,0,78.12,78.12,0.0,0,0.13
+C,acc drop <= 2.0%,52,159,159,76808.2,39.07,76.0,74.0,2.0,52,75.2,75.3,-0.1,52,78.12,76.25,1.87,52,1.26
+Bpm,per-model acc drop <= 1.0%,pm,353,353,50101.0,25.49,76.0,76.0,0.0,129,75.2,74.8,0.4,122,78.12,78.12,0.0,0,0.13
+Cpm,per-model acc drop <= 2.0%,pm,372,372,89611.3,45.59,76.0,76.0,0.0,129,75.2,73.4,1.8,126,78.12,76.25,1.87,52,1.22
+Kpm,"per-model knee (savings/accuracy sweet spot, <=2%)",pm,372,372,89611.3,45.59,76.0,76.0,0.0,129,75.2,73.4,1.8,126,78.12,76.25,1.87,52,1.22
+P,mem savings ~ 49.8%,104,373,373,97853.1,49.78,76.0,76.0,0.0,104,75.2,76.0,-0.8,104,78.12,74.38,3.74,104,0.98

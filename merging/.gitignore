@@ -12,3 +12,9 @@ micr/eval_split_configs/_micr_split_*.py
 
 # derived spec-composition run (recreate: run_figures.py --run-name fig6_specs --sets 6a,6b,6d,6e,6f --stages analysis,collect)
 runs/fig6_specs/
+# materialized merged-variant weights (regenerate via GENERATE_VARIANTS.md replay)
+variants/
+# pipeline scratch working copies
+runs/*/work/
+runs/*/work_replay/
+runs/*/tmp/

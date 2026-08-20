@@ -1,0 +1,14 @@
+
+===== 2026-08-20T03:19:32.356965 =====
+/opt/venv/bin/python /workspace/merge_tools/scripts/build_operating_points.py --pool-config /workspace/merge_tools/runs/qwen32b3_rerun/analysis/pool_fig5a.json --pool fig5a --sweep --per-model --accuracy-metric mean --plot-out /workspace/merge_tools/runs/qwen32b3_rerun/analysis/fig5a/pareto.png --sweep-csv /workspace/merge_tools/runs/qwen32b3_rerun/analysis/fig5a/sweep.csv --paper-mem 49.8
+Wrote outputs to /workspace/merge_tools/runs/qwen32b3_rerun/analysis/fig5a
+  A: cutoff= -1 groups=  0 save=     0MB ( 0.0%) | IF 76.00 (+0.00), pro 75.20 (+0.00), MedGo 78.12 (+0.00)
+  B: cutoff=  0 groups=  3 save=  1573MB ( 0.8%) | IF 76.00 (+0.00), pro 74.80 (+0.40), MedGo 78.12 (+0.00) -> B.jsonl
+  C: cutoff= 52 groups=159 save= 76808MB (39.1%) | IF 74.00 (+2.00), pro 75.30 (-0.10), MedGo 76.25 (+1.87) -> C.jsonl
+  Bpm: cutoff=pm  groups=353 save= 50101MB (25.5%) | IF 76.00 (+0.00), pro 74.80 (+0.40), MedGo 78.12 (+0.00) -> Bpm.jsonl
+  Cpm: cutoff=pm  groups=372 save= 89611MB (45.6%) | IF 76.00 (+0.00), pro 73.40 (+1.80), MedGo 76.25 (+1.87) -> Cpm.jsonl
+  Kpm: cutoff=pm  groups=372 save= 89611MB (45.6%) | IF 76.00 (+0.00), pro 73.40 (+1.80), MedGo 76.25 (+1.87) -> Kpm.jsonl
+  P: cutoff=104 groups=373 save= 97853MB (49.8%) | IF 76.00 (+0.00), pro 76.00 (-0.80), MedGo 74.38 (+3.74) -> P.jsonl
+Swept 130 cutoffs (accuracy metric = mean); 8 on the Pareto frontier.
+  sweep table -> /workspace/merge_tools/runs/qwen32b3_rerun/analysis/fig5a/sweep.csv
+  pareto plot -> /workspace/merge_tools/runs/qwen32b3_rerun/analysis/fig5a/pareto.png

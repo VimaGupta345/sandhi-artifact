@@ -1,0 +1,3 @@
+
+===== 2026-08-19T19:10:02.145377 =====
+/opt/venv/bin/python -m pip install --quiet langdetect immutabledict

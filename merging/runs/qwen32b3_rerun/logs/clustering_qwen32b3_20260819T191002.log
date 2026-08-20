@@ -1,0 +1,49 @@
+
+===== 2026-08-20T00:32:02.762305 =====
+/opt/venv/bin/python /workspace/merge_tools/clustering/clustering.py --select-labels Light-IF-32B T-pro-it-2.0 MedGo --baseline-drop-threshold 5.0 --out-dir /workspace/merge_tools/runs/qwen32b3_rerun/clustering/qwen32b3
+[noise-override] Light-IF-32B: /workspace/merge_tools/runs/qwen32b3_rerun/profiler/gaussian_Light-IF-32B.csv
+[noise-override] T-pro-it-2.0: /workspace/merge_tools/runs/qwen32b3_rerun/profiler/gaussian_T-pro-it-2.0.csv
+[noise-override] MedGo: /workspace/merge_tools/runs/qwen32b3_rerun/profiler/gaussian_MedGo.csv
+Active models: ['Light-IF-32B', 'T-pro-it-2.0', 'MedGo']
+Loading model from /workspace/merge_tools/hf_cache/models/Light-IF-32B on device=cuda (hint=cuda)
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]
+Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.60it/s]
+Computing stats for Light-IF-32B: layers 0..63 (total=64)
+Loading model from /workspace/merge_tools/hf_cache/models/T-pro-it-2.0 on device=cuda (hint=cuda)
+
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]
+Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.39it/s]
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Computing stats for T-pro-it-2.0: layers 0..63 (total=64)
+Loading model from /workspace/merge_tools/hf_cache/models/MedGo on device=cuda (hint=cuda)
+
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]
+Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.52it/s]
+Computing stats for MedGo: layers 0..63 (total=64)
+Computed stats_df rows: 1728
+Skipping attn: missing data for deepseek-math-7b-instruct or deepseek-coder-7b-instruct-v1.5.
+Skipping mlp: missing data for deepseek-math-7b-instruct or deepseek-coder-7b-instruct-v1.5.
+Skipping attn: missing data for deepseek-coder-7b-instruct-v1.5 or Llama-3.1-Hawkish-8B.
+Skipping mlp: missing data for deepseek-coder-7b-instruct-v1.5 or Llama-3.1-Hawkish-8B.
+Skipping attn: missing data for deepseek-math-7b-instruct or Llama-3.1-Hawkish-8B.
+Skipping mlp: missing data for deepseek-math-7b-instruct or Llama-3.1-Hawkish-8B.
+Skipping attn: missing data for Qwen2.5-Math-7B-Instruct or Qwen2.5-Coder-7B-Instruct.
+Skipping mlp: missing data for Qwen2.5-Math-7B-Instruct or Qwen2.5-Coder-7B-Instruct.
+Size after component filtering: 1264
+Unique (component, shape) groups: 7
+Clustered rows: 1264
+Number of merge_candidates_initial groups: 431
+Step 1 candidates (aligned layers only): 431
+Step 2 candidates (unaligned layers): 13
+Rows in second_stage_candidates_df: 104
+Total stage-2 merge candidate groups: 14
+Stage 1 ops rows: 1186
+Stage 2 ops rows: 35
+Wrote 416 rows to /workspace/merge_tools/runs/qwen32b3_rerun/clustering/qwen32b3/ops_step1_Light-IF-32B.csv
+Wrote 410 rows to /workspace/merge_tools/runs/qwen32b3_rerun/clustering/qwen32b3/ops_step1_MedGo.csv
+Wrote 360 rows to /workspace/merge_tools/runs/qwen32b3_rerun/clustering/qwen32b3/ops_step1_T-pro-it-2.0.csv
+Wrote 12 rows to /workspace/merge_tools/runs/qwen32b3_rerun/clustering/qwen32b3/ops_step2_Light-IF-32B.csv
+Wrote 12 rows to /workspace/merge_tools/runs/qwen32b3_rerun/clustering/qwen32b3/ops_step2_MedGo.csv
+Wrote 11 rows to /workspace/merge_tools/runs/qwen32b3_rerun/clustering/qwen32b3/ops_step2_T-pro-it-2.0.csv

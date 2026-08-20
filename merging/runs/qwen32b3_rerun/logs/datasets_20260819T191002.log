@@ -1,0 +1,14 @@
+
+===== 2026-08-19T19:10:03.329315 =====
+/opt/venv/bin/python -c import os;os.environ['HF_ALLOW_CODE_EVAL']='1';from lm_eval import tasks as T;tm=T.TaskManager();[print(t, len(list((lambda x: x.test_docs() if x.has_test_docs() else x.validation_docs())(tm.load_task_or_group(t)[t])))) for t in ['m_mmlu_ru', 'medqa_4options', 'tinyMMLU'] if t!='gsm8k-cot']
+Generating train split:   0%|          | 0/279 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 279/279 [00:00<00:00, 20309.81 examples/s]
+Generating val split:   0%|          | 0/1450 [00:00<?, ? examples/s]Generating val split: 100%|██████████| 1450/1450 [00:00<00:00, 127697.91 examples/s]
+Generating test split:   0%|          | 0/13007 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 13007/13007 [00:00<00:00, 128656.36 examples/s]Generating test split: 100%|██████████| 13007/13007 [00:00<00:00, 128275.80 examples/s]
+m_mmlu_ru 13007
+Generating train split:   0%|          | 0/10178 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 10178/10178 [00:00<00:00, 325586.70 examples/s]
+Generating validation split:   0%|          | 0/1272 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 1272/1272 [00:00<00:00, 211042.51 examples/s]
+Generating test split:   0%|          | 0/1273 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1273/1273 [00:00<00:00, 252570.91 examples/s]
+medqa_4options 1273
+Generating test split:   0%|          | 0/100 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 100/100 [00:00<00:00, 7926.94 examples/s]
+Generating dev split:   0%|          | 0/285 [00:00<?, ? examples/s]Generating dev split: 100%|██████████| 285/285 [00:00<00:00, 46995.46 examples/s]
+tinyMMLU 100

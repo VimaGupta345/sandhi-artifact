@@ -1,0 +1,14 @@
+{
+  "Llama-3.1-8B-UltraMedical": "/workspace/merge_tools/hf_cache/models/Llama-3.1-8B-UltraMedical",
+  "Llama-3.1-Hawkish-8B": "/workspace/merge_tools/hf_cache/models/Llama-3.1-Hawkish-8B",
+  "calme-2.3-legalkit-8b": "/workspace/merge_tools/hf_cache/models/calme-2.3-legalkit-8b",
+  "Llama-SafetyGuard-Content-Binary": "/workspace/merge_tools/hf_cache/models/Llama-SafetyGuard-Content-Binary",
+  "Llama-3.1-8B-Instruct-multi-truth-judge": "/workspace/merge_tools/hf_cache/models/Llama-3.1-8B-Instruct-multi-truth-judge",
+  "Qwen2.5-Coder-7B-Instruct": "/workspace/merge_tools/hf_cache/models/Qwen2.5-Coder-7B-Instruct",
+  "Qwen2.5-Math-7B-Instruct": "/workspace/merge_tools/hf_cache/models/Qwen2.5-Math-7B-Instruct",
+  "Light-IF-32B": "/workspace/merge_tools/hf_cache/models/Light-IF-32B",
+  "T-pro-it-2.0": "/workspace/merge_tools/hf_cache/models/T-pro-it-2.0",
+  "MedGo": "/workspace/merge_tools/hf_cache/models/MedGo",
+  "deepseek-coder-7b-instruct-v1.5": "/workspace/merge_tools/hf_cache/models/deepseek-coder-7b-instruct-v1.5",
+  "deepseek-math-7b-instruct": "/workspace/merge_tools/hf_cache/models/deepseek-math-7b-instruct"
+}
