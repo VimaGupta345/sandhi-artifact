@@ -203,10 +203,15 @@ scaled dedup serving).
 
 **Recorded reference runs for all five scenarios ship in
 [`results/`](results/)** — full server logs (both arms), raw benchmark
-sweeps, and rendered plots, with a summary table in `results/README.md` —
-plus `results/llama5_variants/`, the 5-Llama scenario re-measured with the
-sandhi arm serving the materialized merged variants (exact validated
-weights).
+sweeps, and rendered plots, with a summary table in `results/README.md`.
+The `results/*_variants/` runs are the reference measurements: their sandhi
+arm serves the **materialized merged variants** (replayed from the recorded
+MICR journals via `../merging/GENERATE_VARIANTS.md`) — byte-identical shared
+tensors for the unscaled pools, per-member scaled-baked weights for
+cross-pretrain members. Full-set accuracy for every pool at its served
+operating point is recorded in `../merging/results/full_set_scores.csv`:
+merge gating uses the M-split, but all reported accuracy is full-set vs a
+full-set baseline under a matched protocol.
 
 After a run of your own, `<result_dir>/results/` contains:
 

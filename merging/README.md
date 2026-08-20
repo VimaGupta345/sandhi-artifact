@@ -278,7 +278,12 @@ recorded run whose B/C cutoffs were not written into the file (empty `cutoff`
 column) and whose scores differ slightly from the current `results/llama5/`
 rerun. Use `results/llama5/final_full_scores.csv` (cutoffs recorded) as the
 reference for the 5-Llama pool; the fig5b file is kept as the historical
-record. Shipped full-set scores exist for the global **B and C operating
-points only**; every other number in `report.csv`/`sweep.csv` (including the
-`Bpm`/`Cpm`/`Kpm`/`P` points) is on the M-split eval subset, as described
-above.
+record. Every number in `report.csv`/`sweep.csv` (including the
+`Bpm`/`Cpm`/`Kpm`/`P` points) is on the M-split eval subset — the gating
+signal, not the reported accuracy. **Full-set accuracy at each pool's served
+operating point is recorded in `results/full_set_scores.csv`**: full-set
+unmerged baseline vs full-set merged-variant score, measured under a matched
+protocol per model (UltraMedical is 1-shot + chat template on both sides —
+never cross a full-set score with a differently-prompted baseline). The
+per-pool `final_full_scores.csv` files additionally carry full-set merged
+scores at the global B/C points.
