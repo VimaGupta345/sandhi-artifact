@@ -30,6 +30,8 @@ score the CSV cites.
 | MedGo / medqa | baseline | `medqa_4options_…T13-29-05` | 75.96 |
 | MedGo / medqa | merged (c94) | `medqa_4options_…T13-25-44` | 75.96 |
 | T-pro-it-2.0 / m_mmlu_ru | baseline | `m_mmlu_ru_…T13-32-25` | 76.71 |
+| Light-IF-32B / tinyMMLU | merged (c94, replayed) | `tinyMMLU_…T13-51-40` | 79.30 |
+| T-pro-it-2.0 / m_mmlu_ru | merged (c94, replayed) | `m_mmlu_ru_…T13-54-25` | 76.58 |
 
 Console logs for the regenerated outputs are in `rebuild_logs/`, produced by
 `rebuild_runner.sh` (the same invocations documented below).
@@ -38,14 +40,12 @@ The remaining `humaneval_*` files (scores 82.32, 79.88, 77.44) are the
 Qwen2.5-Coder evaluations; that pool is under investigation and currently has
 no CSV row (see `../README.md`).
 
-## Rows without a shipped raw output
-
-Only the two remaining merged-side scores — Light-IF-32B (79.30) and
-T-pro-it-2.0 (76.58) at cutoff 94 — currently lack a shipped output; they are
-reproducible with the commands below (replay to cutoff 94, then evaluate).
-Note the vendored math harness writes to a fixed path
-(`vendor/math-evaluation-harness/output/`), so re-running gsm8k overwrites
-the shipped DS-Math baseline output — restore it with
+Every row of `full_set_scores.csv` now has a shipped raw output. The two c94
+merged variants were rebuilt by replaying the recorded `steps.csv` to cutoff
+94 and evaluating the result (`rebuild_logs/*_replay.log`); all regenerated
+scores match the CSV exactly. Note the vendored math harness writes to a
+fixed path (`vendor/math-evaluation-harness/output/`), so re-running gsm8k
+overwrites the shipped DS-Math baseline output — restore it with
 `git checkout -- merging/vendor/math-evaluation-harness/output/gsm8k/`.
 
 ## Reproducing a merged-side score

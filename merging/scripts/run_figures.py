@@ -1052,6 +1052,11 @@ def main():
                          "back to 'reuse' so it never hangs), 'reuse' always reuses, "
                          "'redo' always re-sweeps. A poisoned/truncated profile is "
                          "re-swept regardless. Default: ask.")
+    ap.add_argument("--eval-splits", choices=["locked", "full"], default="locked",
+                    help="Evaluation footing for profiler and MICR gating. 'locked' "
+                         "(default) uses the P/M subsamples; 'full' evaluates every "
+                         "profiler cell and MICR gate on the entire task dataset "
+                         "(slower, but removes split-selection variability).")
     ap.add_argument("--offline-evals", action="store_true",
                     help="Run profiler/MICR eval jobs with HF_HUB_OFFLINE=1 (cache "
                          "reads only). Use on machines whose HF_HOME is a shared "
@@ -1059,6 +1064,12 @@ def main():
                          "have materialized all models/datasets first. Default: "
                          "online, so evals can download anything they need.")
     args = ap.parse_args()
+
+    if args.eval_splits == "full":
+        # Full-dataset footing end to end: the profiler and MICR runners treat
+        # eval_split 'full' as "no subsample" (micr/eval_harness._eval_split).
+        LOCKED["profiler_eval_split"] = "full"
+        LOCKED["micr_eval_split"] = "full"
 
     # Resolve --gpus: 'auto' -> every detected GPU; then drop --exclude-gpus. The
     # dispatcher's <8 GiB free-filter still culls busy cards from what remains, so

@@ -1,0 +1,24 @@
+=== lightif_merged : tinyMMLU on variants/fig5a_c94/Light-IF-32B  2026-08-20T13:49:20+00:00
+INFO:lm_eval.__main__:Selected Tasks: ['tinyMMLU']
+INFO:lm_eval.evaluator:Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+INFO:lm_eval.evaluator:Initializing hf model, with arguments: {'pretrained': '/workspace/merge_tools/variants/fig5a_c94/Light-IF-32B', 'dtype': 'bfloat16'}
+INFO:lm_eval.models.huggingface:Using device 'cuda'
+INFO:lm_eval.models.huggingface:Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda'}
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:   7%|▋         | 1/14 [00:00<00:10,  1.26it/s]Loading checkpoint shards:  14%|█▍        | 2/14 [00:01<00:09,  1.23it/s]Loading checkpoint shards:  21%|██▏       | 3/14 [00:02<00:08,  1.32it/s]Loading checkpoint shards:  29%|██▊       | 4/14 [00:03<00:07,  1.34it/s]Loading checkpoint shards:  36%|███▌      | 5/14 [00:03<00:06,  1.29it/s]Loading checkpoint shards:  43%|████▎     | 6/14 [00:04<00:06,  1.28it/s]Loading checkpoint shards:  50%|█████     | 7/14 [00:05<00:05,  1.26it/s]Loading checkpoint shards:  57%|█████▋    | 8/14 [00:06<00:04,  1.32it/s]Loading checkpoint shards:  64%|██████▍   | 9/14 [00:06<00:03,  1.33it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:07<00:02,  1.35it/s]Loading checkpoint shards:  79%|███████▊  | 11/14 [00:08<00:02,  1.38it/s]Loading checkpoint shards:  86%|████████▌ | 12/14 [00:08<00:01,  1.41it/s]Loading checkpoint shards:  93%|█████████▎| 13/14 [00:09<00:00,  1.38it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:10<00:00,  1.68it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:10<00:00,  1.40it/s]
+INFO:lm_eval.tasks:Selected tasks:
+INFO:lm_eval.tasks:Task: tinyMMLU (tinyBenchmarks/tinyMMLU.yaml)
+INFO:lm_eval.api.task:Building contexts for tinyMMLU on rank 0...
+  0%|          | 0/100 [00:00<?, ?it/s]100%|██████████| 100/100 [00:00<00:00, 4843.42it/s]
+INFO:lm_eval.evaluator:Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/400 [00:00<?, ?it/s]Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 16
+Running loglikelihood requests:   0%|          | 1/400 [01:37<10:47:58, 97.44s/it]Running loglikelihood requests:  16%|█▋        | 65/400 [01:39<06:05,  1.09s/it]  Running loglikelihood requests:  32%|███▏      | 129/400 [01:41<02:05,  2.16it/s]Running loglikelihood requests:  48%|████▊     | 193/400 [01:42<00:54,  3.83it/s]Running loglikelihood requests:  64%|██████▍   | 257/400 [01:43<00:23,  6.08it/s]Running loglikelihood requests:  80%|████████  | 321/400 [01:44<00:08,  9.12it/s]Running loglikelihood requests:  96%|█████████▋| 385/400 [01:44<00:01, 13.63it/s]Running loglikelihood requests: 100%|██████████| 400/400 [01:44<00:00,  3.84it/s]
+fatal: not a git repository (or any parent up to mount point /workspace)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+INFO:lm_eval.loggers.evaluation_tracker:Saving results aggregated
+hf (pretrained=/workspace/merge_tools/variants/fig5a_c94/Light-IF-32B,dtype=bfloat16), gen_kwargs: (None), limit: None, num_fewshot: None, batch_size: auto (16)
+| Tasks  |Version|Filter|n-shot| Metric |   |Value|   |Stderr|
+|--------|------:|------|-----:|--------|---|----:|---|------|
+|tinyMMLU|      0|none  |     0|acc_norm|↑  |0.793|±  |   N/A|
+
+[lightif_merged] OK -> tinyMMLU_output_2026-08-20T13-51-40.608206.json  2026-08-20T13:51:40+00:00

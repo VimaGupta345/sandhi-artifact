@@ -1,0 +1,1781 @@
+=== lightif_merged_replay : Light-IF-32B -> cutoff 94 -> variants/fig5a_c94/Light-IF-32B  2026-08-20T13:27:10+00:00
+[load] Loaded step1 operations: 416 rows from ops_step1_Light-IF-32B.csv
+[load] Loaded step2 operations: 12 rows from ops_step2_Light-IF-32B.csv
+[load] Total operations loaded: 428 rows
+[init] copy Light-IF-32B: /workspace/merge_tools/hf_cache/models/Light-IF-32B -> /scratch_work/vwork_lightif_merged/Light-IF-32B
+[merge] arithmetic device: cuda (elementwise; bitwise-identical on cpu and cuda)
+[eval-split] baseline + per-step gating on split 'M' of task 'tinyMMLU'; the final eval runs on the FULL set.
+[eval-split] spec: {"algorithm": "random.Random(f'micr-eval-split|{task}|{seed}') shuffle of range(n); P = first round(n*fractions[0]) (clamped to [1, n-1]), M = the rest; both sorted ascending", "config_yaml": "/workspace/merge_tools/micr/eval_split_configs/tinyMMLU_M.yaml", "eval_split_name": "test", "fractions": [0.5, 0.5], "hook_module": "/workspace/merge_tools/micr/eval_split_configs/_micr_split_tinyMMLU_M.py", "include_path": "/workspace/merge_tools/micr/eval_split_configs", "index_hash_algorithm": "sha256(','.join(indices)).hexdigest()[:16]", "index_hashes": null, "kind": "lm_eval-config", "n_items": null, "note": "n_items unknown at materialize time; the generated process_docs hook recomputes the identical partition from the dataset length at eval time", "parent_process_docs": null, "parent_yaml": "/opt/venv/lib/python3.12/site-packages/lm_eval/tasks/tinyBenchmarks/tinyMMLU.yaml", "seed": 42, "split": "M", "split_sizes": null, "task": "tinyMMLU", "variant_task": "tinyMMLU_M"}
+[scale] scaling mode 'off' (--scaling): scaling disabled, including cross-family/auto-family triggers
+[replay] runs/qwen32b3_rerun/micr/qwen32b3/Light-IF-32B/steps.csv: 130 recorded steps, 95 accepted at or before cutoff=94 (step_idx)
+[replay] per-step evaluation is disabled; decisions are taken from the CSV.
+[baseline] eval disabled, using default 0.0 for Light-IF-32B
+[sort] Mode: 'normal'. Processing steps in order.
+
+==================== Operation Summary ====================
+Sort Mode: normal
+Total merge operations to process: 428
+     stage  layer group component                                    models
+0        1     15   mlp  mlp_down  Light-IF-32B:15,MedGo:15,T-pro-it-2.0:15
+1        1     15   mlp  mlp_gate  Light-IF-32B:15,MedGo:15,T-pro-it-2.0:15
+2        1     15   mlp    mlp_up  Light-IF-32B:15,MedGo:15,T-pro-it-2.0:15
+3        1     17   mlp  mlp_down  Light-IF-32B:17,MedGo:17,T-pro-it-2.0:17
+4        1     17   mlp  mlp_gate  Light-IF-32B:17,MedGo:17,T-pro-it-2.0:17
+5        1     17   mlp    mlp_up  Light-IF-32B:17,MedGo:17,T-pro-it-2.0:17
+6        1     13   mlp  mlp_down  Light-IF-32B:13,MedGo:13,T-pro-it-2.0:13
+7        1     13   mlp  mlp_gate  Light-IF-32B:13,MedGo:13,T-pro-it-2.0:13
+8        1     13   mlp    mlp_up  Light-IF-32B:13,MedGo:13,T-pro-it-2.0:13
+9        1     19   mlp  mlp_down  Light-IF-32B:19,MedGo:19,T-pro-it-2.0:19
+10       1     19   mlp  mlp_gate  Light-IF-32B:19,MedGo:19,T-pro-it-2.0:19
+11       1     19   mlp    mlp_up  Light-IF-32B:19,MedGo:19,T-pro-it-2.0:19
+12       1     11   mlp  mlp_down  Light-IF-32B:11,MedGo:11,T-pro-it-2.0:11
+13       1     11   mlp  mlp_gate  Light-IF-32B:11,MedGo:11,T-pro-it-2.0:11
+14       1     11   mlp    mlp_up  Light-IF-32B:11,MedGo:11,T-pro-it-2.0:11
+15       1     21   mlp  mlp_down  Light-IF-32B:21,MedGo:21,T-pro-it-2.0:21
+16       1     21   mlp  mlp_gate  Light-IF-32B:21,MedGo:21,T-pro-it-2.0:21
+17       1     21   mlp    mlp_up  Light-IF-32B:21,MedGo:21,T-pro-it-2.0:21
+18       1      8   mlp  mlp_down     Light-IF-32B:8,MedGo:8,T-pro-it-2.0:8
+19       1      8   mlp  mlp_gate     Light-IF-32B:8,MedGo:8,T-pro-it-2.0:8
+20       1      8   mlp    mlp_up     Light-IF-32B:8,MedGo:8,T-pro-it-2.0:8
+21       1     24   mlp  mlp_down  Light-IF-32B:24,MedGo:24,T-pro-it-2.0:24
+22       1     24   mlp  mlp_gate  Light-IF-32B:24,MedGo:24,T-pro-it-2.0:24
+23       1     24   mlp    mlp_up  Light-IF-32B:24,MedGo:24,T-pro-it-2.0:24
+24       1     26   mlp  mlp_down  Light-IF-32B:26,MedGo:26,T-pro-it-2.0:26
+25       1     26   mlp  mlp_gate  Light-IF-32B:26,MedGo:26,T-pro-it-2.0:26
+26       1     26   mlp    mlp_up  Light-IF-32B:26,MedGo:26,T-pro-it-2.0:26
+27       1      3   mlp  mlp_down     Light-IF-32B:3,MedGo:3,T-pro-it-2.0:3
+28       1      3   mlp  mlp_gate     Light-IF-32B:3,MedGo:3,T-pro-it-2.0:3
+29       1      3   mlp    mlp_up     Light-IF-32B:3,MedGo:3,T-pro-it-2.0:3
+30       1     28   mlp  mlp_down  Light-IF-32B:28,MedGo:28,T-pro-it-2.0:28
+31       1     28   mlp  mlp_gate  Light-IF-32B:28,MedGo:28,T-pro-it-2.0:28
+32       1     28   mlp    mlp_up  Light-IF-32B:28,MedGo:28,T-pro-it-2.0:28
+33       1     30   mlp  mlp_down  Light-IF-32B:30,MedGo:30,T-pro-it-2.0:30
+34       1     30   mlp  mlp_gate  Light-IF-32B:30,MedGo:30,T-pro-it-2.0:30
+35       1     30   mlp    mlp_up  Light-IF-32B:30,MedGo:30,T-pro-it-2.0:30
+36       1     39   mlp  mlp_down  Light-IF-32B:39,MedGo:39,T-pro-it-2.0:39
+37       1     39   mlp  mlp_gate  Light-IF-32B:39,MedGo:39,T-pro-it-2.0:39
+38       1     39   mlp    mlp_up  Light-IF-32B:39,MedGo:39,T-pro-it-2.0:39
+39       1     41   mlp  mlp_down  Light-IF-32B:41,MedGo:41,T-pro-it-2.0:41
+40       1     41   mlp  mlp_gate  Light-IF-32B:41,MedGo:41,T-pro-it-2.0:41
+41       1     41   mlp    mlp_up  Light-IF-32B:41,MedGo:41,T-pro-it-2.0:41
+42       1     44   mlp  mlp_down  Light-IF-32B:44,MedGo:44,T-pro-it-2.0:44
+43       1     44   mlp  mlp_gate  Light-IF-32B:44,MedGo:44,T-pro-it-2.0:44
+44       1     44   mlp    mlp_up  Light-IF-32B:44,MedGo:44,T-pro-it-2.0:44
+45       1     46   mlp  mlp_down  Light-IF-32B:46,MedGo:46,T-pro-it-2.0:46
+46       1     46   mlp  mlp_gate  Light-IF-32B:46,MedGo:46,T-pro-it-2.0:46
+47       1     46   mlp    mlp_up  Light-IF-32B:46,MedGo:46,T-pro-it-2.0:46
+48       1     48   mlp  mlp_down  Light-IF-32B:48,MedGo:48,T-pro-it-2.0:48
+49       1     48   mlp  mlp_gate  Light-IF-32B:48,MedGo:48,T-pro-it-2.0:48
+50       1     48   mlp    mlp_up  Light-IF-32B:48,MedGo:48,T-pro-it-2.0:48
+51       1     50   mlp  mlp_down  Light-IF-32B:50,MedGo:50,T-pro-it-2.0:50
+52       1     50   mlp  mlp_gate  Light-IF-32B:50,MedGo:50,T-pro-it-2.0:50
+53       1     50   mlp    mlp_up  Light-IF-32B:50,MedGo:50,T-pro-it-2.0:50
+54       1     52   mlp  mlp_down  Light-IF-32B:52,MedGo:52,T-pro-it-2.0:52
+55       1     52   mlp  mlp_gate  Light-IF-32B:52,MedGo:52,T-pro-it-2.0:52
+56       1     52   mlp    mlp_up  Light-IF-32B:52,MedGo:52,T-pro-it-2.0:52
+57       1     55   mlp  mlp_down  Light-IF-32B:55,MedGo:55,T-pro-it-2.0:55
+58       1     55   mlp  mlp_gate  Light-IF-32B:55,MedGo:55,T-pro-it-2.0:55
+59       1     55   mlp    mlp_up  Light-IF-32B:55,MedGo:55,T-pro-it-2.0:55
+60       1     57   mlp  mlp_down  Light-IF-32B:57,MedGo:57,T-pro-it-2.0:57
+61       1     57   mlp  mlp_gate  Light-IF-32B:57,MedGo:57,T-pro-it-2.0:57
+62       1     57   mlp    mlp_up  Light-IF-32B:57,MedGo:57,T-pro-it-2.0:57
+63       1     59   mlp  mlp_down  Light-IF-32B:59,MedGo:59,T-pro-it-2.0:59
+64       1     59   mlp  mlp_gate  Light-IF-32B:59,MedGo:59,T-pro-it-2.0:59
+65       1     59   mlp    mlp_up  Light-IF-32B:59,MedGo:59,T-pro-it-2.0:59
+66       1     63   mlp  mlp_down  Light-IF-32B:63,MedGo:63,T-pro-it-2.0:63
+67       1     63   mlp  mlp_gate  Light-IF-32B:63,MedGo:63,T-pro-it-2.0:63
+68       1     63   mlp    mlp_up  Light-IF-32B:63,MedGo:63,T-pro-it-2.0:63
+69       1     61   mlp  mlp_down  Light-IF-32B:61,MedGo:61,T-pro-it-2.0:61
+70       1     61   mlp  mlp_gate                  Light-IF-32B:61,MedGo:61
+71       1     61   mlp    mlp_up  Light-IF-32B:61,MedGo:61,T-pro-it-2.0:61
+72       1      5   mlp  mlp_down             Light-IF-32B:5,T-pro-it-2.0:5
+73       1      5   mlp  mlp_gate             Light-IF-32B:5,T-pro-it-2.0:5
+74       1      5   mlp    mlp_up             Light-IF-32B:5,T-pro-it-2.0:5
+75       1      0   mlp  mlp_down                    Light-IF-32B:0,MedGo:0
+76       1      0   mlp  mlp_gate                    Light-IF-32B:0,MedGo:0
+77       1      0   mlp    mlp_up                    Light-IF-32B:0,MedGo:0
+78       1     32   mlp  mlp_down           Light-IF-32B:32,T-pro-it-2.0:32
+79       1     32   mlp  mlp_gate           Light-IF-32B:32,T-pro-it-2.0:32
+80       1     32   mlp    mlp_up           Light-IF-32B:32,T-pro-it-2.0:32
+81       1     34   mlp  mlp_down           Light-IF-32B:34,T-pro-it-2.0:34
+82       1     34   mlp  mlp_gate           Light-IF-32B:34,T-pro-it-2.0:34
+83       1     34   mlp    mlp_up           Light-IF-32B:34,T-pro-it-2.0:34
+84       1     36   mlp  mlp_down           Light-IF-32B:36,T-pro-it-2.0:36
+85       1     36   mlp  mlp_gate           Light-IF-32B:36,T-pro-it-2.0:36
+86       1     36   mlp    mlp_up           Light-IF-32B:36,T-pro-it-2.0:36
+87       1     16   mlp  mlp_down  Light-IF-32B:16,MedGo:16,T-pro-it-2.0:16
+88       1     16   mlp  mlp_gate  Light-IF-32B:16,MedGo:16,T-pro-it-2.0:16
+89       1     16   mlp    mlp_up  Light-IF-32B:16,MedGo:16,T-pro-it-2.0:16
+90       1     14   mlp  mlp_down  Light-IF-32B:14,MedGo:14,T-pro-it-2.0:14
+91       1     14   mlp  mlp_gate  Light-IF-32B:14,MedGo:14,T-pro-it-2.0:14
+92       1     14   mlp    mlp_up  Light-IF-32B:14,MedGo:14,T-pro-it-2.0:14
+93       1     18   mlp  mlp_down  Light-IF-32B:18,MedGo:18,T-pro-it-2.0:18
+94       1     18   mlp  mlp_gate  Light-IF-32B:18,MedGo:18,T-pro-it-2.0:18
+95       1     18   mlp    mlp_up  Light-IF-32B:18,MedGo:18,T-pro-it-2.0:18
+96       1     20   mlp  mlp_down  Light-IF-32B:20,MedGo:20,T-pro-it-2.0:20
+97       1     20   mlp  mlp_gate  Light-IF-32B:20,MedGo:20,T-pro-it-2.0:20
+98       1     20   mlp    mlp_up  Light-IF-32B:20,MedGo:20,T-pro-it-2.0:20
+99       1     10   mlp  mlp_down  Light-IF-32B:10,MedGo:10,T-pro-it-2.0:10
+100      1     10   mlp  mlp_gate  Light-IF-32B:10,MedGo:10,T-pro-it-2.0:10
+101      1     10   mlp    mlp_up  Light-IF-32B:10,MedGo:10,T-pro-it-2.0:10
+102      1     22   mlp  mlp_down  Light-IF-32B:22,MedGo:22,T-pro-it-2.0:22
+103      1     22   mlp  mlp_gate  Light-IF-32B:22,MedGo:22,T-pro-it-2.0:22
+104      1     22   mlp    mlp_up  Light-IF-32B:22,MedGo:22,T-pro-it-2.0:22
+105      1     27   mlp  mlp_down  Light-IF-32B:27,MedGo:27,T-pro-it-2.0:27
+106      1     27   mlp  mlp_gate  Light-IF-32B:27,MedGo:27,T-pro-it-2.0:27
+107      1     27   mlp    mlp_up  Light-IF-32B:27,MedGo:27,T-pro-it-2.0:27
+108      1      2   mlp  mlp_down     Light-IF-32B:2,MedGo:2,T-pro-it-2.0:2
+109      1      2   mlp  mlp_gate     Light-IF-32B:2,MedGo:2,T-pro-it-2.0:2
+110      1      2   mlp    mlp_up     Light-IF-32B:2,MedGo:2,T-pro-it-2.0:2
+111      1     29   mlp  mlp_down  Light-IF-32B:29,MedGo:29,T-pro-it-2.0:29
+112      1     29   mlp  mlp_gate  Light-IF-32B:29,MedGo:29,T-pro-it-2.0:29
+113      1     29   mlp    mlp_up  Light-IF-32B:29,MedGo:29,T-pro-it-2.0:29
+114      1     31   mlp  mlp_down  Light-IF-32B:31,MedGo:31,T-pro-it-2.0:31
+115      1     31   mlp  mlp_gate  Light-IF-32B:31,MedGo:31,T-pro-it-2.0:31
+116      1     31   mlp    mlp_up  Light-IF-32B:31,MedGo:31,T-pro-it-2.0:31
+117      1     42   mlp  mlp_down  Light-IF-32B:42,MedGo:42,T-pro-it-2.0:42
+118      1     42   mlp  mlp_gate  Light-IF-32B:42,MedGo:42,T-pro-it-2.0:42
+119      1     42   mlp    mlp_up  Light-IF-32B:42,MedGo:42,T-pro-it-2.0:42
+120      1     45   mlp  mlp_down  Light-IF-32B:45,MedGo:45,T-pro-it-2.0:45
+121      1     45   mlp  mlp_gate  Light-IF-32B:45,MedGo:45,T-pro-it-2.0:45
+122      1     45   mlp    mlp_up  Light-IF-32B:45,MedGo:45,T-pro-it-2.0:45
+123      1     47   mlp  mlp_down  Light-IF-32B:47,MedGo:47,T-pro-it-2.0:47
+124      1     47   mlp  mlp_gate  Light-IF-32B:47,MedGo:47,T-pro-it-2.0:47
+125      1     47   mlp    mlp_up  Light-IF-32B:47,MedGo:47,T-pro-it-2.0:47
+126      1     51   mlp  mlp_down  Light-IF-32B:51,MedGo:51,T-pro-it-2.0:51
+127      1     51   mlp  mlp_gate  Light-IF-32B:51,MedGo:51,T-pro-it-2.0:51
+128      1     51   mlp    mlp_up  Light-IF-32B:51,MedGo:51,T-pro-it-2.0:51
+129      1     56   mlp  mlp_down  Light-IF-32B:56,MedGo:56,T-pro-it-2.0:56
+130      1     56   mlp  mlp_gate  Light-IF-32B:56,MedGo:56,T-pro-it-2.0:56
+131      1     56   mlp    mlp_up  Light-IF-32B:56,MedGo:56,T-pro-it-2.0:56
+132      1     58   mlp  mlp_down  Light-IF-32B:58,MedGo:58,T-pro-it-2.0:58
+133      1     58   mlp  mlp_gate  Light-IF-32B:58,MedGo:58,T-pro-it-2.0:58
+134      1     58   mlp    mlp_up  Light-IF-32B:58,MedGo:58,T-pro-it-2.0:58
+135      1     60   mlp  mlp_down  Light-IF-32B:60,MedGo:60,T-pro-it-2.0:60
+136      1     60   mlp  mlp_gate  Light-IF-32B:60,MedGo:60,T-pro-it-2.0:60
+137      1     60   mlp    mlp_up  Light-IF-32B:60,MedGo:60,T-pro-it-2.0:60
+138      1     12   mlp  mlp_down  Light-IF-32B:12,MedGo:12,T-pro-it-2.0:12
+139      1     12   mlp  mlp_gate                  Light-IF-32B:12,MedGo:12
+140      1     12   mlp    mlp_up  Light-IF-32B:12,MedGo:12,T-pro-it-2.0:12
+141      1      9   mlp  mlp_down     Light-IF-32B:9,MedGo:9,T-pro-it-2.0:9
+142      1      9   mlp  mlp_gate                    Light-IF-32B:9,MedGo:9
+143      1      9   mlp    mlp_up     Light-IF-32B:9,MedGo:9,T-pro-it-2.0:9
+144      1     23   mlp  mlp_down  Light-IF-32B:23,MedGo:23,T-pro-it-2.0:23
+145      1     23   mlp  mlp_gate                  Light-IF-32B:23,MedGo:23
+146      1     23   mlp    mlp_up  Light-IF-32B:23,MedGo:23,T-pro-it-2.0:23
+147      1     25   mlp  mlp_down  Light-IF-32B:25,MedGo:25,T-pro-it-2.0:25
+148      1     25   mlp  mlp_gate                  Light-IF-32B:25,MedGo:25
+149      1     25   mlp    mlp_up  Light-IF-32B:25,MedGo:25,T-pro-it-2.0:25
+150      1     53   mlp  mlp_down  Light-IF-32B:53,MedGo:53,T-pro-it-2.0:53
+151      1     53   mlp  mlp_gate                  Light-IF-32B:53,MedGo:53
+152      1     53   mlp    mlp_up  Light-IF-32B:53,MedGo:53,T-pro-it-2.0:53
+153      1     54   mlp  mlp_down  Light-IF-32B:54,MedGo:54,T-pro-it-2.0:54
+154      1     54   mlp  mlp_gate                  Light-IF-32B:54,MedGo:54
+155      1     54   mlp    mlp_up  Light-IF-32B:54,MedGo:54,T-pro-it-2.0:54
+156      1      7   mlp  mlp_down             Light-IF-32B:7,T-pro-it-2.0:7
+157      1      7   mlp  mlp_gate             Light-IF-32B:7,T-pro-it-2.0:7
+158      1      7   mlp    mlp_up             Light-IF-32B:7,T-pro-it-2.0:7
+159      1     33   mlp  mlp_down           Light-IF-32B:33,T-pro-it-2.0:33
+160      1     33   mlp  mlp_gate           Light-IF-32B:33,T-pro-it-2.0:33
+161      1     33   mlp    mlp_up           Light-IF-32B:33,T-pro-it-2.0:33
+162      1     35   mlp  mlp_down           Light-IF-32B:35,T-pro-it-2.0:35
+163      1     35   mlp  mlp_gate           Light-IF-32B:35,T-pro-it-2.0:35
+164      1     35   mlp    mlp_up           Light-IF-32B:35,T-pro-it-2.0:35
+165      1     62   mlp  mlp_down                  Light-IF-32B:62,MedGo:62
+166      1     62   mlp  mlp_gate                  Light-IF-32B:62,MedGo:62
+167      1     62   mlp    mlp_up                  Light-IF-32B:62,MedGo:62
+168      1     14  attn    attn_k  Light-IF-32B:14,MedGo:14,T-pro-it-2.0:14
+169      1     14  attn    attn_o  Light-IF-32B:14,MedGo:14,T-pro-it-2.0:14
+170      1     14  attn    attn_q  Light-IF-32B:14,MedGo:14,T-pro-it-2.0:14
+171      1     14  attn    attn_v  Light-IF-32B:14,MedGo:14,T-pro-it-2.0:14
+172      1     19  attn    attn_k  Light-IF-32B:19,MedGo:19,T-pro-it-2.0:19
+173      1     19  attn    attn_o  Light-IF-32B:19,MedGo:19,T-pro-it-2.0:19
+174      1     19  attn    attn_q  Light-IF-32B:19,MedGo:19,T-pro-it-2.0:19
+175      1     19  attn    attn_v  Light-IF-32B:19,MedGo:19,T-pro-it-2.0:19
+176      1     21  attn    attn_k  Light-IF-32B:21,MedGo:21,T-pro-it-2.0:21
+177      1     21  attn    attn_o  Light-IF-32B:21,MedGo:21,T-pro-it-2.0:21
+178      1     21  attn    attn_q  Light-IF-32B:21,MedGo:21,T-pro-it-2.0:21
+179      1     21  attn    attn_v  Light-IF-32B:21,MedGo:21,T-pro-it-2.0:21
+180      1      9  attn    attn_k     Light-IF-32B:9,MedGo:9,T-pro-it-2.0:9
+181      1      9  attn    attn_o     Light-IF-32B:9,MedGo:9,T-pro-it-2.0:9
+182      1      9  attn    attn_q     Light-IF-32B:9,MedGo:9,T-pro-it-2.0:9
+183      1      9  attn    attn_v     Light-IF-32B:9,MedGo:9,T-pro-it-2.0:9
+184      1      7  attn    attn_k     Light-IF-32B:7,MedGo:7,T-pro-it-2.0:7
+185      1      7  attn    attn_o     Light-IF-32B:7,MedGo:7,T-pro-it-2.0:7
+186      1      7  attn    attn_q     Light-IF-32B:7,MedGo:7,T-pro-it-2.0:7
+187      1      7  attn    attn_v     Light-IF-32B:7,MedGo:7,T-pro-it-2.0:7
+188      1      5  attn    attn_k     Light-IF-32B:5,MedGo:5,T-pro-it-2.0:5
+189      1      5  attn    attn_o     Light-IF-32B:5,MedGo:5,T-pro-it-2.0:5
+190      1      5  attn    attn_q     Light-IF-32B:5,MedGo:5,T-pro-it-2.0:5
+191      1      5  attn    attn_v     Light-IF-32B:5,MedGo:5,T-pro-it-2.0:5
+192      1     26  attn    attn_k  Light-IF-32B:26,MedGo:26,T-pro-it-2.0:26
+193      1     26  attn    attn_o  Light-IF-32B:26,MedGo:26,T-pro-it-2.0:26
+194      1     26  attn    attn_q  Light-IF-32B:26,MedGo:26,T-pro-it-2.0:26
+195      1     26  attn    attn_v  Light-IF-32B:26,MedGo:26,T-pro-it-2.0:26
+196      1      3  attn    attn_k     Light-IF-32B:3,MedGo:3,T-pro-it-2.0:3
+197      1      3  attn    attn_o     Light-IF-32B:3,MedGo:3,T-pro-it-2.0:3
+198      1      3  attn    attn_q     Light-IF-32B:3,MedGo:3,T-pro-it-2.0:3
+199      1      3  attn    attn_v     Light-IF-32B:3,MedGo:3,T-pro-it-2.0:3
+200      1     29  attn    attn_k  Light-IF-32B:29,MedGo:29,T-pro-it-2.0:29
+201      1     29  attn    attn_o  Light-IF-32B:29,MedGo:29,T-pro-it-2.0:29
+202      1     29  attn    attn_q  Light-IF-32B:29,MedGo:29,T-pro-it-2.0:29
+203      1     29  attn    attn_v  Light-IF-32B:29,MedGo:29,T-pro-it-2.0:29
+204      1      1  attn    attn_k     Light-IF-32B:1,MedGo:1,T-pro-it-2.0:1
+205      1      1  attn    attn_o     Light-IF-32B:1,MedGo:1,T-pro-it-2.0:1
+206      1      1  attn    attn_q     Light-IF-32B:1,MedGo:1,T-pro-it-2.0:1
+207      1      1  attn    attn_v     Light-IF-32B:1,MedGo:1,T-pro-it-2.0:1
+208      1     31  attn    attn_k  Light-IF-32B:31,MedGo:31,T-pro-it-2.0:31
+209      1     31  attn    attn_o  Light-IF-32B:31,MedGo:31,T-pro-it-2.0:31
+210      1     31  attn    attn_q  Light-IF-32B:31,MedGo:31,T-pro-it-2.0:31
+211      1     31  attn    attn_v  Light-IF-32B:31,MedGo:31,T-pro-it-2.0:31
+212      1     36  attn    attn_k  Light-IF-32B:36,MedGo:36,T-pro-it-2.0:36
+213      1     36  attn    attn_o  Light-IF-32B:36,MedGo:36,T-pro-it-2.0:36
+214      1     36  attn    attn_q  Light-IF-32B:36,MedGo:36,T-pro-it-2.0:36
+215      1     36  attn    attn_v  Light-IF-32B:36,MedGo:36,T-pro-it-2.0:36
+216      1     41  attn    attn_k  Light-IF-32B:41,MedGo:41,T-pro-it-2.0:41
+217      1     41  attn    attn_o  Light-IF-32B:41,MedGo:41,T-pro-it-2.0:41
+218      1     41  attn    attn_q  Light-IF-32B:41,MedGo:41,T-pro-it-2.0:41
+219      1     41  attn    attn_v  Light-IF-32B:41,MedGo:41,T-pro-it-2.0:41
+220      1     44  attn    attn_k  Light-IF-32B:44,MedGo:44,T-pro-it-2.0:44
+221      1     44  attn    attn_o  Light-IF-32B:44,MedGo:44,T-pro-it-2.0:44
+222      1     44  attn    attn_q  Light-IF-32B:44,MedGo:44,T-pro-it-2.0:44
+223      1     44  attn    attn_v  Light-IF-32B:44,MedGo:44,T-pro-it-2.0:44
+224      1     52  attn    attn_k  Light-IF-32B:52,MedGo:52,T-pro-it-2.0:52
+225      1     52  attn    attn_o  Light-IF-32B:52,MedGo:52,T-pro-it-2.0:52
+226      1     52  attn    attn_q  Light-IF-32B:52,MedGo:52,T-pro-it-2.0:52
+227      1     52  attn    attn_v  Light-IF-32B:52,MedGo:52,T-pro-it-2.0:52
+228      1     56  attn    attn_k  Light-IF-32B:56,MedGo:56,T-pro-it-2.0:56
+229      1     56  attn    attn_o  Light-IF-32B:56,MedGo:56,T-pro-it-2.0:56
+230      1     56  attn    attn_q  Light-IF-32B:56,MedGo:56,T-pro-it-2.0:56
+231      1     56  attn    attn_v  Light-IF-32B:56,MedGo:56,T-pro-it-2.0:56
+232      1     58  attn    attn_k  Light-IF-32B:58,MedGo:58,T-pro-it-2.0:58
+233      1     58  attn    attn_o  Light-IF-32B:58,MedGo:58,T-pro-it-2.0:58
+234      1     58  attn    attn_q  Light-IF-32B:58,MedGo:58,T-pro-it-2.0:58
+235      1     58  attn    attn_v  Light-IF-32B:58,MedGo:58,T-pro-it-2.0:58
+236      1     23  attn    attn_k                  Light-IF-32B:23,MedGo:23
+237      1     23  attn    attn_o  Light-IF-32B:23,MedGo:23,T-pro-it-2.0:23
+238      1     23  attn    attn_q  Light-IF-32B:23,MedGo:23,T-pro-it-2.0:23
+239      1     23  attn    attn_v  Light-IF-32B:23,MedGo:23,T-pro-it-2.0:23
+240      1     33  attn    attn_k  Light-IF-32B:33,MedGo:33,T-pro-it-2.0:33
+241      1     33  attn    attn_o                  Light-IF-32B:33,MedGo:33
+242      1     33  attn    attn_q  Light-IF-32B:33,MedGo:33,T-pro-it-2.0:33
+243      1     33  attn    attn_v  Light-IF-32B:33,MedGo:33,T-pro-it-2.0:33
+244      1     38  attn    attn_k  Light-IF-32B:38,MedGo:38,T-pro-it-2.0:38
+245      1     38  attn    attn_o                  Light-IF-32B:38,MedGo:38
+246      1     38  attn    attn_q  Light-IF-32B:38,MedGo:38,T-pro-it-2.0:38
+247      1     38  attn    attn_v  Light-IF-32B:38,MedGo:38,T-pro-it-2.0:38
+248      1     46  attn    attn_k                  Light-IF-32B:46,MedGo:46
+249      1     46  attn    attn_o  Light-IF-32B:46,MedGo:46,T-pro-it-2.0:46
+250      1     46  attn    attn_q  Light-IF-32B:46,MedGo:46,T-pro-it-2.0:46
+251      1     46  attn    attn_v  Light-IF-32B:46,MedGo:46,T-pro-it-2.0:46
+252      1     48  attn    attn_k  Light-IF-32B:48,MedGo:48,T-pro-it-2.0:48
+253      1     48  attn    attn_o  Light-IF-32B:48,MedGo:48,T-pro-it-2.0:48
+254      1     48  attn    attn_q  Light-IF-32B:48,MedGo:48,T-pro-it-2.0:48
+255      1     48  attn    attn_v                  Light-IF-32B:48,MedGo:48
+256      1     17  attn    attn_k                  Light-IF-32B:17,MedGo:17
+257      1     17  attn    attn_o                  Light-IF-32B:17,MedGo:17
+258      1     17  attn    attn_q  Light-IF-32B:17,MedGo:17,T-pro-it-2.0:17
+259      1     17  attn    attn_v  Light-IF-32B:17,MedGo:17,T-pro-it-2.0:17
+260      1     12  attn    attn_k  Light-IF-32B:12,MedGo:12,T-pro-it-2.0:12
+261      1     12  attn    attn_o                  Light-IF-32B:12,MedGo:12
+262      1     12  attn    attn_q  Light-IF-32B:12,MedGo:12,T-pro-it-2.0:12
+263      1     12  attn    attn_v                  Light-IF-32B:12,MedGo:12
+264      1     50  attn    attn_k  Light-IF-32B:50,MedGo:50,T-pro-it-2.0:50
+265      1     50  attn    attn_o                  Light-IF-32B:50,MedGo:50
+266      1     50  attn    attn_q  Light-IF-32B:50,MedGo:50,T-pro-it-2.0:50
+267      1     50  attn    attn_v                  Light-IF-32B:50,MedGo:50
+268      1     54  attn    attn_k                  Light-IF-32B:54,MedGo:54
+269      1     54  attn    attn_o  Light-IF-32B:54,MedGo:54,T-pro-it-2.0:54
+270      1     54  attn    attn_q                  Light-IF-32B:54,MedGo:54
+271      1     54  attn    attn_v  Light-IF-32B:54,MedGo:54,T-pro-it-2.0:54
+272      1     60  attn    attn_k                  Light-IF-32B:60,MedGo:60
+273      1     60  attn    attn_o                  Light-IF-32B:60,MedGo:60
+274      1     60  attn    attn_q  Light-IF-32B:60,MedGo:60,T-pro-it-2.0:60
+275      1     60  attn    attn_v  Light-IF-32B:60,MedGo:60,T-pro-it-2.0:60
+276      1     62  attn    attn_k  Light-IF-32B:62,MedGo:62,T-pro-it-2.0:62
+277      1     62  attn    attn_o  Light-IF-32B:62,MedGo:62,T-pro-it-2.0:62
+278      1     62  attn    attn_q                  Light-IF-32B:62,MedGo:62
+279      1     62  attn    attn_v                  Light-IF-32B:62,MedGo:62
+280      1     13  attn    attn_k  Light-IF-32B:13,MedGo:13,T-pro-it-2.0:13
+281      1     13  attn    attn_o  Light-IF-32B:13,MedGo:13,T-pro-it-2.0:13
+282      1     13  attn    attn_q  Light-IF-32B:13,MedGo:13,T-pro-it-2.0:13
+283      1     13  attn    attn_v  Light-IF-32B:13,MedGo:13,T-pro-it-2.0:13
+284      1     20  attn    attn_k  Light-IF-32B:20,MedGo:20,T-pro-it-2.0:20
+285      1     20  attn    attn_o  Light-IF-32B:20,MedGo:20,T-pro-it-2.0:20
+286      1     20  attn    attn_q  Light-IF-32B:20,MedGo:20,T-pro-it-2.0:20
+287      1     20  attn    attn_v  Light-IF-32B:20,MedGo:20,T-pro-it-2.0:20
+288      1     22  attn    attn_k  Light-IF-32B:22,MedGo:22,T-pro-it-2.0:22
+289      1     22  attn    attn_o  Light-IF-32B:22,MedGo:22,T-pro-it-2.0:22
+290      1     22  attn    attn_q  Light-IF-32B:22,MedGo:22,T-pro-it-2.0:22
+291      1     22  attn    attn_v  Light-IF-32B:22,MedGo:22,T-pro-it-2.0:22
+292      1      8  attn    attn_k     Light-IF-32B:8,MedGo:8,T-pro-it-2.0:8
+293      1      8  attn    attn_o     Light-IF-32B:8,MedGo:8,T-pro-it-2.0:8
+294      1      8  attn    attn_q     Light-IF-32B:8,MedGo:8,T-pro-it-2.0:8
+295      1      8  attn    attn_v     Light-IF-32B:8,MedGo:8,T-pro-it-2.0:8
+296      1      6  attn    attn_k     Light-IF-32B:6,MedGo:6,T-pro-it-2.0:6
+297      1      6  attn    attn_o     Light-IF-32B:6,MedGo:6,T-pro-it-2.0:6
+298      1      6  attn    attn_q     Light-IF-32B:6,MedGo:6,T-pro-it-2.0:6
+299      1      6  attn    attn_v     Light-IF-32B:6,MedGo:6,T-pro-it-2.0:6
+300      1      4  attn    attn_k     Light-IF-32B:4,MedGo:4,T-pro-it-2.0:4
+301      1      4  attn    attn_o     Light-IF-32B:4,MedGo:4,T-pro-it-2.0:4
+302      1      4  attn    attn_q     Light-IF-32B:4,MedGo:4,T-pro-it-2.0:4
+303      1      4  attn    attn_v     Light-IF-32B:4,MedGo:4,T-pro-it-2.0:4
+304      1      2  attn    attn_k     Light-IF-32B:2,MedGo:2,T-pro-it-2.0:2
+305      1      2  attn    attn_o     Light-IF-32B:2,MedGo:2,T-pro-it-2.0:2
+306      1      2  attn    attn_q     Light-IF-32B:2,MedGo:2,T-pro-it-2.0:2
+307      1      2  attn    attn_v     Light-IF-32B:2,MedGo:2,T-pro-it-2.0:2
+308      1     30  attn    attn_k  Light-IF-32B:30,MedGo:30,T-pro-it-2.0:30
+309      1     30  attn    attn_o  Light-IF-32B:30,MedGo:30,T-pro-it-2.0:30
+310      1     30  attn    attn_q  Light-IF-32B:30,MedGo:30,T-pro-it-2.0:30
+311      1     30  attn    attn_v  Light-IF-32B:30,MedGo:30,T-pro-it-2.0:30
+312      1      0  attn    attn_k     Light-IF-32B:0,MedGo:0,T-pro-it-2.0:0
+313      1      0  attn    attn_o     Light-IF-32B:0,MedGo:0,T-pro-it-2.0:0
+314      1      0  attn    attn_q     Light-IF-32B:0,MedGo:0,T-pro-it-2.0:0
+315      1      0  attn    attn_v     Light-IF-32B:0,MedGo:0,T-pro-it-2.0:0
+316      1     45  attn    attn_k  Light-IF-32B:45,MedGo:45,T-pro-it-2.0:45
+317      1     45  attn    attn_o  Light-IF-32B:45,MedGo:45,T-pro-it-2.0:45
+318      1     45  attn    attn_q  Light-IF-32B:45,MedGo:45,T-pro-it-2.0:45
+319      1     45  attn    attn_v  Light-IF-32B:45,MedGo:45,T-pro-it-2.0:45
+320      1     15  attn    attn_k  Light-IF-32B:15,MedGo:15,T-pro-it-2.0:15
+321      1     15  attn    attn_o  Light-IF-32B:15,MedGo:15,T-pro-it-2.0:15
+322      1     15  attn    attn_q  Light-IF-32B:15,MedGo:15,T-pro-it-2.0:15
+323      1     15  attn    attn_v                  Light-IF-32B:15,MedGo:15
+324      1     25  attn    attn_k  Light-IF-32B:25,MedGo:25,T-pro-it-2.0:25
+325      1     25  attn    attn_o                  Light-IF-32B:25,MedGo:25
+326      1     25  attn    attn_q  Light-IF-32B:25,MedGo:25,T-pro-it-2.0:25
+327      1     25  attn    attn_v  Light-IF-32B:25,MedGo:25,T-pro-it-2.0:25
+328      1     27  attn    attn_k  Light-IF-32B:27,MedGo:27,T-pro-it-2.0:27
+329      1     27  attn    attn_o                  Light-IF-32B:27,MedGo:27
+330      1     27  attn    attn_q  Light-IF-32B:27,MedGo:27,T-pro-it-2.0:27
+331      1     27  attn    attn_v  Light-IF-32B:27,MedGo:27,T-pro-it-2.0:27
+332      1     28  attn    attn_k  Light-IF-32B:28,MedGo:28,T-pro-it-2.0:28
+333      1     28  attn    attn_o                  Light-IF-32B:28,MedGo:28
+334      1     28  attn    attn_q  Light-IF-32B:28,MedGo:28,T-pro-it-2.0:28
+335      1     28  attn    attn_v  Light-IF-32B:28,MedGo:28,T-pro-it-2.0:28
+336      1     32  attn    attn_k  Light-IF-32B:32,MedGo:32,T-pro-it-2.0:32
+337      1     32  attn    attn_o                  Light-IF-32B:32,MedGo:32
+338      1     32  attn    attn_q  Light-IF-32B:32,MedGo:32,T-pro-it-2.0:32
+339      1     32  attn    attn_v  Light-IF-32B:32,MedGo:32,T-pro-it-2.0:32
+340      1     34  attn    attn_k  Light-IF-32B:34,MedGo:34,T-pro-it-2.0:34
+341      1     34  attn    attn_o                  Light-IF-32B:34,MedGo:34
+342      1     34  attn    attn_q  Light-IF-32B:34,MedGo:34,T-pro-it-2.0:34
+343      1     34  attn    attn_v  Light-IF-32B:34,MedGo:34,T-pro-it-2.0:34
+344      1     35  attn    attn_k  Light-IF-32B:35,MedGo:35,T-pro-it-2.0:35
+345      1     35  attn    attn_o                  Light-IF-32B:35,MedGo:35
+346      1     35  attn    attn_q  Light-IF-32B:35,MedGo:35,T-pro-it-2.0:35
+347      1     35  attn    attn_v  Light-IF-32B:35,MedGo:35,T-pro-it-2.0:35
+348      1     47  attn    attn_k  Light-IF-32B:47,MedGo:47,T-pro-it-2.0:47
+349      1     47  attn    attn_o  Light-IF-32B:47,MedGo:47,T-pro-it-2.0:47
+350      1     47  attn    attn_q                  Light-IF-32B:47,MedGo:47
+351      1     47  attn    attn_v  Light-IF-32B:47,MedGo:47,T-pro-it-2.0:47
+352      1     51  attn    attn_k  Light-IF-32B:51,MedGo:51,T-pro-it-2.0:51
+353      1     51  attn    attn_o                  Light-IF-32B:51,MedGo:51
+354      1     51  attn    attn_q  Light-IF-32B:51,MedGo:51,T-pro-it-2.0:51
+355      1     51  attn    attn_v  Light-IF-32B:51,MedGo:51,T-pro-it-2.0:51
+356      1     55  attn    attn_k  Light-IF-32B:55,MedGo:55,T-pro-it-2.0:55
+357      1     55  attn    attn_o                  Light-IF-32B:55,MedGo:55
+358      1     55  attn    attn_q  Light-IF-32B:55,MedGo:55,T-pro-it-2.0:55
+359      1     55  attn    attn_v  Light-IF-32B:55,MedGo:55,T-pro-it-2.0:55
+360      1     57  attn    attn_k  Light-IF-32B:57,MedGo:57,T-pro-it-2.0:57
+361      1     57  attn    attn_o                  Light-IF-32B:57,MedGo:57
+362      1     57  attn    attn_q  Light-IF-32B:57,MedGo:57,T-pro-it-2.0:57
+363      1     57  attn    attn_v  Light-IF-32B:57,MedGo:57,T-pro-it-2.0:57
+364      1     59  attn    attn_k  Light-IF-32B:59,MedGo:59,T-pro-it-2.0:59
+365      1     59  attn    attn_o                  Light-IF-32B:59,MedGo:59
+366      1     59  attn    attn_q  Light-IF-32B:59,MedGo:59,T-pro-it-2.0:59
+367      1     59  attn    attn_v  Light-IF-32B:59,MedGo:59,T-pro-it-2.0:59
+368      1     11  attn    attn_k                  Light-IF-32B:11,MedGo:11
+369      1     11  attn    attn_o                  Light-IF-32B:11,MedGo:11
+370      1     11  attn    attn_q  Light-IF-32B:11,MedGo:11,T-pro-it-2.0:11
+371      1     11  attn    attn_v  Light-IF-32B:11,MedGo:11,T-pro-it-2.0:11
+372      1     10  attn    attn_k  Light-IF-32B:10,MedGo:10,T-pro-it-2.0:10
+373      1     10  attn    attn_o                  Light-IF-32B:10,MedGo:10
+374      1     10  attn    attn_q                  Light-IF-32B:10,MedGo:10
+375      1     10  attn    attn_v  Light-IF-32B:10,MedGo:10,T-pro-it-2.0:10
+376      1     24  attn    attn_k                  Light-IF-32B:24,MedGo:24
+377      1     24  attn    attn_o                  Light-IF-32B:24,MedGo:24
+378      1     24  attn    attn_q  Light-IF-32B:24,MedGo:24,T-pro-it-2.0:24
+379      1     24  attn    attn_v  Light-IF-32B:24,MedGo:24,T-pro-it-2.0:24
+380      1     39  attn    attn_k                  Light-IF-32B:39,MedGo:39
+381      1     39  attn    attn_o                  Light-IF-32B:39,MedGo:39
+382      1     39  attn    attn_q  Light-IF-32B:39,MedGo:39,T-pro-it-2.0:39
+383      1     39  attn    attn_v  Light-IF-32B:39,MedGo:39,T-pro-it-2.0:39
+384      1     43  attn    attn_k                  Light-IF-32B:43,MedGo:43
+385      1     43  attn    attn_o                  Light-IF-32B:43,MedGo:43
+386      1     43  attn    attn_q  Light-IF-32B:43,MedGo:43,T-pro-it-2.0:43
+387      1     43  attn    attn_v  Light-IF-32B:43,MedGo:43,T-pro-it-2.0:43
+388      1     49  attn    attn_k  Light-IF-32B:49,MedGo:49,T-pro-it-2.0:49
+389      1     49  attn    attn_o                  Light-IF-32B:49,MedGo:49
+390      1     49  attn    attn_q  Light-IF-32B:49,MedGo:49,T-pro-it-2.0:49
+391      1     49  attn    attn_v                  Light-IF-32B:49,MedGo:49
+392      1     53  attn    attn_k  Light-IF-32B:53,MedGo:53,T-pro-it-2.0:53
+393      1     53  attn    attn_o                  Light-IF-32B:53,MedGo:53
+394      1     53  attn    attn_q  Light-IF-32B:53,MedGo:53,T-pro-it-2.0:53
+395      1     53  attn    attn_v                  Light-IF-32B:53,MedGo:53
+396      1     61  attn    attn_k  Light-IF-32B:61,MedGo:61,T-pro-it-2.0:61
+397      1     61  attn    attn_o                  Light-IF-32B:61,MedGo:61
+398      1     61  attn    attn_q                  Light-IF-32B:61,MedGo:61
+399      1     61  attn    attn_v  Light-IF-32B:61,MedGo:61,T-pro-it-2.0:61
+400      1     16  attn    attn_k                  Light-IF-32B:16,MedGo:16
+401      1     16  attn    attn_o                  Light-IF-32B:16,MedGo:16
+402      1     16  attn    attn_q  Light-IF-32B:16,MedGo:16,T-pro-it-2.0:16
+403      1     16  attn    attn_v                  Light-IF-32B:16,MedGo:16
+404      1     18  attn    attn_k                  Light-IF-32B:18,MedGo:18
+405      1     18  attn    attn_o                  Light-IF-32B:18,MedGo:18
+406      1     18  attn    attn_q  Light-IF-32B:18,MedGo:18,T-pro-it-2.0:18
+407      1     18  attn    attn_v                  Light-IF-32B:18,MedGo:18
+408      1     37  attn    attn_k                  Light-IF-32B:37,MedGo:37
+409      1     37  attn    attn_o                  Light-IF-32B:37,MedGo:37
+410      1     37  attn    attn_q  Light-IF-32B:37,MedGo:37,T-pro-it-2.0:37
+411      1     37  attn    attn_v                  Light-IF-32B:37,MedGo:37
+412      1     63  attn    attn_k                  Light-IF-32B:63,MedGo:63
+413      1     63  attn    attn_o                  Light-IF-32B:63,MedGo:63
+414      1     63  attn    attn_q                  Light-IF-32B:63,MedGo:63
+415      1     63  attn    attn_v                  Light-IF-32B:63,MedGo:63
+416      2     12   mlp  mlp_gate   Light-IF-32B:12,MedGo:12,T-pro-it-2.0:9
+417      2     53   mlp  mlp_gate  Light-IF-32B:53,MedGo:53,T-pro-it-2.0:53
+418      2     23  attn    attn_k  Light-IF-32B:23,MedGo:23,T-pro-it-2.0:11
+419      2     38  attn    attn_o  Light-IF-32B:38,MedGo:38,T-pro-it-2.0:35
+420      2     12  attn    attn_v  Light-IF-32B:12,MedGo:12,T-pro-it-2.0:12
+421      2     25  attn    attn_o  Light-IF-32B:25,MedGo:25,T-pro-it-2.0:32
+422      2     34  attn    attn_o  Light-IF-32B:34,MedGo:34,T-pro-it-2.0:24
+423      2     35  attn    attn_o  Light-IF-32B:35,MedGo:35,T-pro-it-2.0:40
+424      2     10  attn    attn_o  Light-IF-32B:10,MedGo:10,T-pro-it-2.0:11
+425      2     24  attn    attn_o  Light-IF-32B:24,MedGo:24,T-pro-it-2.0:50
+426      2     61  attn    attn_q  Light-IF-32B:61,MedGo:61,T-pro-it-2.0:47
+427      2     37  attn    attn_o  Light-IF-32B:37,MedGo:37,T-pro-it-2.0:60
+===========================================================
+
+[bundle] Mode: auto. Planned evaluation blocks: 130
+
+[step 0] target=Light-IF-32B, group=mlp, layer=15 (stage=1, scaling=disabled)
+`torch_dtype` is deprecated! Use `dtype` instead!
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 289.59it/s]
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 297.83it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 292.85it/s]
+  - applying mlp_gate: [('Light-IF-32B', 15), ('MedGo', 15), ('T-pro-it-2.0', 15)]
+  - applying mlp_up: [('Light-IF-32B', 15), ('MedGo', 15), ('T-pro-it-2.0', 15)]
+  - applying mlp_down: [('Light-IF-32B', 15), ('MedGo', 15), ('T-pro-it-2.0', 15)]
+[step 0] apply: mlp layer=15 (recorded score 76.0000)
+[progress] block 1/130 | elapsed 111.5s | accepted 0 rejected 0
+
+[step 1] target=Light-IF-32B, group=mlp, layer=17 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 297.81it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.35it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.13it/s]
+  - applying mlp_gate: [('Light-IF-32B', 17), ('MedGo', 17), ('T-pro-it-2.0', 17)]
+  - applying mlp_up: [('Light-IF-32B', 17), ('MedGo', 17), ('T-pro-it-2.0', 17)]
+  - applying mlp_down: [('Light-IF-32B', 17), ('MedGo', 17), ('T-pro-it-2.0', 17)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+  [save] verification passed: delta output is byte-identical to a full save
+[step 1] apply: mlp layer=17 (recorded score 76.0000)
+[progress] block 2/130 | elapsed 257.6s | accepted 0 rejected 0
+
+[step 2] target=Light-IF-32B, group=mlp, layer=13 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.28it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.75it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.77it/s]
+  - applying mlp_gate: [('Light-IF-32B', 13), ('MedGo', 13), ('T-pro-it-2.0', 13)]
+  - applying mlp_up: [('Light-IF-32B', 13), ('MedGo', 13), ('T-pro-it-2.0', 13)]
+  - applying mlp_down: [('Light-IF-32B', 13), ('MedGo', 13), ('T-pro-it-2.0', 13)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 2] apply: mlp layer=13 (recorded score 76.0000)
+[progress] block 3/130 | elapsed 275.4s | accepted 0 rejected 0
+
+[step 3] target=Light-IF-32B, group=mlp, layer=19 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.26it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.67it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.92it/s]
+  - applying mlp_gate: [('Light-IF-32B', 19), ('MedGo', 19), ('T-pro-it-2.0', 19)]
+  - applying mlp_up: [('Light-IF-32B', 19), ('MedGo', 19), ('T-pro-it-2.0', 19)]
+  - applying mlp_down: [('Light-IF-32B', 19), ('MedGo', 19), ('T-pro-it-2.0', 19)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 3] apply: mlp layer=19 (recorded score 76.0000)
+[progress] block 4/130 | elapsed 285.8s | accepted 0 rejected 0
+
+[step 4] target=Light-IF-32B, group=mlp, layer=11 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.00it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.24it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.48it/s]
+  - applying mlp_gate: [('Light-IF-32B', 11), ('MedGo', 11), ('T-pro-it-2.0', 11)]
+  - applying mlp_up: [('Light-IF-32B', 11), ('MedGo', 11), ('T-pro-it-2.0', 11)]
+  - applying mlp_down: [('Light-IF-32B', 11), ('MedGo', 11), ('T-pro-it-2.0', 11)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 4] apply: mlp layer=11 (recorded score 76.0000)
+[progress] block 5/130 | elapsed 296.0s | accepted 0 rejected 0
+
+[step 5] target=Light-IF-32B, group=mlp, layer=21 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.67it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.21it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.08it/s]
+  - applying mlp_gate: [('Light-IF-32B', 21), ('MedGo', 21), ('T-pro-it-2.0', 21)]
+  - applying mlp_up: [('Light-IF-32B', 21), ('MedGo', 21), ('T-pro-it-2.0', 21)]
+  - applying mlp_down: [('Light-IF-32B', 21), ('MedGo', 21), ('T-pro-it-2.0', 21)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 5] apply: mlp layer=21 (recorded score 76.0000)
+[progress] block 6/130 | elapsed 306.6s | accepted 0 rejected 0
+
+[step 6] target=Light-IF-32B, group=mlp, layer=8 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.61it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.07it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.16it/s]
+  - applying mlp_gate: [('Light-IF-32B', 8), ('MedGo', 8), ('T-pro-it-2.0', 8)]
+  - applying mlp_up: [('Light-IF-32B', 8), ('MedGo', 8), ('T-pro-it-2.0', 8)]
+  - applying mlp_down: [('Light-IF-32B', 8), ('MedGo', 8), ('T-pro-it-2.0', 8)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 6] apply: mlp layer=8 (recorded score 76.0000)
+[progress] block 7/130 | elapsed 324.1s | accepted 0 rejected 0
+
+[step 7] target=Light-IF-32B, group=mlp, layer=24 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.15it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.19it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.21it/s]
+  - applying mlp_gate: [('Light-IF-32B', 24), ('MedGo', 24), ('T-pro-it-2.0', 24)]
+  - applying mlp_up: [('Light-IF-32B', 24), ('MedGo', 24), ('T-pro-it-2.0', 24)]
+  - applying mlp_down: [('Light-IF-32B', 24), ('MedGo', 24), ('T-pro-it-2.0', 24)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 7] apply: mlp layer=24 (recorded score 76.0000)
+[progress] block 8/130 | elapsed 334.6s | accepted 0 rejected 0
+
+[step 8] target=Light-IF-32B, group=mlp, layer=26 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.01it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.85it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.72it/s]
+  - applying mlp_gate: [('Light-IF-32B', 26), ('MedGo', 26), ('T-pro-it-2.0', 26)]
+  - applying mlp_up: [('Light-IF-32B', 26), ('MedGo', 26), ('T-pro-it-2.0', 26)]
+  - applying mlp_down: [('Light-IF-32B', 26), ('MedGo', 26), ('T-pro-it-2.0', 26)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 8] apply: mlp layer=26 (recorded score 76.0000)
+[progress] block 9/130 | elapsed 344.8s | accepted 0 rejected 0
+
+[step 9] target=Light-IF-32B, group=mlp, layer=3 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.46it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.61it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.86it/s]
+  - applying mlp_gate: [('Light-IF-32B', 3), ('MedGo', 3), ('T-pro-it-2.0', 3)]
+  - applying mlp_up: [('Light-IF-32B', 3), ('MedGo', 3), ('T-pro-it-2.0', 3)]
+  - applying mlp_down: [('Light-IF-32B', 3), ('MedGo', 3), ('T-pro-it-2.0', 3)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 9] apply: mlp layer=3 (recorded score 76.0000)
+[progress] block 10/130 | elapsed 362.4s | accepted 0 rejected 0
+
+[step 10] target=Light-IF-32B, group=mlp, layer=28 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.95it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.97it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.77it/s]
+  - applying mlp_gate: [('Light-IF-32B', 28), ('MedGo', 28), ('T-pro-it-2.0', 28)]
+  - applying mlp_up: [('Light-IF-32B', 28), ('MedGo', 28), ('T-pro-it-2.0', 28)]
+  - applying mlp_down: [('Light-IF-32B', 28), ('MedGo', 28), ('T-pro-it-2.0', 28)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 10] apply: mlp layer=28 (recorded score 76.0000)
+[progress] block 11/130 | elapsed 379.7s | accepted 0 rejected 0
+
+[step 11] target=Light-IF-32B, group=mlp, layer=30 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.57it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.42it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.47it/s]
+  - applying mlp_gate: [('Light-IF-32B', 30), ('MedGo', 30), ('T-pro-it-2.0', 30)]
+  - applying mlp_up: [('Light-IF-32B', 30), ('MedGo', 30), ('T-pro-it-2.0', 30)]
+  - applying mlp_down: [('Light-IF-32B', 30), ('MedGo', 30), ('T-pro-it-2.0', 30)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 11] apply: mlp layer=30 (recorded score 76.0000)
+[progress] block 12/130 | elapsed 390.0s | accepted 0 rejected 0
+
+[step 12] target=Light-IF-32B, group=mlp, layer=39 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 299.98it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.63it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.07it/s]
+  - applying mlp_gate: [('Light-IF-32B', 39), ('MedGo', 39), ('T-pro-it-2.0', 39)]
+  - applying mlp_up: [('Light-IF-32B', 39), ('MedGo', 39), ('T-pro-it-2.0', 39)]
+  - applying mlp_down: [('Light-IF-32B', 39), ('MedGo', 39), ('T-pro-it-2.0', 39)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 12] apply: mlp layer=39 (recorded score 76.0000)
+[progress] block 13/130 | elapsed 400.2s | accepted 0 rejected 0
+
+[step 13] target=Light-IF-32B, group=mlp, layer=41 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.78it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.45it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.09it/s]
+  - applying mlp_gate: [('Light-IF-32B', 41), ('MedGo', 41), ('T-pro-it-2.0', 41)]
+  - applying mlp_up: [('Light-IF-32B', 41), ('MedGo', 41), ('T-pro-it-2.0', 41)]
+  - applying mlp_down: [('Light-IF-32B', 41), ('MedGo', 41), ('T-pro-it-2.0', 41)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 13] apply: mlp layer=41 (recorded score 76.0000)
+[progress] block 14/130 | elapsed 410.5s | accepted 0 rejected 0
+
+[step 14] target=Light-IF-32B, group=mlp, layer=44 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.10it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.35it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.03it/s]
+  - applying mlp_gate: [('Light-IF-32B', 44), ('MedGo', 44), ('T-pro-it-2.0', 44)]
+  - applying mlp_up: [('Light-IF-32B', 44), ('MedGo', 44), ('T-pro-it-2.0', 44)]
+  - applying mlp_down: [('Light-IF-32B', 44), ('MedGo', 44), ('T-pro-it-2.0', 44)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 14] apply: mlp layer=44 (recorded score 76.0000)
+[progress] block 15/130 | elapsed 420.7s | accepted 0 rejected 0
+
+[step 15] target=Light-IF-32B, group=mlp, layer=46 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.94it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.70it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.12it/s]
+  - applying mlp_gate: [('Light-IF-32B', 46), ('MedGo', 46), ('T-pro-it-2.0', 46)]
+  - applying mlp_up: [('Light-IF-32B', 46), ('MedGo', 46), ('T-pro-it-2.0', 46)]
+  - applying mlp_down: [('Light-IF-32B', 46), ('MedGo', 46), ('T-pro-it-2.0', 46)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 15] apply: mlp layer=46 (recorded score 76.0000)
+[progress] block 16/130 | elapsed 430.9s | accepted 0 rejected 0
+
+[step 16] target=Light-IF-32B, group=mlp, layer=48 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.25it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.67it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.45it/s]
+  - applying mlp_gate: [('Light-IF-32B', 48), ('MedGo', 48), ('T-pro-it-2.0', 48)]
+  - applying mlp_up: [('Light-IF-32B', 48), ('MedGo', 48), ('T-pro-it-2.0', 48)]
+  - applying mlp_down: [('Light-IF-32B', 48), ('MedGo', 48), ('T-pro-it-2.0', 48)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 16] apply: mlp layer=48 (recorded score 76.0000)
+[progress] block 17/130 | elapsed 448.3s | accepted 0 rejected 0
+
+[step 17] target=Light-IF-32B, group=mlp, layer=50 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.42it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.32it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.48it/s]
+  - applying mlp_gate: [('Light-IF-32B', 50), ('MedGo', 50), ('T-pro-it-2.0', 50)]
+  - applying mlp_up: [('Light-IF-32B', 50), ('MedGo', 50), ('T-pro-it-2.0', 50)]
+  - applying mlp_down: [('Light-IF-32B', 50), ('MedGo', 50), ('T-pro-it-2.0', 50)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 17] apply: mlp layer=50 (recorded score 76.0000)
+[progress] block 18/130 | elapsed 458.6s | accepted 0 rejected 0
+
+[step 18] target=Light-IF-32B, group=mlp, layer=52 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.41it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.86it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.65it/s]
+  - applying mlp_gate: [('Light-IF-32B', 52), ('MedGo', 52), ('T-pro-it-2.0', 52)]
+  - applying mlp_up: [('Light-IF-32B', 52), ('MedGo', 52), ('T-pro-it-2.0', 52)]
+  - applying mlp_down: [('Light-IF-32B', 52), ('MedGo', 52), ('T-pro-it-2.0', 52)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 18] apply: mlp layer=52 (recorded score 76.0000)
+[progress] block 19/130 | elapsed 468.8s | accepted 0 rejected 0
+
+[step 19] target=Light-IF-32B, group=mlp, layer=55 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.60it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.46it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.55it/s]
+  - applying mlp_gate: [('Light-IF-32B', 55), ('MedGo', 55), ('T-pro-it-2.0', 55)]
+  - applying mlp_up: [('Light-IF-32B', 55), ('MedGo', 55), ('T-pro-it-2.0', 55)]
+  - applying mlp_down: [('Light-IF-32B', 55), ('MedGo', 55), ('T-pro-it-2.0', 55)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 19] apply: mlp layer=55 (recorded score 76.0000)
+[progress] block 20/130 | elapsed 479.1s | accepted 0 rejected 0
+
+[step 20] target=Light-IF-32B, group=mlp, layer=57 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.45it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.35it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.03it/s]
+  - applying mlp_gate: [('Light-IF-32B', 57), ('MedGo', 57), ('T-pro-it-2.0', 57)]
+  - applying mlp_up: [('Light-IF-32B', 57), ('MedGo', 57), ('T-pro-it-2.0', 57)]
+  - applying mlp_down: [('Light-IF-32B', 57), ('MedGo', 57), ('T-pro-it-2.0', 57)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 20] apply: mlp layer=57 (recorded score 76.0000)
+[progress] block 21/130 | elapsed 489.3s | accepted 0 rejected 0
+
+[step 21] target=Light-IF-32B, group=mlp, layer=59 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.01it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.32it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.97it/s]
+  - applying mlp_gate: [('Light-IF-32B', 59), ('MedGo', 59), ('T-pro-it-2.0', 59)]
+  - applying mlp_up: [('Light-IF-32B', 59), ('MedGo', 59), ('T-pro-it-2.0', 59)]
+  - applying mlp_down: [('Light-IF-32B', 59), ('MedGo', 59), ('T-pro-it-2.0', 59)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 21] apply: mlp layer=59 (recorded score 76.0000)
+[progress] block 22/130 | elapsed 499.5s | accepted 0 rejected 0
+
+[step 22] target=Light-IF-32B, group=mlp, layer=63 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.04it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.77it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.27it/s]
+  - applying mlp_gate: [('Light-IF-32B', 63), ('MedGo', 63), ('T-pro-it-2.0', 63)]
+  - applying mlp_up: [('Light-IF-32B', 63), ('MedGo', 63), ('T-pro-it-2.0', 63)]
+  - applying mlp_down: [('Light-IF-32B', 63), ('MedGo', 63), ('T-pro-it-2.0', 63)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 22] apply: mlp layer=63 (recorded score 76.0000)
+[progress] block 23/130 | elapsed 512.7s | accepted 0 rejected 0
+
+[step 23] target=Light-IF-32B, group=mlp, layer=61 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.64it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.28it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.02it/s]
+  - applying mlp_gate: [('Light-IF-32B', 61), ('MedGo', 61)]
+  - applying mlp_up: [('Light-IF-32B', 61), ('MedGo', 61), ('T-pro-it-2.0', 61)]
+  - applying mlp_down: [('Light-IF-32B', 61), ('MedGo', 61), ('T-pro-it-2.0', 61)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 23] apply: mlp layer=61 (recorded score 76.0000)
+[progress] block 24/130 | elapsed 523.2s | accepted 0 rejected 0
+
+[step 24] target=Light-IF-32B, group=mlp, layer=5 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.42it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 311.41it/s]
+  - applying mlp_gate: [('Light-IF-32B', 5), ('T-pro-it-2.0', 5)]
+  - applying mlp_up: [('Light-IF-32B', 5), ('T-pro-it-2.0', 5)]
+  - applying mlp_down: [('Light-IF-32B', 5), ('T-pro-it-2.0', 5)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 24] apply: mlp layer=5 (recorded score 76.0000)
+[progress] block 25/130 | elapsed 532.8s | accepted 0 rejected 0
+
+[step 25] target=Light-IF-32B, group=mlp, layer=0 (stage=1, scaling=disabled)
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.90it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.42it/s]
+  - applying mlp_gate: [('Light-IF-32B', 0), ('MedGo', 0)]
+  - applying mlp_up: [('Light-IF-32B', 0), ('MedGo', 0)]
+  - applying mlp_down: [('Light-IF-32B', 0), ('MedGo', 0)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 25] apply: mlp layer=0 (recorded score 76.0000)
+[progress] block 26/130 | elapsed 542.6s | accepted 0 rejected 0
+
+[step 26] target=Light-IF-32B, group=mlp, layer=32 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.51it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.44it/s]
+  - applying mlp_gate: [('Light-IF-32B', 32), ('T-pro-it-2.0', 32)]
+  - applying mlp_up: [('Light-IF-32B', 32), ('T-pro-it-2.0', 32)]
+  - applying mlp_down: [('Light-IF-32B', 32), ('T-pro-it-2.0', 32)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 26] apply: mlp layer=32 (recorded score 76.0000)
+[progress] block 27/130 | elapsed 552.5s | accepted 0 rejected 0
+
+[step 27] target=Light-IF-32B, group=mlp, layer=34 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 297.24it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.69it/s]
+  - applying mlp_gate: [('Light-IF-32B', 34), ('T-pro-it-2.0', 34)]
+  - applying mlp_up: [('Light-IF-32B', 34), ('T-pro-it-2.0', 34)]
+  - applying mlp_down: [('Light-IF-32B', 34), ('T-pro-it-2.0', 34)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 27] apply: mlp layer=34 (recorded score 76.0000)
+[progress] block 28/130 | elapsed 562.4s | accepted 0 rejected 0
+
+[step 28] target=Light-IF-32B, group=mlp, layer=36 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.73it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.62it/s]
+  - applying mlp_gate: [('Light-IF-32B', 36), ('T-pro-it-2.0', 36)]
+  - applying mlp_up: [('Light-IF-32B', 36), ('T-pro-it-2.0', 36)]
+  - applying mlp_down: [('Light-IF-32B', 36), ('T-pro-it-2.0', 36)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 28] apply: mlp layer=36 (recorded score 76.0000)
+[progress] block 29/130 | elapsed 572.3s | accepted 0 rejected 0
+
+[step 29] target=Light-IF-32B, group=mlp, layer=16 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 299.56it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.71it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.28it/s]
+  - applying mlp_gate: [('Light-IF-32B', 16), ('MedGo', 16), ('T-pro-it-2.0', 16)]
+  - applying mlp_up: [('Light-IF-32B', 16), ('MedGo', 16), ('T-pro-it-2.0', 16)]
+  - applying mlp_down: [('Light-IF-32B', 16), ('MedGo', 16), ('T-pro-it-2.0', 16)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 29] apply: mlp layer=16 (recorded score 76.0000)
+[progress] block 30/130 | elapsed 583.0s | accepted 0 rejected 0
+
+[step 30] target=Light-IF-32B, group=mlp, layer=14 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.51it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.04it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.67it/s]
+  - applying mlp_gate: [('Light-IF-32B', 14), ('MedGo', 14), ('T-pro-it-2.0', 14)]
+  - applying mlp_up: [('Light-IF-32B', 14), ('MedGo', 14), ('T-pro-it-2.0', 14)]
+  - applying mlp_down: [('Light-IF-32B', 14), ('MedGo', 14), ('T-pro-it-2.0', 14)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 30] apply: mlp layer=14 (recorded score 76.0000)
+[progress] block 31/130 | elapsed 593.5s | accepted 0 rejected 0
+
+[step 31] target=Light-IF-32B, group=mlp, layer=18 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.91it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.23it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.46it/s]
+  - applying mlp_gate: [('Light-IF-32B', 18), ('MedGo', 18), ('T-pro-it-2.0', 18)]
+  - applying mlp_up: [('Light-IF-32B', 18), ('MedGo', 18), ('T-pro-it-2.0', 18)]
+  - applying mlp_down: [('Light-IF-32B', 18), ('MedGo', 18), ('T-pro-it-2.0', 18)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 31] apply: mlp layer=18 (recorded score 76.0000)
+[progress] block 32/130 | elapsed 611.4s | accepted 0 rejected 0
+
+[step 32] target=Light-IF-32B, group=mlp, layer=20 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.03it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.61it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.58it/s]
+  - applying mlp_gate: [('Light-IF-32B', 20), ('MedGo', 20), ('T-pro-it-2.0', 20)]
+  - applying mlp_up: [('Light-IF-32B', 20), ('MedGo', 20), ('T-pro-it-2.0', 20)]
+  - applying mlp_down: [('Light-IF-32B', 20), ('MedGo', 20), ('T-pro-it-2.0', 20)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 32] apply: mlp layer=20 (recorded score 76.0000)
+[progress] block 33/130 | elapsed 621.9s | accepted 0 rejected 0
+
+[step 33] target=Light-IF-32B, group=mlp, layer=10 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.35it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.39it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.92it/s]
+  - applying mlp_gate: [('Light-IF-32B', 10), ('MedGo', 10), ('T-pro-it-2.0', 10)]
+  - applying mlp_up: [('Light-IF-32B', 10), ('MedGo', 10), ('T-pro-it-2.0', 10)]
+  - applying mlp_down: [('Light-IF-32B', 10), ('MedGo', 10), ('T-pro-it-2.0', 10)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 33] apply: mlp layer=10 (recorded score 76.0000)
+[progress] block 34/130 | elapsed 632.3s | accepted 0 rejected 0
+
+[step 34] target=Light-IF-32B, group=mlp, layer=22 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.95it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.71it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.22it/s]
+  - applying mlp_gate: [('Light-IF-32B', 22), ('MedGo', 22), ('T-pro-it-2.0', 22)]
+  - applying mlp_up: [('Light-IF-32B', 22), ('MedGo', 22), ('T-pro-it-2.0', 22)]
+  - applying mlp_down: [('Light-IF-32B', 22), ('MedGo', 22), ('T-pro-it-2.0', 22)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 34] apply: mlp layer=22 (recorded score 74.0000)
+[progress] block 35/130 | elapsed 643.1s | accepted 0 rejected 0
+
+[step 35] target=Light-IF-32B, group=mlp, layer=27 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.55it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.60it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.78it/s]
+  - applying mlp_gate: [('Light-IF-32B', 27), ('MedGo', 27), ('T-pro-it-2.0', 27)]
+  - applying mlp_up: [('Light-IF-32B', 27), ('MedGo', 27), ('T-pro-it-2.0', 27)]
+  - applying mlp_down: [('Light-IF-32B', 27), ('MedGo', 27), ('T-pro-it-2.0', 27)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 35] apply: mlp layer=27 (recorded score 74.0000)
+[progress] block 36/130 | elapsed 653.3s | accepted 0 rejected 0
+
+[step 36] target=Light-IF-32B, group=mlp, layer=2 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.84it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.89it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 311.24it/s]
+  - applying mlp_gate: [('Light-IF-32B', 2), ('MedGo', 2), ('T-pro-it-2.0', 2)]
+  - applying mlp_up: [('Light-IF-32B', 2), ('MedGo', 2), ('T-pro-it-2.0', 2)]
+  - applying mlp_down: [('Light-IF-32B', 2), ('MedGo', 2), ('T-pro-it-2.0', 2)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 36] apply: mlp layer=2 (recorded score 74.0000)
+[progress] block 37/130 | elapsed 663.9s | accepted 0 rejected 0
+
+[step 37] target=Light-IF-32B, group=mlp, layer=29 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.34it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.89it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.88it/s]
+  - applying mlp_gate: [('Light-IF-32B', 29), ('MedGo', 29), ('T-pro-it-2.0', 29)]
+  - applying mlp_up: [('Light-IF-32B', 29), ('MedGo', 29), ('T-pro-it-2.0', 29)]
+  - applying mlp_down: [('Light-IF-32B', 29), ('MedGo', 29), ('T-pro-it-2.0', 29)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 37] apply: mlp layer=29 (recorded score 74.0000)
+[progress] block 38/130 | elapsed 674.1s | accepted 0 rejected 0
+
+[step 38] target=Light-IF-32B, group=mlp, layer=31 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.89it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.66it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.19it/s]
+  - applying mlp_gate: [('Light-IF-32B', 31), ('MedGo', 31), ('T-pro-it-2.0', 31)]
+  - applying mlp_up: [('Light-IF-32B', 31), ('MedGo', 31), ('T-pro-it-2.0', 31)]
+  - applying mlp_down: [('Light-IF-32B', 31), ('MedGo', 31), ('T-pro-it-2.0', 31)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 38] apply: mlp layer=31 (recorded score 74.0000)
+[progress] block 39/130 | elapsed 684.7s | accepted 0 rejected 0
+
+[step 39] target=Light-IF-32B, group=mlp, layer=42 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.42it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.50it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.76it/s]
+  - applying mlp_gate: [('Light-IF-32B', 42), ('MedGo', 42), ('T-pro-it-2.0', 42)]
+  - applying mlp_up: [('Light-IF-32B', 42), ('MedGo', 42), ('T-pro-it-2.0', 42)]
+  - applying mlp_down: [('Light-IF-32B', 42), ('MedGo', 42), ('T-pro-it-2.0', 42)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 39] apply: mlp layer=42 (recorded score 74.0000)
+[progress] block 40/130 | elapsed 694.8s | accepted 0 rejected 0
+
+[step 40] target=Light-IF-32B, group=mlp, layer=45 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.50it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.37it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.96it/s]
+  - applying mlp_gate: [('Light-IF-32B', 45), ('MedGo', 45), ('T-pro-it-2.0', 45)]
+  - applying mlp_up: [('Light-IF-32B', 45), ('MedGo', 45), ('T-pro-it-2.0', 45)]
+  - applying mlp_down: [('Light-IF-32B', 45), ('MedGo', 45), ('T-pro-it-2.0', 45)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 40] apply: mlp layer=45 (recorded score 74.0000)
+[progress] block 41/130 | elapsed 705.0s | accepted 0 rejected 0
+
+[step 41] target=Light-IF-32B, group=mlp, layer=47 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.70it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.46it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.77it/s]
+  - applying mlp_gate: [('Light-IF-32B', 47), ('MedGo', 47), ('T-pro-it-2.0', 47)]
+  - applying mlp_up: [('Light-IF-32B', 47), ('MedGo', 47), ('T-pro-it-2.0', 47)]
+  - applying mlp_down: [('Light-IF-32B', 47), ('MedGo', 47), ('T-pro-it-2.0', 47)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 41] apply: mlp layer=47 (recorded score 74.0000)
+[progress] block 42/130 | elapsed 715.3s | accepted 0 rejected 0
+
+[step 42] target=Light-IF-32B, group=mlp, layer=51 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 288.26it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.92it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.53it/s]
+  - applying mlp_gate: [('Light-IF-32B', 51), ('MedGo', 51), ('T-pro-it-2.0', 51)]
+  - applying mlp_up: [('Light-IF-32B', 51), ('MedGo', 51), ('T-pro-it-2.0', 51)]
+  - applying mlp_down: [('Light-IF-32B', 51), ('MedGo', 51), ('T-pro-it-2.0', 51)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 42] apply: mlp layer=51 (recorded score 74.0000)
+[progress] block 43/130 | elapsed 725.3s | accepted 0 rejected 0
+
+[step 43] target=Light-IF-32B, group=mlp, layer=56 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.03it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.27it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.76it/s]
+  - applying mlp_gate: [('Light-IF-32B', 56), ('MedGo', 56), ('T-pro-it-2.0', 56)]
+  - applying mlp_up: [('Light-IF-32B', 56), ('MedGo', 56), ('T-pro-it-2.0', 56)]
+  - applying mlp_down: [('Light-IF-32B', 56), ('MedGo', 56), ('T-pro-it-2.0', 56)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 43] apply: mlp layer=56 (recorded score 74.0000)
+[progress] block 44/130 | elapsed 735.6s | accepted 0 rejected 0
+
+[step 44] target=Light-IF-32B, group=mlp, layer=58 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.92it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.01it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.04it/s]
+  - applying mlp_gate: [('Light-IF-32B', 58), ('MedGo', 58), ('T-pro-it-2.0', 58)]
+  - applying mlp_up: [('Light-IF-32B', 58), ('MedGo', 58), ('T-pro-it-2.0', 58)]
+  - applying mlp_down: [('Light-IF-32B', 58), ('MedGo', 58), ('T-pro-it-2.0', 58)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 44] apply: mlp layer=58 (recorded score 74.0000)
+[progress] block 45/130 | elapsed 752.7s | accepted 0 rejected 0
+
+[step 45] target=Light-IF-32B, group=mlp, layer=60 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.71it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.08it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.17it/s]
+  - applying mlp_gate: [('Light-IF-32B', 60), ('MedGo', 60), ('T-pro-it-2.0', 60)]
+  - applying mlp_up: [('Light-IF-32B', 60), ('MedGo', 60), ('T-pro-it-2.0', 60)]
+  - applying mlp_down: [('Light-IF-32B', 60), ('MedGo', 60), ('T-pro-it-2.0', 60)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 45] apply: mlp layer=60 (recorded score 74.0000)
+[progress] block 46/130 | elapsed 763.3s | accepted 0 rejected 0
+
+[step 46] target=Light-IF-32B, group=mlp, layer=12 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.32it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.38it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.23it/s]
+  - applying mlp_gate: [('Light-IF-32B', 12), ('MedGo', 12)]
+  - applying mlp_up: [('Light-IF-32B', 12), ('MedGo', 12), ('T-pro-it-2.0', 12)]
+  - applying mlp_down: [('Light-IF-32B', 12), ('MedGo', 12), ('T-pro-it-2.0', 12)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 46] apply: mlp layer=12 (recorded score 74.0000)
+[progress] block 47/130 | elapsed 773.5s | accepted 0 rejected 0
+
+[step 47] target=Light-IF-32B, group=mlp, layer=9 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.27it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 296.15it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.34it/s]
+  - applying mlp_gate: [('Light-IF-32B', 9), ('MedGo', 9)]
+  - applying mlp_up: [('Light-IF-32B', 9), ('MedGo', 9), ('T-pro-it-2.0', 9)]
+  - applying mlp_down: [('Light-IF-32B', 9), ('MedGo', 9), ('T-pro-it-2.0', 9)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 47] apply: mlp layer=9 (recorded score 74.0000)
+[progress] block 48/130 | elapsed 784.0s | accepted 0 rejected 0
+
+[step 48] target=Light-IF-32B, group=mlp, layer=23 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.70it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.56it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.92it/s]
+  - applying mlp_gate: [('Light-IF-32B', 23), ('MedGo', 23)]
+  - applying mlp_up: [('Light-IF-32B', 23), ('MedGo', 23), ('T-pro-it-2.0', 23)]
+  - applying mlp_down: [('Light-IF-32B', 23), ('MedGo', 23), ('T-pro-it-2.0', 23)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 48] apply: mlp layer=23 (recorded score 74.0000)
+[progress] block 49/130 | elapsed 801.1s | accepted 0 rejected 0
+
+[step 49] target=Light-IF-32B, group=mlp, layer=25 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.16it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.49it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.85it/s]
+  - applying mlp_gate: [('Light-IF-32B', 25), ('MedGo', 25)]
+  - applying mlp_up: [('Light-IF-32B', 25), ('MedGo', 25), ('T-pro-it-2.0', 25)]
+  - applying mlp_down: [('Light-IF-32B', 25), ('MedGo', 25), ('T-pro-it-2.0', 25)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 49] apply: mlp layer=25 (recorded score 74.0000)
+[progress] block 50/130 | elapsed 811.6s | accepted 0 rejected 0
+
+[step 50] target=Light-IF-32B, group=mlp, layer=53 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.30it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.77it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.39it/s]
+  - applying mlp_gate: [('Light-IF-32B', 53), ('MedGo', 53)]
+  - applying mlp_up: [('Light-IF-32B', 53), ('MedGo', 53), ('T-pro-it-2.0', 53)]
+  - applying mlp_down: [('Light-IF-32B', 53), ('MedGo', 53), ('T-pro-it-2.0', 53)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 50] apply: mlp layer=53 (recorded score 74.0000)
+[progress] block 51/130 | elapsed 828.6s | accepted 0 rejected 0
+
+[step 51] target=Light-IF-32B, group=mlp, layer=54 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.63it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.82it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.95it/s]
+  - applying mlp_gate: [('Light-IF-32B', 54), ('MedGo', 54)]
+  - applying mlp_up: [('Light-IF-32B', 54), ('MedGo', 54), ('T-pro-it-2.0', 54)]
+  - applying mlp_down: [('Light-IF-32B', 54), ('MedGo', 54), ('T-pro-it-2.0', 54)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 51] apply: mlp layer=54 (recorded score 74.0000)
+[progress] block 52/130 | elapsed 838.5s | accepted 0 rejected 0
+
+[step 52] target=Light-IF-32B, group=mlp, layer=7 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.35it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 311.88it/s]
+  - applying mlp_gate: [('Light-IF-32B', 7), ('T-pro-it-2.0', 7)]
+  - applying mlp_up: [('Light-IF-32B', 7), ('T-pro-it-2.0', 7)]
+  - applying mlp_down: [('Light-IF-32B', 7), ('T-pro-it-2.0', 7)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 52] apply: mlp layer=7 (recorded score 74.0000)
+[progress] block 53/130 | elapsed 848.4s | accepted 0 rejected 0
+
+[step 53] target=Light-IF-32B, group=mlp, layer=33 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.75it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.69it/s]
+  - applying mlp_gate: [('Light-IF-32B', 33), ('T-pro-it-2.0', 33)]
+  - applying mlp_up: [('Light-IF-32B', 33), ('T-pro-it-2.0', 33)]
+  - applying mlp_down: [('Light-IF-32B', 33), ('T-pro-it-2.0', 33)]
+  [save] delta-shard: rewrote 2/14 shard(s)
+[step 53] apply: mlp layer=33 (recorded score 74.0000)
+[progress] block 54/130 | elapsed 865.0s | accepted 0 rejected 0
+
+[step 54] target=Light-IF-32B, group=mlp, layer=35 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.80it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.15it/s]
+  - applying mlp_gate: [('Light-IF-32B', 35), ('T-pro-it-2.0', 35)]
+  - applying mlp_up: [('Light-IF-32B', 35), ('T-pro-it-2.0', 35)]
+  - applying mlp_down: [('Light-IF-32B', 35), ('T-pro-it-2.0', 35)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 54] apply: mlp layer=35 (recorded score 76.0000)
+[progress] block 55/130 | elapsed 874.5s | accepted 0 rejected 0
+
+[step 55] target=Light-IF-32B, group=mlp, layer=62 (stage=1, scaling=disabled)
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 311.87it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.01it/s]
+  - applying mlp_gate: [('Light-IF-32B', 62), ('MedGo', 62)]
+  - applying mlp_up: [('Light-IF-32B', 62), ('MedGo', 62)]
+  - applying mlp_down: [('Light-IF-32B', 62), ('MedGo', 62)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 55] apply: mlp layer=62 (recorded score 76.0000)
+[progress] block 56/130 | elapsed 884.3s | accepted 0 rejected 0
+
+[step 56] target=Light-IF-32B, group=attn, layer=14 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.10it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.15it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 312.99it/s]
+  - applying attn_q: [('Light-IF-32B', 14), ('MedGo', 14), ('T-pro-it-2.0', 14)]
+  - applying attn_k: [('Light-IF-32B', 14), ('MedGo', 14), ('T-pro-it-2.0', 14)]
+  - applying attn_v: [('Light-IF-32B', 14), ('MedGo', 14), ('T-pro-it-2.0', 14)]
+  - applying attn_o: [('Light-IF-32B', 14), ('MedGo', 14), ('T-pro-it-2.0', 14)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 56] apply: attn layer=14 (recorded score 76.0000)
+[progress] block 57/130 | elapsed 892.5s | accepted 0 rejected 0
+
+[step 57] target=Light-IF-32B, group=attn, layer=19 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.41it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.28it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.33it/s]
+  - applying attn_q: [('Light-IF-32B', 19), ('MedGo', 19), ('T-pro-it-2.0', 19)]
+  - applying attn_k: [('Light-IF-32B', 19), ('MedGo', 19), ('T-pro-it-2.0', 19)]
+  - applying attn_v: [('Light-IF-32B', 19), ('MedGo', 19), ('T-pro-it-2.0', 19)]
+  - applying attn_o: [('Light-IF-32B', 19), ('MedGo', 19), ('T-pro-it-2.0', 19)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 57] apply: attn layer=19 (recorded score 76.0000)
+[progress] block 58/130 | elapsed 901.1s | accepted 0 rejected 0
+
+[step 58] target=Light-IF-32B, group=attn, layer=21 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.72it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.63it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.67it/s]
+  - applying attn_q: [('Light-IF-32B', 21), ('MedGo', 21), ('T-pro-it-2.0', 21)]
+  - applying attn_k: [('Light-IF-32B', 21), ('MedGo', 21), ('T-pro-it-2.0', 21)]
+  - applying attn_v: [('Light-IF-32B', 21), ('MedGo', 21), ('T-pro-it-2.0', 21)]
+  - applying attn_o: [('Light-IF-32B', 21), ('MedGo', 21), ('T-pro-it-2.0', 21)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 58] apply: attn layer=21 (recorded score 76.0000)
+[progress] block 59/130 | elapsed 909.7s | accepted 0 rejected 0
+
+[step 59] target=Light-IF-32B, group=attn, layer=9 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.51it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.70it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.94it/s]
+  - applying attn_q: [('Light-IF-32B', 9), ('MedGo', 9), ('T-pro-it-2.0', 9)]
+  - applying attn_k: [('Light-IF-32B', 9), ('MedGo', 9), ('T-pro-it-2.0', 9)]
+  - applying attn_v: [('Light-IF-32B', 9), ('MedGo', 9), ('T-pro-it-2.0', 9)]
+  - applying attn_o: [('Light-IF-32B', 9), ('MedGo', 9), ('T-pro-it-2.0', 9)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 59] apply: attn layer=9 (recorded score 76.0000)
+[progress] block 60/130 | elapsed 918.1s | accepted 0 rejected 0
+
+[step 60] target=Light-IF-32B, group=attn, layer=7 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.63it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.58it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.84it/s]
+  - applying attn_q: [('Light-IF-32B', 7), ('MedGo', 7), ('T-pro-it-2.0', 7)]
+  - applying attn_k: [('Light-IF-32B', 7), ('MedGo', 7), ('T-pro-it-2.0', 7)]
+  - applying attn_v: [('Light-IF-32B', 7), ('MedGo', 7), ('T-pro-it-2.0', 7)]
+  - applying attn_o: [('Light-IF-32B', 7), ('MedGo', 7), ('T-pro-it-2.0', 7)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 60] apply: attn layer=7 (recorded score 76.0000)
+[progress] block 61/130 | elapsed 927.0s | accepted 0 rejected 0
+
+[step 61] target=Light-IF-32B, group=attn, layer=5 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.71it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.61it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.17it/s]
+  - applying attn_q: [('Light-IF-32B', 5), ('MedGo', 5), ('T-pro-it-2.0', 5)]
+  - applying attn_k: [('Light-IF-32B', 5), ('MedGo', 5), ('T-pro-it-2.0', 5)]
+  - applying attn_v: [('Light-IF-32B', 5), ('MedGo', 5), ('T-pro-it-2.0', 5)]
+  - applying attn_o: [('Light-IF-32B', 5), ('MedGo', 5), ('T-pro-it-2.0', 5)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 61] apply: attn layer=5 (recorded score 76.0000)
+[progress] block 62/130 | elapsed 935.6s | accepted 0 rejected 0
+
+[step 62] target=Light-IF-32B, group=attn, layer=26 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.45it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.77it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.54it/s]
+  - applying attn_q: [('Light-IF-32B', 26), ('MedGo', 26), ('T-pro-it-2.0', 26)]
+  - applying attn_k: [('Light-IF-32B', 26), ('MedGo', 26), ('T-pro-it-2.0', 26)]
+  - applying attn_v: [('Light-IF-32B', 26), ('MedGo', 26), ('T-pro-it-2.0', 26)]
+  - applying attn_o: [('Light-IF-32B', 26), ('MedGo', 26), ('T-pro-it-2.0', 26)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 62] apply: attn layer=26 (recorded score 76.0000)
+[progress] block 63/130 | elapsed 944.5s | accepted 0 rejected 0
+
+[step 63] target=Light-IF-32B, group=attn, layer=3 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.05it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.76it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.17it/s]
+  - applying attn_q: [('Light-IF-32B', 3), ('MedGo', 3), ('T-pro-it-2.0', 3)]
+  - applying attn_k: [('Light-IF-32B', 3), ('MedGo', 3), ('T-pro-it-2.0', 3)]
+  - applying attn_v: [('Light-IF-32B', 3), ('MedGo', 3), ('T-pro-it-2.0', 3)]
+  - applying attn_o: [('Light-IF-32B', 3), ('MedGo', 3), ('T-pro-it-2.0', 3)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 63] apply: attn layer=3 (recorded score 76.0000)
+[progress] block 64/130 | elapsed 953.1s | accepted 0 rejected 0
+
+[step 64] target=Light-IF-32B, group=attn, layer=29 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.85it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.30it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.17it/s]
+  - applying attn_q: [('Light-IF-32B', 29), ('MedGo', 29), ('T-pro-it-2.0', 29)]
+  - applying attn_k: [('Light-IF-32B', 29), ('MedGo', 29), ('T-pro-it-2.0', 29)]
+  - applying attn_v: [('Light-IF-32B', 29), ('MedGo', 29), ('T-pro-it-2.0', 29)]
+  - applying attn_o: [('Light-IF-32B', 29), ('MedGo', 29), ('T-pro-it-2.0', 29)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 64] apply: attn layer=29 (recorded score 78.0000)
+[progress] block 65/130 | elapsed 961.6s | accepted 0 rejected 0
+
+[step 65] target=Light-IF-32B, group=attn, layer=1 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.97it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.58it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.46it/s]
+  - applying attn_q: [('Light-IF-32B', 1), ('MedGo', 1), ('T-pro-it-2.0', 1)]
+  - applying attn_k: [('Light-IF-32B', 1), ('MedGo', 1), ('T-pro-it-2.0', 1)]
+  - applying attn_v: [('Light-IF-32B', 1), ('MedGo', 1), ('T-pro-it-2.0', 1)]
+  - applying attn_o: [('Light-IF-32B', 1), ('MedGo', 1), ('T-pro-it-2.0', 1)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 65] apply: attn layer=1 (recorded score 76.0000)
+[progress] block 66/130 | elapsed 970.3s | accepted 0 rejected 0
+
+[step 66] target=Light-IF-32B, group=attn, layer=31 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.31it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.13it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.25it/s]
+  - applying attn_q: [('Light-IF-32B', 31), ('MedGo', 31), ('T-pro-it-2.0', 31)]
+  - applying attn_k: [('Light-IF-32B', 31), ('MedGo', 31), ('T-pro-it-2.0', 31)]
+  - applying attn_v: [('Light-IF-32B', 31), ('MedGo', 31), ('T-pro-it-2.0', 31)]
+  - applying attn_o: [('Light-IF-32B', 31), ('MedGo', 31), ('T-pro-it-2.0', 31)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 66] apply: attn layer=31 (recorded score 76.0000)
+[progress] block 67/130 | elapsed 979.1s | accepted 0 rejected 0
+
+[step 67] target=Light-IF-32B, group=attn, layer=36 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.20it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.99it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.94it/s]
+  - applying attn_q: [('Light-IF-32B', 36), ('MedGo', 36), ('T-pro-it-2.0', 36)]
+  - applying attn_k: [('Light-IF-32B', 36), ('MedGo', 36), ('T-pro-it-2.0', 36)]
+  - applying attn_v: [('Light-IF-32B', 36), ('MedGo', 36), ('T-pro-it-2.0', 36)]
+  - applying attn_o: [('Light-IF-32B', 36), ('MedGo', 36), ('T-pro-it-2.0', 36)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 67] apply: attn layer=36 (recorded score 78.0000)
+[progress] block 68/130 | elapsed 987.4s | accepted 0 rejected 0
+
+[step 68] target=Light-IF-32B, group=attn, layer=41 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.30it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.08it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.39it/s]
+  - applying attn_q: [('Light-IF-32B', 41), ('MedGo', 41), ('T-pro-it-2.0', 41)]
+  - applying attn_k: [('Light-IF-32B', 41), ('MedGo', 41), ('T-pro-it-2.0', 41)]
+  - applying attn_v: [('Light-IF-32B', 41), ('MedGo', 41), ('T-pro-it-2.0', 41)]
+  - applying attn_o: [('Light-IF-32B', 41), ('MedGo', 41), ('T-pro-it-2.0', 41)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 68] apply: attn layer=41 (recorded score 76.0000)
+[progress] block 69/130 | elapsed 995.9s | accepted 0 rejected 0
+
+[step 69] target=Light-IF-32B, group=attn, layer=44 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.51it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.26it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.92it/s]
+  - applying attn_q: [('Light-IF-32B', 44), ('MedGo', 44), ('T-pro-it-2.0', 44)]
+  - applying attn_k: [('Light-IF-32B', 44), ('MedGo', 44), ('T-pro-it-2.0', 44)]
+  - applying attn_v: [('Light-IF-32B', 44), ('MedGo', 44), ('T-pro-it-2.0', 44)]
+  - applying attn_o: [('Light-IF-32B', 44), ('MedGo', 44), ('T-pro-it-2.0', 44)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 69] apply: attn layer=44 (recorded score 76.0000)
+[progress] block 70/130 | elapsed 1004.4s | accepted 0 rejected 0
+
+[step 70] target=Light-IF-32B, group=attn, layer=52 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.91it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.88it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.73it/s]
+  - applying attn_q: [('Light-IF-32B', 52), ('MedGo', 52), ('T-pro-it-2.0', 52)]
+  - applying attn_k: [('Light-IF-32B', 52), ('MedGo', 52), ('T-pro-it-2.0', 52)]
+  - applying attn_v: [('Light-IF-32B', 52), ('MedGo', 52), ('T-pro-it-2.0', 52)]
+  - applying attn_o: [('Light-IF-32B', 52), ('MedGo', 52), ('T-pro-it-2.0', 52)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 70] apply: attn layer=52 (recorded score 76.0000)
+[progress] block 71/130 | elapsed 1012.8s | accepted 0 rejected 0
+
+[step 71] target=Light-IF-32B, group=attn, layer=56 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.02it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.81it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.25it/s]
+  - applying attn_q: [('Light-IF-32B', 56), ('MedGo', 56), ('T-pro-it-2.0', 56)]
+  - applying attn_k: [('Light-IF-32B', 56), ('MedGo', 56), ('T-pro-it-2.0', 56)]
+  - applying attn_v: [('Light-IF-32B', 56), ('MedGo', 56), ('T-pro-it-2.0', 56)]
+  - applying attn_o: [('Light-IF-32B', 56), ('MedGo', 56), ('T-pro-it-2.0', 56)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 71] apply: attn layer=56 (recorded score 76.0000)
+[progress] block 72/130 | elapsed 1021.3s | accepted 0 rejected 0
+
+[step 72] target=Light-IF-32B, group=attn, layer=58 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.14it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.63it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.31it/s]
+  - applying attn_q: [('Light-IF-32B', 58), ('MedGo', 58), ('T-pro-it-2.0', 58)]
+  - applying attn_k: [('Light-IF-32B', 58), ('MedGo', 58), ('T-pro-it-2.0', 58)]
+  - applying attn_v: [('Light-IF-32B', 58), ('MedGo', 58), ('T-pro-it-2.0', 58)]
+  - applying attn_o: [('Light-IF-32B', 58), ('MedGo', 58), ('T-pro-it-2.0', 58)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 72] apply: attn layer=58 (recorded score 76.0000)
+[progress] block 73/130 | elapsed 1030.0s | accepted 0 rejected 0
+
+[step 73] target=Light-IF-32B, group=attn, layer=23 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.95it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.08it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.56it/s]
+  - applying attn_q: [('Light-IF-32B', 23), ('MedGo', 23), ('T-pro-it-2.0', 23)]
+  - applying attn_k: [('Light-IF-32B', 23), ('MedGo', 23)]
+  - applying attn_v: [('Light-IF-32B', 23), ('MedGo', 23), ('T-pro-it-2.0', 23)]
+  - applying attn_o: [('Light-IF-32B', 23), ('MedGo', 23), ('T-pro-it-2.0', 23)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 73] apply: attn layer=23 (recorded score 76.0000)
+[progress] block 74/130 | elapsed 1038.7s | accepted 0 rejected 0
+
+[step 74] target=Light-IF-32B, group=attn, layer=33 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.57it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.54it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.95it/s]
+  - applying attn_q: [('Light-IF-32B', 33), ('MedGo', 33), ('T-pro-it-2.0', 33)]
+  - applying attn_k: [('Light-IF-32B', 33), ('MedGo', 33), ('T-pro-it-2.0', 33)]
+  - applying attn_v: [('Light-IF-32B', 33), ('MedGo', 33), ('T-pro-it-2.0', 33)]
+  - applying attn_o: [('Light-IF-32B', 33), ('MedGo', 33)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 74] apply: attn layer=33 (recorded score 76.0000)
+[progress] block 75/130 | elapsed 1047.0s | accepted 0 rejected 0
+
+[step 75] target=Light-IF-32B, group=attn, layer=38 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.77it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.70it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.56it/s]
+  - applying attn_q: [('Light-IF-32B', 38), ('MedGo', 38), ('T-pro-it-2.0', 38)]
+  - applying attn_k: [('Light-IF-32B', 38), ('MedGo', 38), ('T-pro-it-2.0', 38)]
+  - applying attn_v: [('Light-IF-32B', 38), ('MedGo', 38), ('T-pro-it-2.0', 38)]
+  - applying attn_o: [('Light-IF-32B', 38), ('MedGo', 38)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 75] apply: attn layer=38 (recorded score 78.0000)
+[progress] block 76/130 | elapsed 1055.3s | accepted 0 rejected 0
+
+[step 76] target=Light-IF-32B, group=attn, layer=46 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.05it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.51it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.15it/s]
+  - applying attn_q: [('Light-IF-32B', 46), ('MedGo', 46), ('T-pro-it-2.0', 46)]
+  - applying attn_k: [('Light-IF-32B', 46), ('MedGo', 46)]
+  - applying attn_v: [('Light-IF-32B', 46), ('MedGo', 46), ('T-pro-it-2.0', 46)]
+  - applying attn_o: [('Light-IF-32B', 46), ('MedGo', 46), ('T-pro-it-2.0', 46)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 76] apply: attn layer=46 (recorded score 78.0000)
+[progress] block 77/130 | elapsed 1063.9s | accepted 0 rejected 0
+
+[step 77] target=Light-IF-32B, group=attn, layer=48 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.59it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.69it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 312.45it/s]
+  - applying attn_q: [('Light-IF-32B', 48), ('MedGo', 48), ('T-pro-it-2.0', 48)]
+  - applying attn_k: [('Light-IF-32B', 48), ('MedGo', 48), ('T-pro-it-2.0', 48)]
+  - applying attn_v: [('Light-IF-32B', 48), ('MedGo', 48)]
+  - applying attn_o: [('Light-IF-32B', 48), ('MedGo', 48), ('T-pro-it-2.0', 48)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 77] apply: attn layer=48 (recorded score 78.0000)
+[progress] block 78/130 | elapsed 1072.5s | accepted 0 rejected 0
+
+[step 78] target=Light-IF-32B, group=attn, layer=17 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.92it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.39it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.08it/s]
+  - applying attn_q: [('Light-IF-32B', 17), ('MedGo', 17), ('T-pro-it-2.0', 17)]
+  - applying attn_k: [('Light-IF-32B', 17), ('MedGo', 17)]
+  - applying attn_v: [('Light-IF-32B', 17), ('MedGo', 17), ('T-pro-it-2.0', 17)]
+  - applying attn_o: [('Light-IF-32B', 17), ('MedGo', 17)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 78] apply: attn layer=17 (recorded score 78.0000)
+[progress] block 79/130 | elapsed 1080.9s | accepted 0 rejected 0
+
+[step 79] target=Light-IF-32B, group=attn, layer=12 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.33it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.87it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.93it/s]
+  - applying attn_q: [('Light-IF-32B', 12), ('MedGo', 12), ('T-pro-it-2.0', 12)]
+  - applying attn_k: [('Light-IF-32B', 12), ('MedGo', 12), ('T-pro-it-2.0', 12)]
+  - applying attn_v: [('Light-IF-32B', 12), ('MedGo', 12)]
+  - applying attn_o: [('Light-IF-32B', 12), ('MedGo', 12)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 79] apply: attn layer=12 (recorded score 78.0000)
+[progress] block 80/130 | elapsed 1089.3s | accepted 0 rejected 0
+
+[step 80] target=Light-IF-32B, group=attn, layer=50 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.91it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.28it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.43it/s]
+  - applying attn_q: [('Light-IF-32B', 50), ('MedGo', 50), ('T-pro-it-2.0', 50)]
+  - applying attn_k: [('Light-IF-32B', 50), ('MedGo', 50), ('T-pro-it-2.0', 50)]
+  - applying attn_v: [('Light-IF-32B', 50), ('MedGo', 50)]
+  - applying attn_o: [('Light-IF-32B', 50), ('MedGo', 50)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 80] apply: attn layer=50 (recorded score 78.0000)
+[progress] block 81/130 | elapsed 1097.8s | accepted 0 rejected 0
+
+[step 81] target=Light-IF-32B, group=attn, layer=54 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.94it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.08it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.55it/s]
+  - applying attn_q: [('Light-IF-32B', 54), ('MedGo', 54)]
+  - applying attn_k: [('Light-IF-32B', 54), ('MedGo', 54)]
+  - applying attn_v: [('Light-IF-32B', 54), ('MedGo', 54), ('T-pro-it-2.0', 54)]
+  - applying attn_o: [('Light-IF-32B', 54), ('MedGo', 54), ('T-pro-it-2.0', 54)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 81] apply: attn layer=54 (recorded score 78.0000)
+[progress] block 82/130 | elapsed 1106.2s | accepted 0 rejected 0
+
+[step 82] target=Light-IF-32B, group=attn, layer=60 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 297.55it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.49it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.16it/s]
+  - applying attn_q: [('Light-IF-32B', 60), ('MedGo', 60), ('T-pro-it-2.0', 60)]
+  - applying attn_k: [('Light-IF-32B', 60), ('MedGo', 60)]
+  - applying attn_v: [('Light-IF-32B', 60), ('MedGo', 60), ('T-pro-it-2.0', 60)]
+  - applying attn_o: [('Light-IF-32B', 60), ('MedGo', 60)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 82] apply: attn layer=60 (recorded score 78.0000)
+[progress] block 83/130 | elapsed 1114.8s | accepted 0 rejected 0
+
+[step 83] target=Light-IF-32B, group=attn, layer=62 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.01it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.98it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.09it/s]
+  - applying attn_q: [('Light-IF-32B', 62), ('MedGo', 62)]
+  - applying attn_k: [('Light-IF-32B', 62), ('MedGo', 62), ('T-pro-it-2.0', 62)]
+  - applying attn_v: [('Light-IF-32B', 62), ('MedGo', 62)]
+  - applying attn_o: [('Light-IF-32B', 62), ('MedGo', 62), ('T-pro-it-2.0', 62)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 83] apply: attn layer=62 (recorded score 78.0000)
+[progress] block 84/130 | elapsed 1123.4s | accepted 0 rejected 0
+
+[step 84] target=Light-IF-32B, group=attn, layer=13 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 301.74it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.87it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.63it/s]
+  - applying attn_q: [('Light-IF-32B', 13), ('MedGo', 13), ('T-pro-it-2.0', 13)]
+  - applying attn_k: [('Light-IF-32B', 13), ('MedGo', 13), ('T-pro-it-2.0', 13)]
+  - applying attn_v: [('Light-IF-32B', 13), ('MedGo', 13), ('T-pro-it-2.0', 13)]
+  - applying attn_o: [('Light-IF-32B', 13), ('MedGo', 13), ('T-pro-it-2.0', 13)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 84] apply: attn layer=13 (recorded score 78.0000)
+[progress] block 85/130 | elapsed 1132.0s | accepted 0 rejected 0
+
+[step 85] target=Light-IF-32B, group=attn, layer=20 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.29it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.73it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 311.78it/s]
+  - applying attn_q: [('Light-IF-32B', 20), ('MedGo', 20), ('T-pro-it-2.0', 20)]
+  - applying attn_k: [('Light-IF-32B', 20), ('MedGo', 20), ('T-pro-it-2.0', 20)]
+  - applying attn_v: [('Light-IF-32B', 20), ('MedGo', 20), ('T-pro-it-2.0', 20)]
+  - applying attn_o: [('Light-IF-32B', 20), ('MedGo', 20), ('T-pro-it-2.0', 20)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 85] apply: attn layer=20 (recorded score 78.0000)
+[progress] block 86/130 | elapsed 1140.4s | accepted 0 rejected 0
+
+[step 86] target=Light-IF-32B, group=attn, layer=22 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.48it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.75it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.71it/s]
+  - applying attn_q: [('Light-IF-32B', 22), ('MedGo', 22), ('T-pro-it-2.0', 22)]
+  - applying attn_k: [('Light-IF-32B', 22), ('MedGo', 22), ('T-pro-it-2.0', 22)]
+  - applying attn_v: [('Light-IF-32B', 22), ('MedGo', 22), ('T-pro-it-2.0', 22)]
+  - applying attn_o: [('Light-IF-32B', 22), ('MedGo', 22), ('T-pro-it-2.0', 22)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 86] apply: attn layer=22 (recorded score 78.0000)
+[progress] block 87/130 | elapsed 1149.0s | accepted 0 rejected 0
+
+[step 87] target=Light-IF-32B, group=attn, layer=8 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 300.51it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.58it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 312.37it/s]
+  - applying attn_q: [('Light-IF-32B', 8), ('MedGo', 8), ('T-pro-it-2.0', 8)]
+  - applying attn_k: [('Light-IF-32B', 8), ('MedGo', 8), ('T-pro-it-2.0', 8)]
+  - applying attn_v: [('Light-IF-32B', 8), ('MedGo', 8), ('T-pro-it-2.0', 8)]
+  - applying attn_o: [('Light-IF-32B', 8), ('MedGo', 8), ('T-pro-it-2.0', 8)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 87] apply: attn layer=8 (recorded score 78.0000)
+[progress] block 88/130 | elapsed 1157.7s | accepted 0 rejected 0
+
+[step 88] target=Light-IF-32B, group=attn, layer=6 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.29it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.32it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.83it/s]
+  - applying attn_q: [('Light-IF-32B', 6), ('MedGo', 6), ('T-pro-it-2.0', 6)]
+  - applying attn_k: [('Light-IF-32B', 6), ('MedGo', 6), ('T-pro-it-2.0', 6)]
+  - applying attn_v: [('Light-IF-32B', 6), ('MedGo', 6), ('T-pro-it-2.0', 6)]
+  - applying attn_o: [('Light-IF-32B', 6), ('MedGo', 6), ('T-pro-it-2.0', 6)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 88] apply: attn layer=6 (recorded score 78.0000)
+[progress] block 89/130 | elapsed 1166.5s | accepted 0 rejected 0
+
+[step 89] target=Light-IF-32B, group=attn, layer=4 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.86it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.43it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.22it/s]
+  - applying attn_q: [('Light-IF-32B', 4), ('MedGo', 4), ('T-pro-it-2.0', 4)]
+  - applying attn_k: [('Light-IF-32B', 4), ('MedGo', 4), ('T-pro-it-2.0', 4)]
+  - applying attn_v: [('Light-IF-32B', 4), ('MedGo', 4), ('T-pro-it-2.0', 4)]
+  - applying attn_o: [('Light-IF-32B', 4), ('MedGo', 4), ('T-pro-it-2.0', 4)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 89] apply: attn layer=4 (recorded score 78.0000)
+[progress] block 90/130 | elapsed 1175.3s | accepted 0 rejected 0
+
+[step 90] target=Light-IF-32B, group=attn, layer=2 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.80it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 307.76it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.47it/s]
+  - applying attn_q: [('Light-IF-32B', 2), ('MedGo', 2), ('T-pro-it-2.0', 2)]
+  - applying attn_k: [('Light-IF-32B', 2), ('MedGo', 2), ('T-pro-it-2.0', 2)]
+  - applying attn_v: [('Light-IF-32B', 2), ('MedGo', 2), ('T-pro-it-2.0', 2)]
+  - applying attn_o: [('Light-IF-32B', 2), ('MedGo', 2), ('T-pro-it-2.0', 2)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 90] apply: attn layer=2 (recorded score 78.0000)
+[progress] block 91/130 | elapsed 1183.9s | accepted 0 rejected 0
+
+[step 91] target=Light-IF-32B, group=attn, layer=30 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.29it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.59it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 310.16it/s]
+  - applying attn_q: [('Light-IF-32B', 30), ('MedGo', 30), ('T-pro-it-2.0', 30)]
+  - applying attn_k: [('Light-IF-32B', 30), ('MedGo', 30), ('T-pro-it-2.0', 30)]
+  - applying attn_v: [('Light-IF-32B', 30), ('MedGo', 30), ('T-pro-it-2.0', 30)]
+  - applying attn_o: [('Light-IF-32B', 30), ('MedGo', 30), ('T-pro-it-2.0', 30)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 91] apply: attn layer=30 (recorded score 78.0000)
+[progress] block 92/130 | elapsed 1192.3s | accepted 0 rejected 0
+
+[step 92] target=Light-IF-32B, group=attn, layer=0 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 303.27it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 306.97it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.05it/s]
+  - applying attn_q: [('Light-IF-32B', 0), ('MedGo', 0), ('T-pro-it-2.0', 0)]
+  - applying attn_k: [('Light-IF-32B', 0), ('MedGo', 0), ('T-pro-it-2.0', 0)]
+  - applying attn_v: [('Light-IF-32B', 0), ('MedGo', 0), ('T-pro-it-2.0', 0)]
+  - applying attn_o: [('Light-IF-32B', 0), ('MedGo', 0), ('T-pro-it-2.0', 0)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 92] apply: attn layer=0 (recorded score 78.0000)
+[progress] block 93/130 | elapsed 1201.1s | accepted 0 rejected 0
+
+[step 93] target=Light-IF-32B, group=attn, layer=45 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 304.93it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 308.50it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 311.11it/s]
+  - applying attn_q: [('Light-IF-32B', 45), ('MedGo', 45), ('T-pro-it-2.0', 45)]
+  - applying attn_k: [('Light-IF-32B', 45), ('MedGo', 45), ('T-pro-it-2.0', 45)]
+  - applying attn_v: [('Light-IF-32B', 45), ('MedGo', 45), ('T-pro-it-2.0', 45)]
+  - applying attn_o: [('Light-IF-32B', 45), ('MedGo', 45), ('T-pro-it-2.0', 45)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 93] apply: attn layer=45 (recorded score 78.0000)
+[progress] block 94/130 | elapsed 1209.5s | accepted 0 rejected 0
+
+[step 94] target=Light-IF-32B, group=attn, layer=15 (stage=1, scaling=disabled)
+  [load] donor: T-pro-it-2.0
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 305.38it/s]
+  [load] donor: MedGo
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 302.33it/s]
+Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 14/14 [00:00<00:00, 309.42it/s]
+  - applying attn_q: [('Light-IF-32B', 15), ('MedGo', 15), ('T-pro-it-2.0', 15)]
+  - applying attn_k: [('Light-IF-32B', 15), ('MedGo', 15), ('T-pro-it-2.0', 15)]
+  - applying attn_v: [('Light-IF-32B', 15), ('MedGo', 15)]
+  - applying attn_o: [('Light-IF-32B', 15), ('MedGo', 15), ('T-pro-it-2.0', 15)]
+  [save] delta-shard: rewrote 1/14 shard(s)
+[step 94] apply: attn layer=15 (recorded score 78.0000)
+[progress] block 95/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 95] skip (past cutoff): attn layer=25
+[progress] block 96/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 96] skip (past cutoff): attn layer=27
+[progress] block 97/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 97] skip (past cutoff): attn layer=28
+[progress] block 98/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 98] skip (past cutoff): attn layer=32
+[progress] block 99/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 99] skip (past cutoff): attn layer=34
+[progress] block 100/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 100] skip (past cutoff): attn layer=35
+[progress] block 101/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 101] skip (past cutoff): attn layer=47
+[progress] block 102/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 102] skip (past cutoff): attn layer=51
+[progress] block 103/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 103] skip (past cutoff): attn layer=55
+[progress] block 104/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 104] skip (past cutoff): attn layer=57
+[progress] block 105/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 105] skip (past cutoff): attn layer=59
+[progress] block 106/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 106] skip (past cutoff): attn layer=11
+[progress] block 107/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 107] skip (past cutoff): attn layer=10
+[progress] block 108/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 108] skip (past cutoff): attn layer=24
+[progress] block 109/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 109] skip (past cutoff): attn layer=39
+[progress] block 110/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 110] skip (past cutoff): attn layer=43
+[progress] block 111/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 111] skip (past cutoff): attn layer=49
+[progress] block 112/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 112] skip (past cutoff): attn layer=53
+[progress] block 113/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 113] skip (past cutoff): attn layer=61
+[progress] block 114/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 114] skip (past cutoff): attn layer=16
+[progress] block 115/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 115] skip (past cutoff): attn layer=18
+[progress] block 116/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 116] skip (past cutoff): attn layer=37
+[progress] block 117/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 117] skip (past cutoff): attn layer=63
+[progress] block 118/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 118] skip (past cutoff): mlp layer=12
+[progress] block 119/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 119] skip (past cutoff): mlp layer=53
+[progress] block 120/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 120] skip (past cutoff): attn layer=23
+[progress] block 121/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 121] skip (past cutoff): attn layer=38
+[progress] block 122/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 122] skip (past cutoff): attn layer=12
+[progress] block 123/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 123] skip (past cutoff): attn layer=25
+[progress] block 124/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 124] skip (past cutoff): attn layer=34
+[progress] block 125/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 125] skip (past cutoff): attn layer=35
+[progress] block 126/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 126] skip (past cutoff): attn layer=10
+[progress] block 127/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 127] skip (past cutoff): attn layer=24
+[progress] block 128/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 128] skip (past cutoff): attn layer=61
+[progress] block 129/130 | elapsed 1217.8s | accepted 0 rejected 0
+[step 129] skip (past cutoff): attn layer=37
+[progress] block 130/130 | elapsed 1217.8s | accepted 0 rejected 0
+[replay] saved variant -> variants/fig5a_c94/Light-IF-32B
+
+[final] eval disabled; skipping final score.
+[lightif_merged_replay] OK -> variants/fig5a_c94/Light-IF-32B  2026-08-20T13:49:20+00:00
