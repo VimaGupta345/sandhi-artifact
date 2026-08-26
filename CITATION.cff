@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite the paper below."
+title: "SANDHI artifact: Fine-Grained Merging for Memory Efficient Multi-Model Serving"
+type: software
+license: MIT
+repository-code: "https://github.com/VimaGupta345/sandhi-artifact"
+authors:
+  - family-names: Gupta
+    given-names: Vima
+    affiliation: "Georgia Institute of Technology"
+    email: vima.gupta@gatech.edu
+preferred-citation:
+  type: conference-paper
+  title: "SANDHI: Fine-Grained Merging for Memory Efficient Multi-Model Serving"
+  collection-title: "Proceedings of the 31st ACM Symposium on Operating Systems Principles (SOSP '26)"
+  year: 2026
+  authors:
+    - family-names: Gupta
+      given-names: Vima
+      affiliation: "Georgia Institute of Technology"

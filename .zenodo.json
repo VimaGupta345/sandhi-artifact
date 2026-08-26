@@ -1,0 +1,27 @@
+{
+  "title": "SANDHI artifact: Fine-Grained Merging for Memory Efficient Multi-Model Serving (SOSP 2026)",
+  "description": "Artifact for the SOSP 2026 paper \"SANDHI: Fine-Grained Merging for Memory Efficient Multi-Model Serving\". Contains the merging pipeline (gaussian profiling, component clustering, MICR merge-and-evaluate, memory/accuracy analysis; Figure 5), the serving benchmark harness with per-scenario merge specs and recorded reference runs for all five deployment scenarios (Figure 6), recorded offloading experiments, full-dataset accuracy evidence with raw evaluation outputs, and paper-style plotting scripts. Both pipelines run in prebuilt Docker images pinned by digest; see README.md and CHANGES.md.",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Gupta, Vima",
+      "affiliation": "Georgia Institute of Technology"
+    }
+  ],
+  "keywords": [
+    "model merging",
+    "LLM serving",
+    "GPU memory",
+    "multi-model serving",
+    "artifact evaluation",
+    "SOSP 2026"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/VimaGupta345/sandhi-artifact",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
