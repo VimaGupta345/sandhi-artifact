@@ -39,6 +39,16 @@ SCENARIOS = {
 
 ARMS = {"baseline": "before", "sandhi": "after"}
 
+
+def scenario_key(dir_name):
+    """Map a results-dir name to a SCENARIOS key (e.g. `llama5_out` -> `llama5`,
+    `ds2_variants` -> `ds2`). Longest match wins; None if nothing matches."""
+    base = dir_name[: -len("_variants")] if dir_name.endswith("_variants") else dir_name
+    if base in SCENARIOS:
+        return base
+    hits = [k for k in SCENARIOS if k in base]
+    return max(hits, key=len) if hits else None
+
 METRICS = {
     "Output Token Throughput (tok/s)": r"Output token throughput \(tok/s\):\s*([\d.]+)",
     "Median TTFT (ms)": r"Median TTFT \(ms\):\s*([\d.]+)",
@@ -81,15 +91,47 @@ def main():
     if not args.results_root.is_dir():
         ap.error(f"results root not found: {args.results_root}")
 
-    rows, missing = [], []
-    for base, targets in SCENARIOS.items():
-        scen_dir = args.results_root / (f"{base}_variants" if args.runs == "variants" else base)
-        bench_dir = scen_dir / "logs" / "benchmarks"
-        if not bench_dir.is_dir():
-            missing.append(str(scen_dir))
+    def bench_dir(d):
+        return d / "logs" / "benchmarks"
+
+    # Collect scenario dirs: either the root IS a single run dir (a fresh
+    # `run_all.sh --run-base-dir` output), or it holds one subdir per scenario
+    # (the shipped `../results` layout). When both an owner dir and its
+    # `_variants` sibling exist, --runs picks which one; an unpaired dir (a
+    # user's own run) is always included.
+    if bench_dir(args.results_root).is_dir():
+        scen_dirs = [args.results_root]
+    else:
+        subs = [d for d in sorted(args.results_root.iterdir()) if bench_dir(d).is_dir()]
+        names = {d.name for d in subs}
+        scen_dirs = []
+        for d in subs:
+            if d.name.endswith("_variants"):
+                if args.runs == "variants":
+                    scen_dirs.append(d)
+            elif f"{d.name}_variants" in names:
+                if args.runs == "owner":
+                    scen_dirs.append(d)
+            else:
+                scen_dirs.append(d)
+
+    order = list(SCENARIOS)
+
+    def sort_key(d):
+        key = scenario_key(d.name)
+        return (order.index(key) if key else len(order), d.name)
+
+    scen_dirs.sort(key=sort_key)
+
+    rows, unknown = [], []
+    for scen_dir in scen_dirs:
+        key = scenario_key(scen_dir.name)
+        if key is None:
+            unknown.append(scen_dir.name)
             continue
+        targets = SCENARIOS[key]
         for arm, suffix in ARMS.items():
-            for log in sorted(bench_dir.glob(f"{arm}__*.log")):
+            for log in sorted(bench_dir(scen_dir).glob(f"{arm}__*.log")):
                 match = next((prefix for sub, prefix in targets
                               if sub in log.name and
                               ("deepseek" not in log.name or sub == "deepseek")), None)
@@ -101,8 +143,10 @@ def main():
 
     if not rows:
         sys.exit(f"no benchmark data found under {args.results_root} "
-                 f"(--runs {args.runs}); expected <scenario>/logs/benchmarks/"
-                 "{baseline,sandhi}__*.log")
+                 f"(--runs {args.runs}); expected logs/benchmarks/"
+                 "{baseline,sandhi}__*.log in the root itself or in one "
+                 "subdir per scenario (dir names must contain a scenario "
+                 f"key: {', '.join(SCENARIOS)})")
 
     cols = ["scenario", "Request Rate (RPS)", *METRICS]
     with open(args.out, "w", newline="") as fh:
@@ -112,8 +156,8 @@ def main():
 
     print(f"wrote {len(rows)} rows for "
           f"{len({r['scenario'] for r in rows})} scenarios -> {args.out}")
-    for m in missing:
-        print(f"[warn] scenario dir missing, skipped: {m}")
+    for name in unknown:
+        print(f"[warn] dir matches no known scenario, skipped: {name}")
 
 
 if __name__ == "__main__":

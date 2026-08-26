@@ -136,12 +136,10 @@
       "type": "merge_figure",
       "paper_mem_pct": 26.7,
       "runsets": [
-        "llama5"
+        "llama5",
+        "deepseek2"
       ],
-      "reuse": [
-        "deepseek-coder-7b-instruct-v1.5",
-        "deepseek-math-7b-instruct"
-      ],
+      "reuse": [],
       "n_models": 7,
       "models": [
         {
@@ -170,13 +168,13 @@
           "family": "Llama-8B"
         },
         {
-          "model": "deepseek-coder-7b-instruct-v1.5",
-          "task": "humaneval",
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
           "family": "DeepSeek-7B"
         },
         {
-          "model": "deepseek-math-7b-instruct",
-          "task": "gsm8k-cot",
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
           "family": "DeepSeek-7B"
         }
       ]
@@ -187,12 +185,10 @@
       "runsets": [
         "llama5",
         "qwen25_2",
-        "qwen32b3"
+        "qwen32b3",
+        "deepseek2"
       ],
-      "reuse": [
-        "deepseek-coder-7b-instruct-v1.5",
-        "deepseek-math-7b-instruct"
-      ],
+      "reuse": [],
       "n_models": 12,
       "models": [
         {
@@ -246,13 +242,13 @@
           "family": "Qwen-32B"
         },
         {
-          "model": "deepseek-coder-7b-instruct-v1.5",
-          "task": "humaneval",
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
           "family": "DeepSeek-7B"
         },
         {
-          "model": "deepseek-math-7b-instruct",
-          "task": "gsm8k-cot",
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
           "family": "DeepSeek-7B"
         }
       ]
@@ -260,21 +256,20 @@
     "fig6a": {
       "type": "serving_pool",
       "paper_mem_pct": null,
-      "runsets": [],
-      "reuse": [
-        "deepseek-coder-7b-instruct-v1.5",
-        "deepseek-math-7b-instruct"
+      "runsets": [
+        "deepseek2"
       ],
+      "reuse": [],
       "n_models": 2,
       "models": [
         {
-          "model": "deepseek-coder-7b-instruct-v1.5",
-          "task": "humaneval",
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
           "family": "DeepSeek-7B"
         },
         {
-          "model": "deepseek-math-7b-instruct",
-          "task": "gsm8k-cot",
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
           "family": "DeepSeek-7B"
         }
       ]
@@ -304,12 +299,10 @@
       "type": "serving_pool",
       "paper_mem_pct": null,
       "runsets": [
-        "llama5"
+        "llama5",
+        "deepseek2"
       ],
-      "reuse": [
-        "deepseek-coder-7b-instruct-v1.5",
-        "deepseek-math-7b-instruct"
-      ],
+      "reuse": [],
       "n_models": 7,
       "models": [
         {
@@ -338,13 +331,13 @@
           "family": "Llama-8B"
         },
         {
-          "model": "deepseek-coder-7b-instruct-v1.5",
-          "task": "humaneval",
+          "model": "deepseek-math-7b-instruct",
+          "task": "gsm8k-cot",
           "family": "DeepSeek-7B"
         },
         {
-          "model": "deepseek-math-7b-instruct",
-          "task": "gsm8k-cot",
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
           "family": "DeepSeek-7B"
         }
       ]
@@ -390,12 +383,10 @@
       "paper_mem_pct": null,
       "runsets": [
         "llama5",
-        "qwen25_2"
+        "qwen25_2",
+        "deepseek2"
       ],
-      "reuse": [
-        "deepseek-coder-7b-instruct-v1.5",
-        "deepseek-math-7b-instruct"
-      ],
+      "reuse": [],
       "n_models": 9,
       "models": [
         {
@@ -434,14 +425,61 @@
           "family": "Qwen2.5-7B"
         },
         {
-          "model": "deepseek-coder-7b-instruct-v1.5",
-          "task": "humaneval",
-          "family": "DeepSeek-7B"
-        },
-        {
           "model": "deepseek-math-7b-instruct",
           "task": "gsm8k-cot",
           "family": "DeepSeek-7B"
+        },
+        {
+          "model": "deepseek-coder-7b-instruct-v1.5",
+          "task": "humaneval",
+          "family": "DeepSeek-7B"
+        }
+      ]
+    },
+    "fig6f": {
+      "type": "serving_pool",
+      "paper_mem_pct": null,
+      "runsets": [
+        "llama5",
+        "qwen25_2"
+      ],
+      "reuse": [],
+      "n_models": 7,
+      "models": [
+        {
+          "model": "Llama-3.1-8B-UltraMedical",
+          "task": "medqa_4options",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-8B-Instruct-multi-truth-judge",
+          "task": "truthfulqa_mc2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-SafetyGuard-Content-Binary",
+          "task": "sst2",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "calme-2.3-legalkit-8b",
+          "task": "mmlu_professional_law",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Llama-3.1-Hawkish-8B",
+          "task": "mmlu_econometrics",
+          "family": "Llama-8B"
+        },
+        {
+          "model": "Qwen2.5-Coder-7B-Instruct",
+          "task": "humaneval",
+          "family": "Qwen2.5-7B"
+        },
+        {
+          "model": "Qwen2.5-Math-7B-Instruct",
+          "task": "gsm8k-cot",
+          "family": "Qwen2.5-7B"
         }
       ]
     }

@@ -128,7 +128,7 @@ via `docker exec -it sandhi_eval /bin/bash`.
 | `qwen2_40gb_config.sh` | 2× Qwen2.5-7B (Coder, Math) | `fig6b` | 1 | A100-40GB | 100 GiB | `qwen2_spec.json` |
 | `llama5_config.sh` | 5× Llama-3.1-8B domain fine-tunes | `fig6d` | 1 | 80 GB | 40 GiB | `llama5_spec.json` |
 | `llama-qwen_config.sh` | 7 models: 5× Llama + 2× Qwen2.5-7B | `fig6f` | 2 (TP=2) | 2× 80 GB | 38 GiB | `llama_qwen_spec.json` |
-| `llama-qwen-ds_config.sh` | 9 models: 5× Llama + 2× Qwen + 2× DeepSeek | `fig6e` | 2 (TP=2) | constrained | 12 GiB | `llama_qwen_ds_spec.json` |
+| `llama-qwen-ds_config.sh` | 9 models: 5× Llama + 2× Qwen + 2× DeepSeek | `fig6e` | 2 (TP=2) | 2× H200 (141 GB) | 12 GiB | `llama_qwen_ds_spec.json` |
 | `template_config.sh` | template for new pools | — | — | — | — | — |
 
 The pools use exactly the models the merging pipeline evaluates (Table 2 of

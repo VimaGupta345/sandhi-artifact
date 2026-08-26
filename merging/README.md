@@ -125,6 +125,12 @@ Runs write into the mounted repo, so results appear on the host under
 - `collect` copies reportables into `results/<set>/` and profiles into the
   shared per-model `results/profiler/`
 
+The shipped `results/fig6*/` were collected from a derived composition run
+named `fig6_specs` (analysis + collect over the shipped base runs — no new
+profiling or MICR). The run directory itself is not shipped; recreate it with
+`python scripts/run_figures.py --run-name fig6_specs --sets 6a,6b,6d,6e,6f
+--stages analysis,collect`.
+
 The figure→model→benchmark map is in `FIGURE_MODEL_MAP.md`.
 
 ## Operating points, per-model cutoffs, and figure composition

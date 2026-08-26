@@ -17,11 +17,11 @@ _Compositions of existing run-sets (no new profiling/MICR). The pipeline emits t
 
 | Figure | #models | Composition | Models |
 |---|---|---|---|
-| **fig6a** | 2 | deepseek(reuse) | ds-coder, ds-math |
+| **fig6a** | 2 | deepseek2 | ds-coder, ds-math |
 | **fig6b** | 2 | qwen25_2 | Qwen-Coder, Qwen-Math |
-| **fig6c** | 7 | llama5+deepseek(reuse) | UltraMed, multi-truth, SafetyGuard, calme-legal, Hawkish, ds-coder, ds-math |
+| **fig6c** | 7 | llama5+deepseek2 | UltraMed, multi-truth, SafetyGuard, calme-legal, Hawkish, ds-coder, ds-math |
 | **fig6d** | 5 | llama5 | UltraMed, multi-truth, SafetyGuard, calme-legal, Hawkish |
-| **fig6e** | 9 | llama5+qwen25_2+deepseek(reuse) | UltraMed, multi-truth, SafetyGuard, calme-legal, Hawkish, Qwen-Coder, Qwen-Math, ds-coder, ds-math |
+| **fig6e** | 9 | llama5+qwen25_2+deepseek2 | UltraMed, multi-truth, SafetyGuard, calme-legal, Hawkish, Qwen-Coder, Qwen-Math, ds-coder, ds-math |
 | **fig6f** | 7 | llama5+qwen25_2 | UltraMed, multi-truth, SafetyGuard, calme-legal, Hawkish, Qwen-Coder, Qwen-Math |
 
 ## Atomic run-sets
