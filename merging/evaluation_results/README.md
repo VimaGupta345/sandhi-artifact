@@ -37,8 +37,7 @@ Console logs for the regenerated outputs are in `rebuild_logs/`, produced by
 `rebuild_runner.sh` (the same invocations documented below).
 
 The remaining `humaneval_*` files (scores 82.32, 79.88, 77.44) are the
-Qwen2.5-Coder evaluations; that pool has no row in `full_set_scores.csv`
-(see `../README.md`).
+Qwen2.5-Coder evaluations; that pool has no row in `full_set_scores.csv`.
 
 Every row of `full_set_scores.csv` has a shipped raw output. The two c94
 merged variants were rebuilt by replaying the recorded `steps.csv` to cutoff

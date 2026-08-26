@@ -51,5 +51,4 @@ deliberately sit at the points the paper reports:
 
 The artifact's own memory numbers at every operating point are in each set's
 `report.csv` and `results/FIGURE_COMPOSITIONS.md`; the denominator
-reconciliation for Fig 5a is in `../README.md` § Accuracy footing
-(M-split vs. full-set).
+reconciliation for Fig 5a is in `../results/fig5a/README.md`.
