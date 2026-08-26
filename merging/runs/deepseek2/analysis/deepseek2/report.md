@@ -5,7 +5,6 @@
 - Memory model: distinct-tensor recipes over ops_step CSVs; sizes/full-model MiB from FAMILY_PROFILES (measured from safetensors); families: deepseek-7b
 - Pool denominator (FULL on-disk model size, measured from safetensors, 2 models): 27641.5 MB
 - **Drop reference = MICR run baseline** (same eval as the merged scores): math=80.4, coder=74.39
-- Profiling/noise baseline (HARDCODED_BASELINE_SCORES, *different eval* — shown for reference, NOT used for drops): math=None, coder=None
 - Selection: B = acc drop <= 1.0%; C = acc drop <= 2.0%; Bpm = per-model acc drop <= 1.0%; Cpm = per-model acc drop <= 2.0%; Kpm = per-model knee (savings/accuracy sweet spot, <=2%) (savings is monotonic in cutoff; mem_ge picks the smallest cutoff reaching the target = best accuracy at that savings).
 - Single-model (non-merge) groups are excluded from the jsonl: a group with one model is not a merge and saves nothing.
 - **Scaled merge groups share the UNSCALED canonical tensor, not the baked bytes**: each member re-applies its per-row scaling factors at load (row_affine_v1; see <point>.scaling_factors.npz next to the jsonl -- a member/group absent from that file is identity/unscaled). The savings figures above already subtract the factor-vector bytes. B: 36 factored slot(s); Bpm: 36 factored slot(s); C: 42 factored slot(s); Cpm: 42 factored slot(s); Kpm: 32 factored slot(s)

@@ -101,9 +101,9 @@ def main():
     for atom in ATOMS:
         if atom in found:
             _, sz = reports[atom]
-            out.append(f"- ✅ **{atom}** — {sz/1024:.1f} GB — `{os.path.relpath(found[atom], HERE)}`")
+            out.append(f"- **{atom}** — {sz/1024:.1f} GB — `{os.path.relpath(found[atom], HERE)}`")
         else:
-            out.append(f"- ❌ **{atom}** — NOT FOUND (run it to unlock its figures)")
+            out.append(f"- **{atom}** — not found (run it to unlock its figures)")
     out += ["", "## Figure pools", "",
             "| figure | atoms | status | pool GB | Bpm ≤1% | Cpm ≤2% | Kpm knee | paper |",
             "|---|---|---|---|---|---|---|---|"]
@@ -120,7 +120,7 @@ def main():
                         for x in atoms if pt in reports[x][0])
             cells.append(f"{100*freed/size:.1f}%")
         pcell = f"{paper}%" if paper else "—"
-        out.append(f"| **{fig}** | {'+'.join(atoms)} | ✅ | {size/1024:.0f} "
+        out.append(f"| **{fig}** | {'+'.join(atoms)} | ok | {size/1024:.0f} "
                    f"| {cells[0]} | {cells[1]} | {cells[2]} | {pcell} |")
     md = "\n".join(out)
     os.makedirs(os.path.dirname(a.out), exist_ok=True)

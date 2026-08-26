@@ -5,7 +5,6 @@
 - Memory model: distinct-tensor recipes over ops_step CSVs; sizes/full-model MiB from FAMILY_PROFILES (measured from safetensors); families: llama-8b
 - Pool denominator (FULL on-disk model size, measured from safetensors, 5 models): 80302.6 MB
 - **Drop reference = MICR run baseline** (same eval as the merged scores): 3.1=65.0, 3.1=71.03, SafetyGuard=88.76, 2.3=47.85, 3.1=49.12
-- Profiling/noise baseline (HARDCODED_BASELINE_SCORES, *different eval* — shown for reference, NOT used for drops): 3.1=None, 3.1=None, SafetyGuard=None, 2.3=None, 3.1=None
 - Selection: B = acc drop <= 1.0%; C = acc drop <= 2.0%; Bpm = per-model acc drop <= 1.0%; Cpm = per-model acc drop <= 2.0%; Kpm = per-model knee (savings/accuracy sweet spot, <=2%); P = mem savings ~ 35.2% (savings is monotonic in cutoff; mem_ge picks the smallest cutoff reaching the target = best accuracy at that savings).
 - Single-model (non-merge) groups are excluded from the jsonl: a group with one model is not a merge and saves nothing.
 

@@ -218,15 +218,7 @@ copies of the model during evals. Budget per job on a 140 GiB-class card
 - Concurrent jobs must not share a tmp root (`--tmp_dir` per job; the driver
   handles this automatically).
 
-## Recorded references
-
-`micr/results/{7_llamas,6_deepseek}_standardized` and
-`clustering/candidates/...` are the recorded runs used for fig5c reuse and for
-the memory-model validation:
-
-    python scripts/build_operating_points.py --pool 7_llamas --validate
-
-must report ~34.5% at the reference cutoffs.
+## Accuracy footing (M-split vs. full-set)
 
 All numbers in `report.csv`/`sweep.csv` (including `Bpm`/`Cpm`/`Kpm`/`P`) are
 on the M-split eval subset — the gating signal. Full-set accuracy is recorded

@@ -1070,9 +1070,10 @@ def write_outputs(pool_name: str):
     lines.append("- **Drop reference = MICR run baseline** (same eval as the merged "
                  "scores): "
                  + ", ".join(f"{_short(m)}={run_base[m]}" for m in models))
-    lines.append("- Profiling/noise baseline (HARDCODED_BASELINE_SCORES, *different eval* "
-                 "— shown for reference, NOT used for drops): "
-                 + ", ".join(f"{_short(m)}={profiling_baselines[m]}" for m in models))
+    if any(profiling_baselines[m] is not None for m in models):
+        lines.append("- Profiling/noise baseline (HARDCODED_BASELINE_SCORES, *different eval* "
+                     "— shown for reference, NOT used for drops): "
+                     + ", ".join(f"{_short(m)}={profiling_baselines[m]}" for m in models))
     lines.append("- Selection: "
                  + "; ".join(f"{pt['name']} = {pt['criterion']}"
                             for pt in points if pt["name"] != "A")

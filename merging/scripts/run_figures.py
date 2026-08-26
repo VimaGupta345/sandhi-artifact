@@ -942,9 +942,10 @@ def stage_collect(run, sets, reg, dry):
         # summary
         if not dry:
             lines = [f"# {s} results", "",
-                     f"- run: {run.name}", f"- settings: {LOCKED}",
-                     f"- paper memory target: {SETS[s]['paper_mem']}%",
-                     f"- files: {len(copied)}", ""]
+                     f"- run: {run.name}", f"- settings: {LOCKED}"]
+            if SETS[s]["paper_mem"] is not None:
+                lines.append(f"- paper memory target: {SETS[s]['paper_mem']}%")
+            lines += [f"- files: {len(copied)}", ""]
             sweep = dest / "sweep.csv"
             if sweep.exists():
                 lines.append("See sweep.csv for the full cutoff table and pareto.png "

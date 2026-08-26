@@ -9,7 +9,7 @@ Also covers: hardlink survival across the accept path (rmtree + move), boundary-
 layers, the tied-embeddings key set, .bin fallback, verify-mode catching an undeclared
 mutation, and the MICR_INCREMENTAL_SAVE=0 escape hatch.
 
-Run: conda run -n mergeenv python micr/tests/test_delta_shard_save.py
+Run: python micr/tests/test_delta_shard_save.py
 """
 import filecmp
 import json

@@ -13,7 +13,7 @@ Contract: skip the fallback when the constructed command is identical, and let o
 final retry attempt use the (genuine) HF fallback. The baseline blocks until it gets a
 score, so it always allows the fallback.
 
-Run: conda run -n mergeenv python micr/tests/test_fallback_policy.py
+Run: python micr/tests/test_fallback_policy.py
 """
 import os
 import sys

@@ -1,6 +1,6 @@
 # Automated variant suggestions — Figure 5 sets
 
-Four auto-computed operating points per set (from each set's `report.csv`). **Kpm (knee) is the recommended balance.** Savings = distinct-tensor memory reduction; drop = MICR M-split per-model accuracy drop (confirm on full set before publishing).
+Four auto-computed operating points per set (from each set's `report.csv`). **Kpm (knee) is the recommended balance.** Savings = distinct-tensor memory reduction; drop = MICR M-split per-model accuracy drop (full-set accuracy for figure-reported points is recorded in `full_set_scores.csv`).
 
 ## fig5a — 3x Qwen3-32B  ·  paper mem 49.8%
 

@@ -5,7 +5,6 @@
 - Memory model: distinct-tensor recipes over ops_step CSVs; sizes/full-model MiB from FAMILY_PROFILES (measured from safetensors); families: qwen3-32b
 - Pool denominator (FULL on-disk model size, measured from safetensors, 3 models): 196572.8 MB
 - **Drop reference = MICR run baseline** (same eval as the merged scores): IF=76.0, pro=75.2, MedGo=78.12
-- Profiling/noise baseline (HARDCODED_BASELINE_SCORES, *different eval* — shown for reference, NOT used for drops): IF=None, pro=None, MedGo=None
 - Selection: B = acc drop <= 1.0%; C = acc drop <= 2.0%; Bpm = per-model acc drop <= 1.0%; Cpm = per-model acc drop <= 2.0%; Kpm = per-model knee (savings/accuracy sweet spot, <=2%); P = mem savings ~ 49.8% (savings is monotonic in cutoff; mem_ge picks the smallest cutoff reaching the target = best accuracy at that savings).
 - Single-model (non-merge) groups are excluded from the jsonl: a group with one model is not a merge and saves nothing.
 

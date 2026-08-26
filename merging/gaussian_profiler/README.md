@@ -130,22 +130,6 @@ python gaussian_profiler.py \
   --gpus 0
 ```
 
-### Batch Script: `run_profiling_quantized.sh`
-
-Profiles all 5 quantized models in sequence:
-
-```bash
-# Usage: ./run_profiling_quantized.sh [GPU_ID] [TASKS]
-./run_profiling_quantized.sh 0 math
-```
-
-Models profiled:
-- `calme-2.3-legalkit-8b-FP8-BLOCK`
-- `Llama-3.1-8B-Instruct-multi-truth-judge-FP8-BLOCK`
-- `Llama-3.1-8B-UltraMedical-FP8-BLOCK`
-- `Llama-3.1-Hawkish-8B-FP8-BLOCK`
-- `Llama-SafetyGuard-Content-Binary-FP8-BLOCK`
-
 ### Output
 
 The CSV output includes an additional `quantized` column (`True`/`False`) to distinguish runs on quantized vs. standard models.
@@ -167,7 +151,3 @@ For each perturbation step:
 
 The implementation uses the `bnb` (BitsAndBytes) backend; GPTQ/AWQ
 quantization libraries are not included.
-
-### Sample Script: `run_profiling_4bit.sh`
-
-Runs the profiler on a model under `<MODELS_DIR>` with `--eval_4bit` enabled.

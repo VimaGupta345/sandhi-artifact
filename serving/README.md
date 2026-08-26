@@ -174,27 +174,26 @@ two pipelines (Figure 5 → Figure 6).
 
 ## Serving the exact merged weights
 
-By default both arms serve the original fine-tuned checkpoints; in the sandhi
-arm the loader deduplicates each spec group by mapping every member onto the
-owner's tensor. Throughput/TTFT depend only on this sharing structure, not on
-tensor values — but to measure the deduplicated deployment running the *exact
-merged weights Figure 5 validates*, materialize the variants with the merging
-pipeline's replay (`../merging/GENERATE_VARIANTS.md` — the merged models are
-too large to ship, so replay recreates them byte-identically from the
-recorded merge trajectories; § *Rebuilding the recorded reference variants*
-there gives the exact parameters for every recorded set) and define
-`MODELS_SANDHI` in the scenario config: an array parallel to `MODELS` (same
-ports, variant paths) that any scenario config may declare — the harness
-(`server_utils.sh`, `benchmark.sh`) serves it in the sandhi arm only. A
-commented example is in `llama5_config.sh`; point the paths at the replay's
-output directories. Same-pretrain variants replayed to the same cutoff have
-byte-identical shared tensors by construction, so dedup engages on the merged
-values themselves; cross-pretrain members are replayed with the per-member
-scaling **baked into the weights** (the `*.scaling_factors.npz` sidecar values
-applied at replay), so no runtime scaling support is needed. The recorded
-`results/*_variants/` runs serve these builds for all five scenarios;
-`results/llama5_variants/` shows ratios statistically identical to the
-owner-tensor run (7.1× vs 7.1× throughput).
+By default both arms serve the original fine-tuned checkpoints; the sandhi
+arm deduplicates each spec group onto the owner's tensor. Throughput/TTFT
+depend only on this sharing structure, not on tensor values. To serve the
+*exact merged weights Figure 5 validates* instead:
+
+1. Materialize the variants with the merging pipeline's replay
+   (`../merging/GENERATE_VARIANTS.md`, § *Rebuilding the recorded reference
+   variants*) — the merged models are too large to ship, so replay recreates
+   them byte-identically from the recorded merge trajectories.
+2. Define `MODELS_SANDHI` in the scenario config: an array parallel to
+   `MODELS` (same ports), pointed at the replay's output directories. The
+   harness serves it in the sandhi arm only; a commented example is in
+   `llama5_config.sh`.
+
+No runtime scaling support is needed: same-pretrain variants share
+byte-identical tensors by construction, and cross-pretrain members have the
+per-member scaling (`*.scaling_factors.npz`) baked into the weights at
+replay. The recorded `results/*_variants/` runs serve these builds for all
+five scenarios, with ratios statistically identical to the owner-tensor runs
+(`llama5_variants`: 7.1× vs 7.1× throughput).
 
 ## Results
 

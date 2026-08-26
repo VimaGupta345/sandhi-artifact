@@ -78,11 +78,11 @@ run_replay_eval() {
     --replay_cutoff 94 --replay_cutoff_mode step_idx \
     --scaling off --merge_device cuda \
     --save_variant_dir  "$out" --no_eval \
-    --working_root /scratch_work/vwork_$name \
+    --working_root /tmp/vwork_$name \
     --results_csv /tmp/vsteps_$name.csv --output_dir /tmp/veval_$name \
     --gpu_ids 0 >> "$log" 2>&1
   local rc=$?
-  rm -rf "/scratch_work/vwork_$name"
+  rm -rf "/tmp/vwork_$name"
   if [[ $rc -ne 0 || ! -f "$ROOT/$out/config.json" ]]; then
     echo "[${name}_replay] FAILED rc=$rc" >> "$log"; return 1
   fi

@@ -1,11 +1,9 @@
 """
-Standalone runner for the clustering pipeline in `clustering/clustering.ipynb`.
+Standalone runner for the component clustering pipeline.
 
-Goal:
-  - Replicate the notebook's behavior (operations + CSV generation) in a script.
-
-Outputs (by default):
-  - Per-model CSVs under `clustering_algorithm/ops_step_csvs/`:
+Outputs:
+  - Per-model CSVs in the configured output directory (the `run_figures.py`
+    driver uses `runs/<run>/clustering/<set>`):
       ops_step1_<model>.csv
       ops_step2_<model>.csv
 

@@ -13,7 +13,7 @@ variants, formatter's cutoff spec had 52 entries no reproduction uses and 9 it w
 This script instead walks the same accepted blocks the replay applies, so its flattened
 member set is exactly the set of contributor tensors the variants were built from.
 
-Cutoffs are 1-based CSV line numbers (step_idx = line - 3); see cutoff-index-conventions.
+Cutoffs are 1-based CSV line numbers (step_idx = line - 3).
 """
 from __future__ import annotations
 import argparse, csv, json, os

@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-"""ETL: our pipeline results -> the Figure-5 plot's data CSVs.
+"""Build the Figure-5 plot's data CSVs from this pipeline's results.
 
 Reads each set's `report.csv` (M-split = the eval subset) and writes the CSVs
-that `plots/source/accuracy_memory_figures.py` consumes, so the plot renders OUR
-numbers instead of the paper's shipped tables. All accuracy is on the **M-split**
-(the same eval subset the SANDHI operating points were selected on), so SANDHI,
-No-merge, Full-merge and LoRA are mutually comparable.
+that `plots/source/accuracy_memory_figures.py` consumes, so the plot renders
+this run's numbers instead of the paper's shipped tables. All accuracy is on
+the **M-split** (the same eval subset the SANDHI operating points were
+selected on), so SANDHI, No-merge, Full-merge and LoRA are mutually
+comparable.
 
-Produces so far (the bars we have data for):
+Produces:
   - all_models_final.csv : SANDHI per-model accuracy delta + memory saved
-  - vllm-no-merge.csv     : No-merge (unmerged specialist) accuracy, our benchmarks
+  - vllm-no-merge.csv     : No-merge (unmerged specialist) accuracy
 
-Full-merge (full_merge/*.csv) and LoRA (lora/*.csv) are written by the baseline
-eval step (BASELINES.md) once those run on the M-split; this script leaves the
-existing files untouched if their inputs are absent.
+Full-merge (full_merge/*.csv) and LoRA (lora/*.csv) are written by the
+baseline eval step (BASELINES.md) when run on the M-split; this script leaves
+the existing files untouched if their inputs are absent.
 
 Point selected for the SANDHI bar: default `Cpm` (per-model <=2%); override with
 --point.

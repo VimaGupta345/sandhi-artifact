@@ -198,8 +198,8 @@ You can also pass a registry key directly if it exists in the harness `TASK_REGI
 
 ```bash
 python micr/run_eval_unified.py --mode normal \
-  --ops_step_csvs_dir clustering_algorithm/ops_step_csvs/solo_ds \
-  --label_map_json clustering_algorithm/label_map.json \
+  --ops_step_csvs_dir runs/r1/clustering/deepseek2 \
+  --label_map_json runs/r1/label_map.json \
   --target_label deepseek-coder-7b-instruct-v1.5 \
   --domain coder \
   --gpu_ids 0 \
@@ -212,8 +212,8 @@ python micr/run_eval_unified.py --mode normal \
 
 ```bash
 python micr/run_eval_unified.py --mode 32b \
-  --ops_step_csvs_dir clustering_algorithm/ops_step_csvs \
-  --label_map_json clustering_algorithm/label_map.json \
+  --ops_step_csvs_dir runs/r1/clustering/qwen32b3 \
+  --label_map_json runs/r1/label_map.json \
   --target_label Light-IF-32B \
   --domain ifeval \
   --gpu_ids 0,1 \
@@ -224,12 +224,12 @@ python micr/run_eval_unified.py --mode 32b \
 
 ```bash
 python micr/run_eval_unified.py --mode lora \
-  --ops_step_csvs_dir clustering_algorithm/ops_step_csvs \
-  --target_label fin-llama3.1-8b \
-  --domain finance \
+  --ops_step_csvs_dir runs/r1/clustering/<set> \
+  --target_label <adapter-model-label> \
+  --domain <task> \
   --gpu_ids 0 \
   --working_root ./lora_work \
-  --results_csv ./lora_work/finance_steps.csv \
+  --results_csv ./lora_work/steps.csv \
   --output_dir ./lora_work/eval_outputs
 ```
 

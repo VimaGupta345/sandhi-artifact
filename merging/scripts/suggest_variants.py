@@ -58,7 +58,8 @@ def render(results_dir):
            "Four auto-computed operating points per set (from each set's "
            "`report.csv`). **Kpm (knee) is the recommended balance.** Savings = "
            "distinct-tensor memory reduction; drop = MICR M-split per-model "
-           "accuracy drop (confirm on full set before publishing).", ""]
+           "accuracy drop (full-set accuracy for figure-reported points is "
+           "recorded in `full_set_scores.csv`).", ""]
     for setname, label, paper in SETS:
         rep = os.path.join(results_dir, setname, "report.csv")
         if not os.path.exists(rep):

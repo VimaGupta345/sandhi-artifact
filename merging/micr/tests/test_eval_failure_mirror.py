@@ -10,7 +10,7 @@ contract:
 
 and that each runner routes its evals through the shared retry policy.
 
-Run: conda run -n mergeenv python micr/tests/test_eval_failure_mirror.py
+Run: python micr/tests/test_eval_failure_mirror.py
 """
 import os
 import sys

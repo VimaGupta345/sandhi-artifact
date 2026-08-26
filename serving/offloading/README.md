@@ -35,5 +35,4 @@ directly in the bench logs (e.g. Qwen3 @ 14 GB offload, RPS 1: median TTFT
 
 Note: the recorded llama runs served `fin-llama3.1-8b`, not the pair named in
 the paper's Figure 9 description. It is a Llama-3.1-8B fine-tune, so the
-weight footprint and offload volume are identical; the model name will be
-corrected in the camera-ready.
+weight footprint and offload volume are identical.

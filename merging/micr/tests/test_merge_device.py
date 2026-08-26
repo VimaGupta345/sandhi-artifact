@@ -9,7 +9,7 @@ The contract:
     result depends on the device. resolve_merge_device() must never switch silently.
 
 GPU assertions skip cleanly when no CUDA device is visible.
-Run: conda run -n mergeenv python micr/tests/test_merge_device.py
+Run: python micr/tests/test_merge_device.py
 """
 import os
 import sys

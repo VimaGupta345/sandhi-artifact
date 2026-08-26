@@ -11,6 +11,9 @@ docker pull nandanmeda1999/sandhi-inference:latest
 docker tag  nandanmeda1999/sandhi-inference:latest sandhi:latest
 ```
 
+   To pin the exact image the recorded reference runs used:
+   `nandanmeda1999/sandhi-inference@sha256:3e5c79604bbf18ae48f9d7668971d9953fe34b012267eff721a56520f8605f9f`.
+
 2. Start the container. Adjust `--gpus` to the scenario (1 GPU for the
    single-pool scenarios, 2 for the cross-family pools) and point the volume
    at a persistent Hugging Face cache directory on the host so model downloads

@@ -11,7 +11,7 @@ Covers:
      last_score at 0.0 and accept everything.
   5. plot_steps._remove_unscored_rows drops eval_failed rows.
 
-Run: conda run -n mergeenv python micr/tests/test_eval_failure_sentinel.py
+Run: python micr/tests/test_eval_failure_sentinel.py
 """
 import os
 import sys

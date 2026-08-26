@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-# source vllm_venv2/bin/activate
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
