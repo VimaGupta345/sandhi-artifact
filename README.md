@@ -123,7 +123,6 @@ bash run_all.sh --config llama5_config.sh       --run-base-dir /vllm-workspace/l
 bash run_all.sh --config ds2_40gb_config.sh     --run-base-dir /vllm-workspace/ds2_out
 bash run_all.sh --config llama-qwen_config.sh   --run-base-dir /vllm-workspace/llama_qwen_out
 bash run_all.sh --config llama-qwen-ds_config.sh --run-base-dir /vllm-workspace/llama_qwen_ds_out
-# (qwen2_40gb_config.sh — Figure 6b — is under investigation; see serving/README.md)
 
 # render the paper-style panels from any results directory (host; pandas+matplotlib)
 cd serving/paper_plots

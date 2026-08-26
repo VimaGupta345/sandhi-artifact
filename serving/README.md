@@ -144,10 +144,6 @@ have; scale it to your GPU size so that the *free* memory matches the intended
 scenario. Request rates, prompt counts, and input/output lengths per benchmark
 target are set in each config.
 
-> **Note — Figure 6(b) (2× Qwen2.5).** The Qwen2.5 pool is under
-> investigation; please skip this scenario for now. All other scenarios
-> (6a, 6c–6f) replicate as documented above.
-
 Approximate wall-clock per scenario: dominated by model downloads on first run;
 the sweeps themselves are minutes per request rate per target
 (`NUM_PROMPTS × rates × targets × 2 modes`).

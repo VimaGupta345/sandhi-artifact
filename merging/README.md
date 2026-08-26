@@ -240,12 +240,6 @@ accuracy enters the paper only through the Fig 5d composition, on the M-split
 footing of `report.csv`, and its serving scenarios report throughput/TTFT
 only.
 
-**Note — Qwen2.5 pair (under investigation).** The pair's full-dataset
-accuracy at its shipped operating point (Coder: −4.88 on humaneval) is under
-investigation. Until resolved, the pair carries no accuracy claim and the
-2-Qwen serving scenario (Figure 6b) should be skipped; every other pool
-replicates as documented.
-
 **Fig 5a — operating point selected on full-set accuracy (48.2% / 92.6 GB).**
 The M-split scores for this pool depend on the choice of split — a different
 split seed yields different per-model drops — so the reported operating point

@@ -20,7 +20,7 @@ weights):
 | scenario | benched model | throughput | P95 TTFT | paper (§5.3 / Fig 6) |
 |---|---|---|---|---|
 | `ds2` (2× DeepSeek, 40 GB) | deepseek-coder-7b | 1.97× (845→1662 tok/s) | up to 43× | diverges earliest (480 KB/token) |
-| `qwen2` (2× Qwen2.5, 40 GB) | Qwen2.5-Coder-7B | ~1.0× | ~1.1× | under investigation — see the note in `../README.md` |
+| `qwen2` (2× Qwen2.5, 40 GB) | Qwen2.5-Coder-7B | ~1.0× | ~1.1× | — |
 | `llama5` (5× Llama, 80 GB) | Llama-3.1-UltraMedical | 7.1× (1.4k→10.2k) | up to 2534× | exceeds the paper's 1.1× / 197× |
 | `llama_qwen` (7 models, 2×80 GB) | Llama / Qwen | 3.4× / 2.5× | up to 1329× / 443× | saturation extended 15→25+ / 30→40+ RPS |
 | `llama_qwen_ds` (9 models) | DeepSeek / Llama / Qwen | **2.94× / 2.14× / 1.69×** | **1011× / 640× / 294×** | **2.93× / 2.11× / 1.72×; ~1000× / ~500× / ~300×** |
