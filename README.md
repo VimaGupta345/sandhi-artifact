@@ -9,14 +9,15 @@ Artifact for the SOSP 2026 paper:
 > *Proceedings of the 31st ACM Symposium on Operating Systems Principles
 > (SOSP '26).*
 
-SANDHI serves a pool of fine-tuned LLMs in less GPU memory by selectively
-merging per-layer attention/MLP projections across models and deduplicating
-the merged tensors at serving time. Across pools of 2–12 models this frees
-26.7%–48.2% of weight memory while preserving full-dataset task accuracy
-within a ≤2% budget, and the freed memory expands KV-cache capacity — up to
-2.93× higher throughput and 1052× lower P95 TTFT than independent serving.
-Per-pool operating points and their measured accuracy are documented in
-[`merging/README.md`](merging/README.md).
+SANDHI is a system that adaptively merges models, at a component granularity,
+while adhering to the user's accuracy requirements: it serves a pool of
+fine-tuned LLMs in less GPU memory by selectively merging per-layer
+attention/MLP projections across models and deduplicating the merged tensors
+at serving time. Our evaluation on 12 models spanning 3 model families across
+9 different benchmarks shows that SANDHI reduces GPU memory footprint by up
+to 49.8%, which translates to improvements of up to 2.93× in throughput and
+2× lower cost. Per-pool operating points and their measured accuracy are
+documented in [`merging/README.md`](merging/README.md).
 
 ## Layout
 

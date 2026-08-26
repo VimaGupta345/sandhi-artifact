@@ -50,6 +50,7 @@ FIGURES = {
     "fig6c (7, llama+ds)":       (["5llama+ds"], None),
     "fig6d (5, llama)":          (["5llama"], None),
     "fig6e (9, llama+ds+qwen)":  (["5llama+ds", "2qwen"], None),
+    "fig6f (7, llama+qwen)":     (["5llama", "2qwen"], None),
 }
 POINTS = ["Bpm", "Cpm", "Kpm"]
 

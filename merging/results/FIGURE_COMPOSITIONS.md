@@ -23,3 +23,4 @@ Additive composition of the 5 atoms (only `5llama+ds` is joint / non-additive). 
 | **fig6c (7, llama+ds)** | 5llama+ds | ok | 105 | 33.1% | 33.5% | 33.1% | — |
 | **fig6d (5, llama)** | 5llama | ok | 78 | 43.2% | 43.3% | 43.2% | — |
 | **fig6e (9, llama+ds+qwen)** | 5llama+ds+2qwen | ok | 135 | 26.2% | 26.5% | 26.2% | — |
+| **fig6f (7, llama+qwen)** | 5llama+2qwen | ok | 108 | 31.8% | 31.9% | 31.8% | — |
