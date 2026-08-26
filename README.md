@@ -16,8 +16,7 @@ attention/MLP projections across models and deduplicating the merged tensors
 at serving time. Our evaluation on 12 models spanning 3 model families across
 9 different benchmarks shows that SANDHI reduces GPU memory footprint by up
 to 49.8%, which translates to improvements of up to 2.93× in throughput and
-2× lower cost. Per-pool operating points and their measured accuracy are
-documented in [`merging/README.md`](merging/README.md).
+2× lower cost.
 
 ## Layout
 
