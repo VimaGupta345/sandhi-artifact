@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="#citation"><img alt="SOSP '26" src="https://img.shields.io/badge/SOSP%20'26-paper-4b44ce"></a>
+  <a href="https://doi.org/10.5281/zenodo.22108093"><img alt="DOI" src="https://zenodo.org/badge/DOI/10.5281/zenodo.22108093.svg"></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green"></a>
   <a href="#getting-started"><img alt="Docker" src="https://img.shields.io/badge/docker-prebuilt%20images-2496ED?logo=docker&logoColor=white"></a>
 </p>

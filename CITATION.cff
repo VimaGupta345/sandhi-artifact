@@ -4,6 +4,9 @@ title: "SANDHI artifact: Fine-Grained Merging for Memory Efficient Multi-Model S
 type: software
 license: MIT
 repository-code: "https://github.com/VimaGupta345/sandhi-artifact"
+doi: 10.5281/zenodo.22108093
+version: 1.0.0
+date-released: "2026-08-26"
 authors:
   - family-names: Gupta
     given-names: Vima
