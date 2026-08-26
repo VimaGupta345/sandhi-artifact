@@ -9,6 +9,21 @@ authors:
     given-names: Vima
     affiliation: "Georgia Institute of Technology"
     email: vima.gupta@gatech.edu
+  - family-names: Duran
+    given-names: Oytun Kuday
+    affiliation: "Georgia Institute of Technology"
+  - family-names: Meda
+    given-names: Nandan Suresh
+    affiliation: "Georgia Institute of Technology"
+  - family-names: An
+    given-names: Ikhyun
+    affiliation: "Georgia Institute of Technology"
+  - family-names: Ananthanarayanan
+    given-names: Ganesh
+    affiliation: "Microsoft"
+  - family-names: Iyer
+    given-names: Anand
+    affiliation: "Georgia Institute of Technology"
 preferred-citation:
   type: conference-paper
   title: "SANDHI: Fine-Grained Merging for Memory Efficient Multi-Model Serving"
@@ -17,4 +32,19 @@ preferred-citation:
   authors:
     - family-names: Gupta
       given-names: Vima
+      affiliation: "Georgia Institute of Technology"
+    - family-names: Duran
+      given-names: Oytun Kuday
+      affiliation: "Georgia Institute of Technology"
+    - family-names: Meda
+      given-names: Nandan Suresh
+      affiliation: "Georgia Institute of Technology"
+    - family-names: An
+      given-names: Ikhyun
+      affiliation: "Georgia Institute of Technology"
+    - family-names: Ananthanarayanan
+      given-names: Ganesh
+      affiliation: "Microsoft"
+    - family-names: Iyer
+      given-names: Anand
       affiliation: "Georgia Institute of Technology"

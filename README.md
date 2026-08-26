@@ -1,8 +1,17 @@
 # SANDHI
 
-Code for the SOSP 2026 paper **"SANDHI: Fine-Grained Merging for Memory
-Efficient Multi-Model Serving"**. Changes made in response to artifact
-evaluation are summarized in [CHANGES.md](CHANGES.md).
+Artifact for the SOSP 2026 paper:
+
+> **SANDHI: Fine-Grained Merging for Memory Efficient Multi-Model Serving**
+> Vima Gupta, Oytun Kuday Duran, Nandan Suresh Meda, Ikhyun An (Georgia
+> Institute of Technology), Ganesh Ananthanarayanan (Microsoft), and Anand
+> Iyer (Georgia Institute of Technology).
+> *Proceedings of the 31st ACM Symposium on Operating Systems Principles
+> (SOSP '26).*
+
+Changes made in response to artifact evaluation are summarized in
+[CHANGES.md](CHANGES.md); citation metadata is in
+[CITATION.cff](CITATION.cff).
 
 SANDHI serves a pool of fine-tuned LLMs in less GPU memory by selectively
 merging per-layer attention/MLP projections across models and deduplicating
@@ -92,6 +101,7 @@ docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp \
 [`merging/REPRODUCE_DOCKER.md`](merging/REPRODUCE_DOCKER.md):
 
 ```bash
+# inside the merging container (dock() wrapper from the runbook)
 python scripts/run_figures.py --run-name r1 --sets 5b --gpus auto
 ```
 
@@ -118,7 +128,7 @@ bash run_all.sh --config llama5_config.sh       --run-base-dir /vllm-workspace/l
 bash run_all.sh --config ds2_40gb_config.sh     --run-base-dir /vllm-workspace/ds2_out
 bash run_all.sh --config llama-qwen_config.sh   --run-base-dir /vllm-workspace/llama_qwen_out
 bash run_all.sh --config llama-qwen-ds_config.sh --run-base-dir /vllm-workspace/llama_qwen_ds_out
-# (qwen2_40gb_config.sh — Figure 6b — is under investigation; skip for now)
+# (qwen2_40gb_config.sh — Figure 6b — is under investigation; see serving/README.md)
 
 # render the paper-style panels from any results directory (host; pandas+matplotlib)
 cd serving/paper_plots
