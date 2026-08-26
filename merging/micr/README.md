@@ -1,8 +1,8 @@
-## `micr/` — merge/apply ops + evaluate (unified runner)
+# `micr/` — merge/apply ops + evaluate (unified runner)
 
 This folder contains **single-target “apply merge ops then evaluate”** runners.
 
-You almost always want to run:
+The recommended entry point:
 
 - `micr/run_eval_unified.py` — **one CLI**, choose implementation with `--mode`
 
@@ -13,6 +13,13 @@ Underlying implementations (still usable directly):
 - `micr/run_eval_lora.py` — **LoRA adapter** merges (averages LoRA A/B matrices)
 
 ---
+
+**Contents** — [Prereqs](#prereqs--environment) · [Inputs](#inputs) ·
+[Recommended usage](#recommended-usage-run_eval_unifiedpy) ·
+[CLI arguments](#cli-arguments-unified-runner) ·
+[Task mapping](#task-mapping---domain) · [Usage examples](#usage-examples) ·
+[Outputs](#outputs--what-to-expect) ·
+[Troubleshooting](#troubleshooting-notes)
 
 ## Prereqs / environment
 

@@ -11,7 +11,14 @@ to **2.93× throughput** and **1052× P95 TTFT** improvement, Llama-3.1-8B
 and **~300×**. (The paper's Figure 6 caption misattributes the Llama numbers
 to Qwen; §5.3's text has the correct per-family assignment used here.)
 
-## Contents
+**Contents** — [Layout](#layout) · [Requirements](#requirements) ·
+[Setup](#setup) · [Run](#run) ·
+[Deployment scenarios](#deployment-scenarios-configs) ·
+[Merge specs](#merge-specs) ·
+[Serving the exact merged weights](#serving-the-exact-merged-weights) ·
+[Results](#results)
+
+## Layout
 
 | path | what it is |
 |---|---|

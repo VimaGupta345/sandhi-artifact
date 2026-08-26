@@ -1,5 +1,9 @@
 # Gaussian Profiler for Model Merging
 
+**Contents** — [Prerequisites](#prerequisites) ·
+[Script](#script-gaussian_profilerpy) · [Output](#output) ·
+[Quantized model support](#quantized-model-support-fp8)
+
 This directory contains `gaussian_profiler.py`, a tool designed to profile Large Language Models (LLMs) by applying layer-wise Gaussian noise perturbations. By measuring the performance impact of noise on specific layers and components (Attention vs. MLP), this tool helps identify which parts of the model are sensitive or robust.
 
 ## Prerequisites

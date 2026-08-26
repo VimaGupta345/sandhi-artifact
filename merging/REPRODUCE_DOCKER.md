@@ -1,10 +1,20 @@
-# Reproduce Figures 5 & 6 in Docker — evaluator runbook
+# Reproduce Figures 5 & 6 in Docker — runbook
 
 Runs the SANDHI pipeline (gaussian profiler → clustering → MICR → analysis →
 Pareto + operating-point specs) inside the reference container. **Code is mounted
 at runtime — no image rebuild.** Everything runs as **your own user — no `sudo`,
 no `root`, no `chown`** — and is **self-contained by default** (models/datasets
 download into your repo; no external model store needs mounting).
+
+**Contents** — [Two ways to reproduce](#two-ways-to-reproduce--pick-one) ·
+[What you need](#what-you-need) ·
+[The wrapper](#the-wrapper-paste-once-per-shell) ·
+[Sanity check](#sanity-check-first-no-compute-5-s) ·
+[Run the pipeline](#run-the-pipeline-path-b--the-essential-commands) ·
+[Where results land](#where-results-land-all-user-owned) ·
+[Expected time](#expected-time-h200-class-gpus) ·
+[Profiles](#profiles-reuse-vs-from-scratch---profiles) ·
+[Render the panels](#render-the-figure-5-panels-ad)
 
 ## Two ways to reproduce — pick one
 - **A · Skip straight to the measurements** (no GPU, minutes). Every shipped run

@@ -35,6 +35,12 @@ full-set accuracy in `micr_replay.json`. `--domain` is the model's registry task
 (required by the CLI; unused under `--no_eval`). Uses the `dock()` wrapper from
 `REPRODUCE_DOCKER.md`.
 
+**Contents** — [One model](#one-model) ·
+[All models at an operating point](#all-models-at-an-operating-point-b-or-c-in-one-pass) ·
+[Per-model points](#per-model-points-bpm--cpm--kpm-each-model-at-its-own-cutoff) ·
+[Rebuilding the recorded reference variants](#rebuilding-the-recorded-reference-variants) ·
+[Notes](#notes)
+
 ## One model
 ```bash
 dock python micr/run_eval.py \

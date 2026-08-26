@@ -5,6 +5,15 @@ profiling → component clustering → MICR merge-and-evaluate → memory analys
 (distinct-tensor freed / sum of full on-disk model sizes), emitting Pareto
 plots and operating-point merge specs.
 
+**Contents** — [What this pipeline produces](#what-this-pipeline-produces) ·
+[One command per figure set](#one-command-per-figure-set) ·
+[Reproduce in Docker](#reproduce-in-docker) ·
+[Operating points](#operating-points-per-model-cutoffs-and-figure-composition) ·
+[Locked methodology](#locked-methodology) ·
+[Reproducibility](#reproducibility-generative-vs-multiple-choice-tasks) ·
+[Requirements](#requirements) ·
+[32B memory layout](#large-32b-models-gpu-memory-layout)
+
 ## What this pipeline produces
 
 The pipeline produces the **model sets** (memory/accuracy Pareto frontier and
