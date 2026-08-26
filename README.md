@@ -19,9 +19,8 @@ the merged tensors at serving time. Across pools of 2–12 models this frees
 26.7%–48.2% of weight memory while preserving full-dataset task accuracy
 within a ≤2% budget, and the freed memory expands KV-cache capacity — up to
 2.93× higher throughput and 1052× lower P95 TTFT than independent serving.
-(The 3× Qwen3-32B operating point is selected on full-dataset accuracy —
-see `merging/README.md` § Recorded references; 48.2% is the artifact's
-figure for the paper's 92.6 GB operating point.)
+Per-pool operating points and their measured accuracy are documented in
+[`merging/README.md`](merging/README.md).
 
 ## Layout
 
