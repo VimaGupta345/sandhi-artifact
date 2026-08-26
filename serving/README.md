@@ -22,6 +22,9 @@ to Qwen; §5.3's text has the correct per-family assignment used here.)
 | `sandhi_scripts/gpu_alloc.py` | ballast allocator — pins `GPU_ALLOC_GIB` GiB per GPU to set the scenario's memory budget |
 | `specs/` | one merge spec per scenario, emitted by the merging pipeline (see *Merge specs*) |
 | `specs/convert_spec.py` | normalizes legacy merging-side spec naming into the serving spec format |
+| `results/` | recorded reference runs for the five deployment scenarios (see `results/README.md`) |
+| `paper_plots/` | renders the Figure 6 panels in the paper's style from any results directory |
+| `offloading/` | supplementary recorded offloading runs — outside the artifact's claims |
 
 The SANDHI serving stack itself — the `--shared-layers-ptrs-path` /
 `--shared-layers-spec-path` server flags used below — is implemented in the

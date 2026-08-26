@@ -139,7 +139,10 @@ weights, built with `merging/GENERATE_VARIANTS.md` and enabled via
 `MODELS_SANDHI` (see `serving/README.md` § Serving the exact merged weights);
 both configurations agree within a few percent.
 
-Figures 7–11 and the §5.9 ablations are out of scope for this artifact.
+Figures 7–11 and the §5.9 ablations are out of scope for this artifact;
+[`serving/offloading/`](serving/offloading/) ships the recorded logs behind
+the paper's offloading comparison as supplementary data, outside the
+artifact's claims.
 
 ## Dependencies
 

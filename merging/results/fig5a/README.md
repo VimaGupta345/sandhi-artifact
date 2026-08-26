@@ -7,4 +7,4 @@ model satisfies the ≤2% drop budget (`../full_set_scores.csv`), freeing
 point as 49.8% of its 186 GB total). The `P` row (cutoff 104) mechanically
 targets the paper's percentage under this pipeline's denominator. All sizes
 are binary gigabytes (GiB), written "GB" per the paper's convention. See
-`merging/README.md` § Recorded references.
+`../../README.md` § Accuracy footing (M-split vs. full-set).

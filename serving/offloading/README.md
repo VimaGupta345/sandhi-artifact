@@ -1,18 +1,18 @@
-# CPU-offloading experiments — Figures 8 and 9
+# CPU-offloading experiments — supplementary recorded data
 
-Recorded runs and launcher for the paper's offloading comparison:
+Recorded runs and launcher for the paper's offloading comparison (Figures 8
+and 9). These figures are out of scope for this artifact's claims; the logs
+are provided as-is.
 
-- **Figure 9 — eliminating offloading** (2× Llama-3.1-8B on a 1×A100-40GB
+- **Eliminating offloading** (2× Llama-3.1-8B on a 1×A100-40GB
   budget): with independent serving the weights don't fit alongside the 2 GB
   per-model KV budget, so the baseline must offload 2 GB to CPU; SANDHI's
-  dedup fits entirely in GPU memory. Paper headline: 17× throughput, 120×
-  TTFT improvement.
+  dedup fits entirely in GPU memory.
   - `results_llama_kv2gb_offload2gb/` — baseline (`--cpu-offload-gb 2`)
   - `results_llama_kv2gb_no-offload/` — SANDHI-equivalent (no offload)
-- **Figure 8 — reducing offload volume** (3× Qwen3-32B on a 2×A100-80GB
+- **Reducing offload volume** (3× Qwen3-32B on a 2×A100-80GB
   budget, 32 GB KV): both configurations must offload, but SANDHI reduces the
-  transferred volume. Paper headline: 4.8× throughput (45 → 215 tok/s), 21×
-  TTFT.
+  transferred volume.
   - `results_qwen3_kv32gb_offload14gb/` — baseline (`--cpu-offload-gb 14`)
   - `results_qwen3_kv32gb_offload4.39gb/` — SANDHI (`--cpu-offload-gb 4.39`,
     the volume left after fig5a's dedup)
