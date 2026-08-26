@@ -9,10 +9,6 @@ Artifact for the SOSP 2026 paper:
 > *Proceedings of the 31st ACM Symposium on Operating Systems Principles
 > (SOSP '26).*
 
-Changes made in response to artifact evaluation are summarized in
-[CHANGES.md](CHANGES.md); citation metadata is in
-[CITATION.cff](CITATION.cff).
-
 SANDHI serves a pool of fine-tuned LLMs in less GPU memory by selectively
 merging per-layer attention/MLP projections across models and deduplicating
 the merged tensors at serving time. Across pools of 2–12 models this frees
