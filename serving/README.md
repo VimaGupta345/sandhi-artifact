@@ -29,9 +29,10 @@ to Qwen; §5.3's text has the correct per-family assignment used here.)
 The SANDHI serving stack itself — the `--shared-layers-ptrs-path` /
 `--shared-layers-spec-path` server flags used below — is implemented in the
 SANDHI vLLM fork (<https://github.com/nandanmeda1999/vllm_merged_model>, a
-vLLM derivative, Apache-2.0), from which `sandhi_scripts/` originates. The
-prebuilt runtime ships as a Docker image (below), so there is no need to build
-the fork.
+vLLM derivative, Apache-2.0). `sandhi_scripts/` is original harness code that
+drives that stack (MIT, like the rest of this repository). The prebuilt
+runtime ships as a Docker image (below), so there is no need to build the
+fork.
 
 ## Requirements
 

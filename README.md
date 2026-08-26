@@ -177,5 +177,6 @@ artifact's claims.
 
 ## License
 
-MIT (see [LICENSE](LICENSE)). `serving/sandhi_scripts/` originates from a vLLM
-(Apache-2.0) fork; see `serving/README.md`.
+MIT (see [LICENSE](LICENSE)). `serving/sandhi_scripts/` is original
+MIT-licensed harness code; the SANDHI vLLM fork it drives (Apache-2.0) is
+distributed in the prebuilt Docker image — see `serving/README.md`.
